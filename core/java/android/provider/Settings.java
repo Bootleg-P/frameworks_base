@@ -4887,7 +4887,7 @@ public final class Settings {
             STATUS_BAR_TICKER_TICK_DURATION,
             OMNI_BUTTON_EXTRA_KEY_MAPPING,
             OMNI_DEVICE_PROXI_CHECK_ENABLED,
-            OMNI_DEVICE_FEATURE_SETTINGS
+            OMNI_DEVICE_FEATURE_SETTINGS,
             VOLUME_KEYS_CONTROL_RING_TONE
         };
 
@@ -9292,6 +9292,15 @@ public final class Settings {
         public static final String EDGE_GESTURES_BACK_USE_BLACK_ARROW = "edge_gestures_back_use_black_arrow";
 
         /**
+         * Boolean value whether to link ringtone and notification volume
+         * @hide
+         */
+        public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+        /** @hide */
+        private static final Validator VOLUME_LINK_NOTIFICATION_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * This are the settings to be backed up.
          *
          * NOTE: Settings are backed up and restored in the order they appear
@@ -9394,7 +9403,8 @@ public final class Settings {
             HUSH_GESTURE_USED,
             LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS,
             LOCK_SCREEN_SHOW_NOTIFICATIONS,
-            STATUS_BAR_BATTERY_STYLE
+            STATUS_BAR_BATTERY_STYLE,
+            VOLUME_LINK_NOTIFICATION,
         };
 
         /**
@@ -9551,6 +9561,7 @@ public final class Settings {
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_FORMAT, STATUSBAR_CLOCK_DATE_FORMAT_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_POSITION, STATUSBAR_CLOCK_DATE_POSITION_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_BATTERY_STYLE, STATUS_BAR_BATTERY_STYLE_VALIDATOR);
+            VALIDATORS.put(VOLUME_LINK_NOTIFICATION, VOLUME_LINK_NOTIFICATION_VALIDATOR);
         }
 
         /**
