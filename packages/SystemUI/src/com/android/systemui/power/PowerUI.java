@@ -250,6 +250,13 @@ public class PowerUI extends SystemUI {
                     maybeShowBatteryWarning(plugged, oldPlugged, oldBucket, bucket);
                 });
 
+                if (plugged && !oldPlugged
+                        && (mPlugType == BatteryManager.BATTERY_PLUGGED_AC
+                            || mPlugType == BatteryManager.BATTERY_PLUGGED_USB)) {
+                    // "Wireless charging started" sound is handled by
+                    // {@link com.android.server.power.Notifier#onWirelessChargingStarted()}
+                    mWarnings.notifyBatteryPlugged();
+                }
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 mScreenOffTime = SystemClock.elapsedRealtime();
             } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
@@ -531,6 +538,7 @@ public class PowerUI extends SystemUI {
         void updateThresholds(long lowThreshold, long severeThreshold);
         void dismissLowBatteryWarning();
         void showLowBatteryWarning(boolean playSound);
+        void notifyBatteryPlugged();
         void dismissInvalidChargerWarning();
         void showInvalidChargerWarning();
         void updateLowBatteryWarning();
