@@ -1606,7 +1606,6 @@ public class ApplicationsState {
             return false;
         }
     };
-
     public static final AppFilter FILTER_DISABLED = new AppFilter() {
         @Override
         public void init() {
