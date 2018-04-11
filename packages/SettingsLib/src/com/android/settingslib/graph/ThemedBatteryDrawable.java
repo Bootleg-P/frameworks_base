@@ -109,14 +109,15 @@ public class ThemedBatteryDrawable extends BatteryMeterDrawableBase {
         for (int i = 0; i < N; i++) {
             colorLevels[2 * i] = levels.getInt(i, 0);
             if (colors.getType(i) == TypedValue.TYPE_ATTRIBUTE) {
-                colorLevels[2 * i + 1] = Utils.getColorAttr(context, colors.getThemeAttributeId(i, 0));
+                colorLevels[2 * i + 1] = Utils.getColorAttrDefaultColor(context,
+                        colors.getThemeAttributeId(i, 0));
             } else {
                 colorLevels[2 * i + 1] = colors.getColor(i, 0);
             }
         }
         levels.recycle();
         colors.recycle();
-        
+
         setCriticalLevel(res.getInteger(
                 com.android.internal.R.integer.config_criticalBatteryWarningLevel));
 
