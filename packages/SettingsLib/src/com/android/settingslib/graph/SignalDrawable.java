@@ -94,7 +94,6 @@ public class SignalDrawable extends DrawableWrapper {
     private int mCurrentDot;
 
     public SignalDrawable(Context context) {
-
         super(context.getDrawable(com.android.internal.R.drawable.ic_signal_cellular));
         mDarkModeFillColor = Utils.getColorStateListDefaultColor(context,
                 R.color.dark_mode_icon_color_single_tone);

@@ -52,7 +52,7 @@ public class ShortcutPicker extends PreferenceFragment implements Tunable {
         PreferenceCategory otherApps = new PreferenceCategory(context);
         otherApps.setTitle(R.string.tuner_other_apps);
 
-        mNonePreference = new SelectablePreference(context);
+	mNonePreference = new SelectablePreference(context);
         mSelectablePreferences.add(mNonePreference);
         mNonePreference.setTitle(R.string.lockscreen_none);
         mNonePreference.setIcon(R.drawable.ic_remove_circle);
