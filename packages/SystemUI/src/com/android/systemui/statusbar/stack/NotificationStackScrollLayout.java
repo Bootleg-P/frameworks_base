@@ -5049,11 +5049,13 @@ public class NotificationStackScrollLayout extends ViewGroup
                 // ANIMATION_TYPE_PULSE_APPEAR
                 new AnimationFilter()
                         .animateAlpha()
+                        .hasDelays()
                         .animateY(),
 
                 // ANIMATION_TYPE_PULSE_DISAPPEAR
                 new AnimationFilter()
                         .animateAlpha()
+                        .hasDelays()
                         .animateY(),
         };
 
@@ -5117,10 +5119,10 @@ public class NotificationStackScrollLayout extends ViewGroup
                 StackStateAnimator.ANIMATION_DURATION_STANDARD,
 
                 // ANIMATION_TYPE_PULSE_APPEAR
-                KeyguardSliceView.DEFAULT_ANIM_DURATION,
+                StackStateAnimator.ANIMATION_DURATION_PULSE_APPEAR,
 
                 // ANIMATION_TYPE_PULSE_DISAPPEAR
-                KeyguardSliceView.DEFAULT_ANIM_DURATION / 2,
+                StackStateAnimator.ANIMATION_DURATION_PULSE_APPEAR / 2,
         };
 
         static final int ANIMATION_TYPE_ADD = 0;

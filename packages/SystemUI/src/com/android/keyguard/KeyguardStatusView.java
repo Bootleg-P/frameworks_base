@@ -86,6 +86,7 @@ public class KeyguardStatusView extends GridLayout implements
 
     private ArraySet<View> mVisibleInDoze;
     private boolean mPulsing;
+    private boolean mWasPulsing;
     private float mDarkAmount = 0;
     private int mTextColor;
     private float mWidgetPadding;
@@ -288,7 +289,8 @@ public class KeyguardStatusView extends GridLayout implements
         boolean smallClock = hasHeader || mPulsing;
         prepareSmallView(smallClock);
         long duration = KeyguardSliceView.DEFAULT_ANIM_DURATION;
-        long delay = smallClock ? 0 : duration / 4;
+        long delay = smallClock || mWasPulsing ? 0 : duration / 4;
+        mWasPulsing = false;
 
         boolean shouldAnimate = mKeyguardSlice.getLayoutTransition() != null
                 && mKeyguardSlice.getLayoutTransition().isRunning();
@@ -1432,6 +1434,12 @@ public class KeyguardStatusView extends GridLayout implements
     }
 
     public void setPulsing(boolean pulsing, boolean animate) {
+        if (mPulsing == pulsing) {
+            return;
+        }
+        if (mPulsing) {
+            mWasPulsing = true;
+        }
         mPulsing = pulsing;
         mKeyguardSlice.setPulsing(pulsing, animate);
         updateDozeVisibleViews();
