@@ -379,7 +379,8 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
      */
     private boolean needUpdateLocked(WallpaperColors colors, int themeMode) {
         if (colors == null) {
-            return false;
+            colors = new WallpaperColors(Color.valueOf(Color.WHITE), null, null, 0);
+            //return false;
         }
 
         if (themeMode == mThemeMode) {
@@ -592,8 +593,9 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
      */
     private WallpaperColors getThemeColorsLocked(WallpaperColors colors) {
         if (colors == null) {
-            Slog.w(TAG, "Cannot get theme colors because WallpaperColors is null.");
-            return null;
+            colors = new WallpaperColors(Color.valueOf(Color.WHITE), null, null, 0);
+            //Slog.w(TAG, "Cannot get theme colors because WallpaperColors is null.");
+            //return null;
         }
 
         int colorHints = colors.getColorHints();
