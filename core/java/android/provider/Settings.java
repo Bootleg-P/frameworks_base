@@ -1581,6 +1581,20 @@ public final class Settings {
     public static final String ACTION_STORAGE_VOLUME_ACCESS_SETTINGS =
             "android.settings.STORAGE_VOLUME_ACCESS_SETTINGS";
 
+    /**
+     * Activity Action: Show first time device intro
+     * <p>
+     * In some cases, a matching Activity may not exist, so ensure you
+     * safeguard against this.
+     * <p>
+     * Input: Nothing.
+     * <p>
+     * Output: Nothing
+     */
+    @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+    public static final String ACTION_DEVICE_INTRODUCTION =
+        "android.settings.DEVICE_INTRODUCTION";
+
     // End of Intent actions for Settings
 
     /**
@@ -5197,6 +5211,15 @@ public final class Settings {
         public static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
 
         /**
+         * Weather the device introduction is completed
+         * @hide
+         */
+        public static final String DEVICE_INTRODUCTION_COMPLETED = "device_introduction_completed";
+
+        /** @hide */
+        private static final Validator DEVICE_INTRODUCTION_COMPLETED_VALIDATOR =
+               BOOLEAN_VALIDATOR;
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5444,6 +5467,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_CUSTOM_HEADER_IMAGE);
             PRIVATE_SETTINGS.add(STATUS_BAR_FILE_HEADER_IMAGE);
             PRIVATE_SETTINGS.add(OMNI_USE_BOTTOM_GESTURE_NAVIGATION);
+            PRIVATE_SETTINGS.add(DEVICE_INTRODUCTION_COMPLETED);
         }
 
         /**
@@ -5573,6 +5597,7 @@ public final class Settings {
                     OMNI_USE_BOTTOM_GESTURE_NAVIGATION_VALIDATOR);
             VALIDATORS.put(BOTTOM_GESTURE_TRIGGER_TIMEOUT, BOTTOM_GESTURE_TRIGGER_TIMEOUT_VALIDATOR);
             VALIDATORS.put(BOTTOM_GESTURE_SWIPE_LIMIT, BOTTOM_GESTURE_SWIPE_LIMIT_VALIDATOR);
+            VALIDATORS.put(DEVICE_INTRODUCTION_COMPLETED, DEVICE_INTRODUCTION_COMPLETED_VALIDATOR);
         }
 
         /**
