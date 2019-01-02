@@ -8797,6 +8797,7 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     void importanceTokenDied(ImportanceToken token) {
         synchronized (ActivityManagerService.this) {
+            ProcessRecord pr = null;
             synchronized (mPidsSelfLocked) {
                 ImportanceToken cur
                     = mImportantProcesses.get(token.pid);
@@ -8804,13 +8805,13 @@ public class ActivityManagerService extends IActivityManager.Stub
                     return;
                 }
                 mImportantProcesses.remove(token.pid);
-                ProcessRecord pr = mPidsSelfLocked.get(token.pid);
+                pr = mPidsSelfLocked.get(token.pid);
                 if (pr == null) {
                     return;
                 }
                 pr.forcingToImportant = null;
-                updateProcessForegroundLocked(pr, false, false);
             }
+            updateProcessForegroundLocked(pr, false, false);
             updateOomAdjLocked();
         }
     }
