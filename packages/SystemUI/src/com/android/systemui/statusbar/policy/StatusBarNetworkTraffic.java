@@ -55,14 +55,12 @@ public class StatusBarNetworkTraffic extends NetworkTraffic implements StatusIco
     public void onDarkChanged(Rect area, float darkIntensity, int tint) {
         mTintColor = DarkIconDispatcher.getTint(area, this, tint);
         setTextColor(mTintColor);
-        updateTrafficDrawable();
     }
 
     @Override
     public void setStaticDrawableColor(int color) {
         mTintColor = color;
         setTextColor(mTintColor);
-        updateTrafficDrawable();
     }
 
     @Override
