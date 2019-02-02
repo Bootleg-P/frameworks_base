@@ -29,7 +29,6 @@
     <!-- Network traffic monitor -->
     <dimen name="net_traffic_single_text_size">12dp</dimen>
     <dimen name="net_traffic_multi_text_size">8dp</dimen>
-    <dimen name="net_traffic_txt_img_padding">2dp</dimen>
 
     <!-- Custom Carrier Label -->
     <dimen name="status_bar_carrier_height">14dp</dimen>
@@ -106,7 +105,7 @@
 
     <!-- OPA -->
     <dimen name="halo_diameter">18.0dip</dimen>
-    <dimen name="halo_inner_radius">8.0dip</dimen>
+    <dimen name="halo_inner_radius">20.0dip</dimen>
     <dimen name="halo_thickness">1.0dip</dimen>
     <dimen name="opa_diamond_translation">16.0dip</dimen>
     <dimen name="opa_dot_diam">10.0dip</dimen>

@@ -207,7 +207,6 @@ public class NetworkTraffic extends TextView {
         txtSize = resources.getDimensionPixelSize((mTrafficType == BOTH)
 					          ? R.dimen.net_traffic_multi_text_size
 						  : R.dimen.net_traffic_single_text_size);
-        txtImgPadding = resources.getDimensionPixelSize(R.dimen.net_traffic_txt_img_padding);
         mTintColor = resources.getColor(android.R.color.white);
         setTextColor(mTintColor);
         Handler mHandler = new Handler();
@@ -264,7 +263,6 @@ public class NetworkTraffic extends TextView {
                     lastUpdateTime = SystemClock.elapsedRealtime();
                     mTrafficHandler.sendEmptyMessage(1);
                 }
-                updateTrafficDrawable();
                 return;
             }
         } else {
@@ -295,35 +293,11 @@ public class NetworkTraffic extends TextView {
         mTrafficHandler.removeMessages(1);
     }
 
-    protected void updateTrafficDrawable() {
-        int intTrafficDrawable;
-        if (mIsEnabled) {
-          if (mTrafficType == UP) {
-            intTrafficDrawable = R.drawable.stat_sys_network_traffic_up;
-          } else if (mTrafficType == DOWN) {
-            intTrafficDrawable = R.drawable.stat_sys_network_traffic_down;
-          } else {
-            intTrafficDrawable = R.drawable.stat_sys_network_traffic_updown;
-          }
-        } else {
-            intTrafficDrawable = 0;
-        }
-        if (intTrafficDrawable != 0) {
-            Drawable d = getContext().getDrawable(intTrafficDrawable);
-            d.setColorFilter(mTintColor, Mode.MULTIPLY);
-            setCompoundDrawablePadding(txtImgPadding);
-            setCompoundDrawablesWithIntrinsicBounds(null, null, d, null);
-        } else {
-            setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        }
-    }
-
     public void onDensityOrFontScaleChanged() {
         final Resources resources = getResources();
         txtSize = resources.getDimensionPixelSize((mTrafficType == BOTH)
 						  ? R.dimen.net_traffic_multi_text_size
 						  : R.dimen.net_traffic_single_text_size);
-        txtImgPadding = resources.getDimensionPixelSize(R.dimen.net_traffic_txt_img_padding);
         setTextSize(TypedValue.COMPLEX_UNIT_PX, (float)txtSize);
         setCompoundDrawablePadding(txtImgPadding);
     }
