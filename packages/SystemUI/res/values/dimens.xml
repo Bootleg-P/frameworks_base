@@ -414,7 +414,7 @@
     <dimen name="qs_detail_icon_overlay_size">24dp</dimen>
 
     <dimen name="segmented_button_spacing">0dp</dimen>
-    <dimen name="borderless_button_radius">2dp</dimen>
+    <dimen name="borderless_button_radius">20dp</dimen>
 
     <dimen name="restricted_padlock_pading">4dp</dimen>
 
@@ -459,7 +459,7 @@
     <dimen name="notification_divider_height">0.5dp</dimen>
 
     <!-- The corner radius of the shadow behind the notification. -->
-    <dimen name="notification_shadow_radius">0dp</dimen>
+    <dimen name="notification_shadow_radius">20dp</dimen>
 
     <!-- The alpha of the dividing line between child notifications of a notification group. -->
     <item name="notification_divider_alpha" format="float" type="dimen">0.5</item>
@@ -942,7 +942,7 @@
          to prevent burn-in on AOD. -->
     <dimen name="charging_indication_burn_in_prevention_offset_y">5dp</dimen>
 
-    <dimen name="corner_size">8dp</dimen>
+    <dimen name="corner_size">32dp</dimen>
     <dimen name="top_padding">0dp</dimen>
     <dimen name="bottom_padding">48dp</dimen>
     <dimen name="edge_margin">8dp</dimen>
