@@ -263,4 +263,8 @@
 
   <!-- Whether device has a physical display cutout -->
   <java-symbol type="bool" name="config_physicalDisplayCutout" />
+
+  <!-- FoD -->
+  <java-symbol type="bool" name="config_needCustomFODView" />
+  <java-symbol type="bool" name="config_usesOnePlusFOD" />
 </resources>
