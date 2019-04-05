@@ -146,4 +146,9 @@
   <!-- Whether device has a physical display cutout -->
   <bool name="config_physicalDisplayCutout">false</bool>
 
+  <!-- Show a custom view for FOD -->
+  <bool name="config_needCustomFODView">false</bool>
+
+  <bool name="config_usesOnePlusFOD">false</bool>
+
 </resources>
