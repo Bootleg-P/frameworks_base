@@ -715,4 +715,9 @@ interface IActivityManager {
 
     /** @see android.app.ActivityManager#alwaysShowUnsupportedCompileSdkWarning */
     void alwaysShowUnsupportedCompileSdkWarning(in ComponentName activity);
+
+    /**
+     *  Should disable touch if three fingers to screen shot is active?
+     */
+    boolean isSwipeToScreenshotGestureActive();
 }
