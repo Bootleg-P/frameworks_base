@@ -815,6 +815,7 @@ public class KeyguardStatusView extends GridLayout implements
                     View.GONE) : View.VISIBLE);
             mCustomClockView.setVisibility(View.GONE);
             mKeyguardSlice.setViewBackgroundResource(0);
+            mClockView.setBackgroundResource(0);
         } else {
             setStyle();
             refreshTime();
