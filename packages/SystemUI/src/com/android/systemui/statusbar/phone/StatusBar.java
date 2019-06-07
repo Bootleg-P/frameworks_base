@@ -6116,6 +6116,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                 stockTileStyle();
                 updateTileStyle();
             } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.USE_OLD_MOBILETYPE))) {
+                updateTelephonyIcons();
+            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN))) {
                 setLockscreenDoubleTapToSleep();
             } else if (uri.equals(Settings.System.getUriFor(
@@ -6160,10 +6163,7 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                     Settings.System.HEADS_UP_BLACKLIST_VALUES);
             splitAndAddToArrayList(mBlacklist, blackString, "\\|");
             updateTheme();
-            USE_OLD_MOBILETYPE = Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.USE_OLD_MOBILETYPE, 0,
-                    UserHandle.USER_CURRENT) != 0;
-            TelephonyIcons.updateIcons(USE_OLD_MOBILETYPE);
+            updateTelephonyIcons();
             setLockscreenDoubleTapToSleep();
             setQsPanelOptions();
             updateTickerAnimation();
@@ -6213,6 +6213,13 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         if (isAmbientContainerAvailable()) {
             ((AmbientIndicationContainer)mAmbientIndicationContainer).setIndication(null, false);
         }
+    }
+
+    private void updateTelephonyIcons() {
+        USE_OLD_MOBILETYPE = Settings.System.getIntForUser(mContext.getContentResolver(),
+            Settings.System.USE_OLD_MOBILETYPE, 0,
+            UserHandle.USER_CURRENT) != 0;
+        TelephonyIcons.updateIcons(USE_OLD_MOBILETYPE);
     }
 
     private void setAmbientVis() {
