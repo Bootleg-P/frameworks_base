@@ -134,6 +134,7 @@ public class SignalDrawable extends DrawableWrapper {
         super.onLevelChange(unpackLevel(packedState));
         updateAnimation();
         setTintList(ColorStateList.valueOf(mForegroundPaint.getColor()));
+        invalidateSelf();
         return true;
     }
 
