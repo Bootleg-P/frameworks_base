@@ -1040,18 +1040,7 @@ public class Build {
         // Don't care on eng builds.  Incremental build may trigger false negative.
         if (IS_ENG) return true;
 
-        if (IS_TREBLE_ENABLED && Build.VERSION.FIRST_SDK_INT >= VERSION_CODES.O) {
-            // If we can run this code, the device should already pass AVB.
-            // So, we don't need to check AVB here.
-            int result = VintfObject.verifyWithoutAvb();
-
-            if (result != 0) {
-                Slog.e(TAG, "Vendor interface is incompatible, error="
-                        + String.valueOf(result));
-            }
-
-            return result == 0;
-        }
+        if (IS_TREBLE_ENABLED) return true;
 
         final String system = SystemProperties.get("ro.build.fingerprint");
         final String vendor = SystemProperties.get("ro.vendor.build.fingerprint");
