@@ -197,6 +197,16 @@ public class ThemeAccentUtils {
         "org.omnirom.gramophone.theme.shishuprotostar", // 9
     };
 
+    private static final String[] SWITCH_STYLER = {
+        "com.android.system.switch.stock", // 0
+        "com.android.system.switch.md2", // 1
+        "com.android.system.switch.oneplus", // 2
+	    "com.android.system.switch.narrow", // 3
+        "com.android.system.switch.contained", // 4
+        "com.android.system.switch.retro", // 5
+        "com.android.system.switch.stockish", // 6
+    };
+
     // Switches theme accent from to another or back to stock
     public static void updateAccents(IOverlayManager om, int userId, int accentSetting) {
         if (accentSetting == 0) {
@@ -470,5 +480,33 @@ public class ThemeAccentUtils {
             e.printStackTrace();
         }
         return themeInfo != null && themeInfo.isEnabled();
+    }
+
+     // Changes system switch to user selected style.
+    public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
+        if (switchStyle == 0) {
+            stockSwitchStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(SWITCH_STYLER[switchStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change system switch style", e);
+            }
+        }
+    }
+
+    // Changes system switches back to stock.
+    public static void stockSwitchStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 1; i < SWITCH_STYLER.length; i++) {
+            String switchtheme = SWITCH_STYLER[i];
+            try {
+                om.setEnabled(switchtheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

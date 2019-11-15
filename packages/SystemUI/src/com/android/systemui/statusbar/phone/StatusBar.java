@@ -4830,6 +4830,18 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
         ThemeAccentUtils.stockTileStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
+    // Changes system switch to user selected style.
+    public void updateSwitchStyle() {
+         int switchStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                 Settings.System.SWITCH_STYLER, 0, mLockscreenUserManager.getCurrentUserId());
+        ThemeAccentUtils.updateSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), switchStyle);
+    }
+
+     // Changes system switches back to stock.
+    public void stockSwitchStyle() {
+        ThemeAccentUtils.stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
     private void updateDozingState() {
         Trace.traceCounter(Trace.TRACE_TAG_APP, "dozing", mDozing ? 1 : 0);
         Trace.beginSection("StatusBar#updateDozingState");
@@ -6122,6 +6134,9 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.GAMING_MODE_HEADSUP_TOGGLE),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SWITCH_STYLER),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -6188,6 +6203,12 @@ public class StatusBar extends SystemUI implements DemoMode, TunerService.Tunabl
                     Settings.System.GAMING_MODE_ACTIVE)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.GAMING_MODE_HEADSUP_TOGGLE))) {
                 updateGamingPeekMode();
+	    } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SWITCH_STYLER))) {
+                mUiOffloadThread.submit(() -> {
+                    stockSwitchStyle();
+                    updateSwitchStyle();
+                });
             }
         }
 
