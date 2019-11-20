@@ -19,6 +19,7 @@ package com.android.internal.util.bootleggers;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -28,6 +29,7 @@ import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.input.InputManager;
+import android.os.BatteryManager;
 import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.os.Looper;
@@ -35,6 +37,8 @@ import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.DisplayInfo;
 import android.view.InputDevice;
@@ -49,6 +53,7 @@ import com.android.internal.statusbar.IStatusBarService;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Arrays;
 
 public class BootlegUtils {
 
@@ -104,6 +109,35 @@ public class BootlegUtils {
         ConnectivityManager cm = (ConnectivityManager)context.getSystemService(
                 Context.CONNECTIVITY_SERVICE);
         return (cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE) == false);
+    }
+
+    public static String batteryTemperature(Context context, Boolean ForC) {
+	Intent intent = context.registerReceiver(null, new IntentFilter(
+                Intent.ACTION_BATTERY_CHANGED));
+	float temp = ((float) (intent != null ? intent.getIntExtra(
+                BatteryManager.EXTRA_TEMPERATURE, 0) : 0)) / 10;
+        // Round up to nearest number
+        int c = (int) ((temp) + 0.5f);
+        float n = temp + 0.5f;
+        // Use boolean to determine celsius or fahrenheit
+	return String.valueOf((n - c) % 2 == 0 ? (int) temp :
+                ForC ? c * 9/5 + 32:c);
+	}
+
+	// Method to detect countries that use Fahrenheit
+    public static boolean mccCheck(Context context) {
+        // MCC's belonging to countries that use Fahrenheit
+        String[] mcc = {"364", "552", "702", "346", "550", "376", "330",
+                "310", "311", "312", "551"};
+
+        TelephonyManager tel = (TelephonyManager) context.getSystemService(
+                Context.TELEPHONY_SERVICE);
+        String networkOperator = tel.getNetworkOperator();
+
+        // Check the array to determine celsius or fahrenheit.
+        // Default to celsius if can't access MCC
+        return !TextUtils.isEmpty(networkOperator) && Arrays.asList(mcc).contains(
+                networkOperator.substring(0, /*Filter only 3 digits*/ 3));
     }
 
     public static boolean isPackageInstalled(Context context, String pkg, boolean ignoreState) {

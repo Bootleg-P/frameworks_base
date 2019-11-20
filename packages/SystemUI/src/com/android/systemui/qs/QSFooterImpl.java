@@ -279,7 +279,6 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
 
     private void updateVisibilities() {
         final boolean isDemo = UserManager.isDeviceInDemoMode(mContext);
-	mSettingsContainer.setVisibility(View.VISIBLE);
         mSettingsButton.setVisibility(View.VISIBLE);
         hasRunningServices = !isRunningServicesDisabled();
         mMultiUserSwitch.setVisibility(showUserSwitcher(isDemo) ? View.VISIBLE : View.INVISIBLE);
