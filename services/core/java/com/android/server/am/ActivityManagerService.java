@@ -27419,10 +27419,6 @@ public class ActivityManagerService extends IActivityManager.Stub
         return null;
     }
 
-    Context getContext() {
-        return mContext;
-    }
-
     private class SwipeToScreenshotObserver extends ContentObserver {
 
         private final Context mContext;
