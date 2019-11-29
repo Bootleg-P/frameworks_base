@@ -2007,7 +2007,6 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     private CutoutFullscreenController mCutoutFullscreenController;
 
-    final boolean mAllowAppBroadcast;
     final SwipeToScreenshotObserver mSwipeToScreenshotObserver;
     private boolean mIsSwipeToScrenshotEnabled;
 
@@ -3052,7 +3051,6 @@ public class ActivityManagerService extends IActivityManager.Stub
         mIntentFirewall = null;
         mKeyguardController = null;
         mPermissionReviewRequired = false;
-        mAllowAppBroadcast = false;
         mProcessCpuThread = null;
         mProcessStats = null;
         mProviderMap = null;
@@ -3087,9 +3085,6 @@ public class ActivityManagerService extends IActivityManager.Stub
 
         mPermissionReviewRequired = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_permissionReviewRequired);
-
-        mAllowAppBroadcast = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_allowActivePackageBroadcast);
 
         mHandlerThread = new ServiceThread(TAG,
                 THREAD_PRIORITY_FOREGROUND, false /*allowIo*/);
@@ -27428,10 +27423,6 @@ public class ActivityManagerService extends IActivityManager.Stub
         return mContext;
     }
 
-    public boolean isAppBroadcastAllowed() {
-        return mAllowAppBroadcast;
-    }
-
     private class SwipeToScreenshotObserver extends ContentObserver {
 
         private final Context mContext;
@@ -27471,5 +27462,4 @@ public class ActivityManagerService extends IActivityManager.Stub
             return mCutoutFullscreenController.shouldForceCutoutFullscreen(packageName);
         }
     }
-
 }
