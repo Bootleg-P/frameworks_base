@@ -4760,6 +4760,25 @@ public final class Settings {
          */
         public static final String DATA_DISABLED_ICON = "data_disabled_icon";
 
+	/**
+         * whether to enable or disable battery bar on lock screen
+         *
+         * @hide
+         */
+        public static final String SYSUI_KEYGUARD_SHOW_BATTERY_BAR = "sysui_keyguard_show_battery_bar";
+        /** @hide */
+        private static final Validator SYSUI_KEYGUARD_SHOW_BATTERY_BAR_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * whether to always show battery bar on lock screen
+         *
+         * @hide
+         */
+        public static final String SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS = "sysui_keyguard_show_battery_bar_always";
+        /** @hide */
+        private static final Validator SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS_VALIDATOR =
+                BOOLEAN_VALIDATOR;
 
         /**
          * Which kind of style you might want to see on Recents UI
@@ -5736,6 +5755,8 @@ public final class Settings {
             SHOW_BATTERY_PERCENT,
             NOTIFICATION_VIBRATION_INTENSITY,
             HAPTIC_FEEDBACK_INTENSITY,
+	    SYSUI_KEYGUARD_SHOW_BATTERY_BAR,
+            SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS,
             DISPLAY_COLOR_MODE,
             NOTIFICATION_LIGHT_PULSE,
             OMNI_CUSTOM_FP_ICON,
@@ -6102,6 +6123,8 @@ public final class Settings {
             VALIDATORS.put(BOTTOM_GESTURE_SWIPE_LIMIT, BOTTOM_GESTURE_SWIPE_LIMIT_VALIDATOR);
             VALIDATORS.put(DEVICE_INTRODUCTION_COMPLETED, DEVICE_INTRODUCTION_COMPLETED_VALIDATOR);
             VALIDATORS.put(DOZE_ON_CHARGE, DOZE_ON_CHARGE_VALIDATOR);
+	    VALIDATORS.put(SYSUI_KEYGUARD_SHOW_BATTERY_BAR, SYSUI_KEYGUARD_SHOW_BATTERY_BAR_VALIDATOR);
+            VALIDATORS.put(SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS, SYSUI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS_VALIDATOR);
             VALIDATORS.put(LOCK_QS_DISABLED, LOCK_QS_DISABLED_VALIDATOR);
             VALIDATORS.put(DISPLAY_CUTOUT_MODE, DISPLAY_CUTOUT_MODE_VALIDATOR);
             VALIDATORS.put(STOCK_STATUSBAR_IN_HIDE, STOCK_STATUSBAR_IN_HIDE_VALIDATOR);
