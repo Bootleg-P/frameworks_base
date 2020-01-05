@@ -120,5 +120,6 @@
 	<!-- Bottom margin size when fingerprint in display is active -->
     <dimen name="keyguard_indication_margin_bottom_fingerprint_in_display">@dimen/keyguard_indication_margin_bottom</dimen>
 
+    <dimen name="battery_bar_view_height">6dp</dimen>
 
 </resources>
