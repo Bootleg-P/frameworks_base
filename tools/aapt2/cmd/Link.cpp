@@ -292,14 +292,13 @@ static bool FlattenXml(IAaptContext* context, const xml::XmlResource& xml_res,
 
       io::BigBufferInputStream input_stream(&buffer);
       return io::CopyInputStreamToArchive(context, &input_stream, path.to_string(),
-                                          ArchiveEntry::kCompress, writer);
+                                          0u, writer);
     } break;
 
     case OutputFormat::kProto: {
       pb::XmlNode pb_node;
       SerializeXmlResourceToPb(xml_res, &pb_node);
-      return io::CopyProtoToArchive(context, &pb_node, path.to_string(), ArchiveEntry::kCompress,
-                                    writer);
+      return io::CopyProtoToArchive(context, &pb_node, path.to_string(), 0u, writer);
     } break;
   }
   return false;
@@ -435,16 +434,7 @@ ResourceFileFlattener::ResourceFileFlattener(const ResourceFileFlattenerOptions&
 }
 
 uint32_t ResourceFileFlattener::GetCompressionFlags(const StringPiece& str) {
-  if (options_.do_not_compress_anything) {
-    return 0;
-  }
-
-  for (const std::string& extension : options_.extensions_to_not_compress) {
-    if (util::EndsWith(str, extension)) {
-      return 0;
-    }
-  }
-  return ArchiveEntry::kCompress;
+  return 0;
 }
 
 static bool IsTransitionElement(const std::string& name) {
@@ -1085,7 +1075,7 @@ class LinkCommand {
         pb::ResourceTable pb_table;
         SerializeTableToPb(*table, &pb_table, context_->GetDiagnostics());
         return io::CopyProtoToArchive(context_, &pb_table, kProtoResourceTablePath,
-                                      ArchiveEntry::kCompress, writer);
+                                      0u, writer);
       } break;
     }
     return false;
@@ -1555,14 +1545,8 @@ class LinkCommand {
     }
 
     for (auto& entry : merged_assets) {
-      uint32_t compression_flags = ArchiveEntry::kCompress;
-      std::string extension = file::GetExtension(entry.first).to_string();
-      if (options_.extensions_to_not_compress.count(extension) > 0) {
-        compression_flags = 0u;
-      }
 
-      if (!io::CopyFileToArchive(context_, entry.second.get(), entry.first, compression_flags,
-                                 writer)) {
+      if (!io::CopyFileToArchive(context_, entry.second.get(), entry.first, 0u, writer)) {
         return false;
       }
     }

@@ -146,7 +146,7 @@ class BinaryApkSerializer : public IApkSerializer {
     }
 
     io::BigBufferInputStream input_stream(&buffer);
-    return io::CopyInputStreamToArchive(context_, &input_stream, path, ArchiveEntry::kCompress,
+    return io::CopyInputStreamToArchive(context_, &input_stream, path, 0u,
                                         writer);
   }
 
@@ -221,14 +221,14 @@ class ProtoApkSerializer : public IApkSerializer {
                     IArchiveWriter* writer) override {
     pb::XmlNode pb_node;
     SerializeXmlResourceToPb(*xml, &pb_node);
-    return io::CopyProtoToArchive(context_, &pb_node, path, ArchiveEntry::kCompress, writer);
+    return io::CopyProtoToArchive(context_, &pb_node, path, 0u, writer);
   }
 
   bool SerializeTable(ResourceTable* table, IArchiveWriter* writer) override {
     pb::ResourceTable pb_table;
     SerializeTableToPb(*table, &pb_table, context_->GetDiagnostics());
     return io::CopyProtoToArchive(context_, &pb_table, kProtoResourceTablePath,
-                                  ArchiveEntry::kCompress, writer);
+                                  0u, writer);
   }
 
   bool SerializeFile(FileReference* file, IArchiveWriter* writer) override {
