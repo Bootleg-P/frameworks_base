@@ -3487,6 +3487,8 @@
     <!-- Notification title when moving data to external storage failed [CHAR LIMIT=64] -->
     <string name="ext_media_move_failure_message">Try moving content again</string>
 
+    <string name="app_killed_message">Application killed</string>
+
     <!-- Short summary of storage media status when removed [CHAR LIMIT=32] -->
     <string name="ext_media_status_removed">Removed</string>
     <!-- Short summary of storage media status when unmounted [CHAR LIMIT=32] -->

@@ -4484,6 +4484,9 @@ public final class Settings {
          */
         public static final String TOAST_ICON = "toast_icon";
 
+	/** @hide */
+	public static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+
         /**
          * Change quick settings tiles animation style
          *
