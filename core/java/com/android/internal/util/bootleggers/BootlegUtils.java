@@ -17,8 +17,23 @@
 package com.android.internal.util.bootleggers;
 
 import android.app.ActivityManager;
+import android.app.ActivityManager.StackInfo;
+import android.app.ActivityManagerNative;
+import android.app.ActivityOptions;
+import android.app.IActivityManager;
+import android.app.SearchManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ComponentName;
+import android.content.ActivityNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.content.pm.ApplicationInfo;
+import android.os.Process;
+import android.os.RemoteException;
+import android.util.Log;
+import android.util.Slog;
+import android.os.UserHandle;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
@@ -64,6 +79,7 @@ public class BootlegUtils {
 
     public static final String INTENT_SCREENSHOT = "action_take_screenshot";
     public static final String INTENT_REGION_SCREENSHOT = "action_take_region_screenshot";
+    public static final String SYSTEMUI = "com.android.systemui";
 
     public static boolean isChineseLanguage() {
        return Resources.getSystem().getConfiguration().locale.getLanguage().startsWith(
@@ -98,6 +114,63 @@ public class BootlegUtils {
             pm.goToSleep(SystemClock.uptimeMillis());
         }
     }
+
+    public static boolean killProcess(Context context, int userId) {
+        final int mUserId = ActivityManager.getCurrentUser();
+        try {
+            return killForegroundAppInternal(context, mUserId);
+        } catch (RemoteException e) {
+        }
+        return false;
+    }
+
+    public static boolean killForegroundAppInternal(Context context, int userId)
+            throws RemoteException {
+        final String packageName = getForegroundTaskPackageName(context, userId);
+
+        if (packageName == null) {
+            return false;
+        }
+
+        final IActivityManager am = ActivityManagerNative.getDefault();
+        am.forceStopPackage(packageName, UserHandle.USER_CURRENT);
+
+        return true;
+    }
+
+    public static String getForegroundTaskPackageName(Context context, int userId)
+            throws RemoteException {
+        final String defaultHomePackage = resolveCurrentLauncherPackage(context, userId);
+        final IActivityManager am = ActivityManager.getService();
+        final StackInfo focusedStack = am.getFocusedStackInfo();
+
+        if (focusedStack == null || focusedStack.topActivity == null) {
+            return null;
+        }
+
+        final String packageName = focusedStack.topActivity.getPackageName();
+        if (!packageName.equals(defaultHomePackage)
+                && !packageName.equals(SYSTEMUI)) {
+            return packageName;
+        }
+
+        return null;
+    }
+
+    public static String resolveCurrentLauncherPackage(Context context, int userId) {
+        final Intent launcherIntent = new Intent(Intent.ACTION_MAIN)
+                .addCategory(Intent.CATEGORY_HOME);
+        final PackageManager pm = context.getPackageManager();
+        final ResolveInfo launcherInfo = pm.resolveActivityAsUser(launcherIntent, 0, userId);
+
+        if (launcherInfo.activityInfo != null &&
+                !launcherInfo.activityInfo.packageName.equals("android")) {
+            return launcherInfo.activityInfo.packageName;
+        }
+
+        return null;
+    }
+
      public static boolean deviceHasFlashlight(Context ctx) {
         return ctx.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
