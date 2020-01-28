@@ -4484,6 +4484,9 @@ public final class Settings {
          */
         public static final String TOAST_ICON = "toast_icon";
 
+	/** @hide */
+	public static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+
         /** @hide */
         public static final String AUDIO_PANEL_VIEW_MEDIA = "audio_panel_view_media";
 

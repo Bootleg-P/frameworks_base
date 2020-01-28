@@ -282,6 +282,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.autofill.AutofillManagerInternal;
 import android.view.inputmethod.InputMethodManagerInternal;
+import android.widget.Toast;
 
 import com.android.internal.R;
 import com.android.internal.accessibility.AccessibilityShortcutController;
@@ -740,6 +741,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private boolean mKeyguardOccludedChanged;
     private boolean mNotifyUserActivity;
 
+    boolean mKillAppLongpressBack;
+    int mBackKillTimeout;
+
     boolean mShowingDream;
     private boolean mLastShowingDream;
     boolean mDreamingLockscreen;
@@ -1193,6 +1197,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.BOTTOM_GESTURE_SWIPE_LIMIT), false, this,
+                    UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.KILL_APP_LONGPRESS_BACK), false, this,
                     UserHandle.USER_ALL);
             updateSettings();
         }
@@ -2160,6 +2167,17 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mHandler.post(mScreenrecordRunnable);
     }
 
+    private final Runnable mBackLongPress = new Runnable() {
+        @Override
+        public void run() {
+                if(BootlegUtils.killProcess(mContext, mCurrentUserId)) {
+                Toast.makeText(mContext,
+                        R.string.app_killed_message,
+                        Toast.LENGTH_SHORT).show();
+		}
+            }
+    };
+
     @Override
     public void showGlobalActions() {
         mHandler.removeMessages(MSG_DISPATCH_SHOW_GLOBAL_ACTIONS);
@@ -2537,6 +2555,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         mHandleVolumeKeysInWM = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_handleVolumeKeysInWindowManager);
+
+        mBackKillTimeout = mContext.getResources().getInteger(
+                com.android.internal.R.integer.config_backKillTimeout);
 
         readConfigurationDependentBehaviors();
 
@@ -2962,6 +2983,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mRingerToggleChord = Settings.Secure.getIntForUser(resolver,
                     Settings.Secure.VOLUME_HUSH_GESTURE, VOLUME_HUSH_OFF,
                     UserHandle.USER_CURRENT);
+	    mKillAppLongpressBack = Settings.System.getIntForUser(resolver,
+                    Settings.System.KILL_APP_LONGPRESS_BACK, 0,
+		    UserHandle.USER_CURRENT) == 1;
             if (!mContext.getResources()
                     .getBoolean(com.android.internal.R.bool.config_volumeHushGestureEnabled)) {
                 mRingerToggleChord = Settings.Secure.VOLUME_HUSH_OFF;
@@ -4265,6 +4289,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mPendingCapsLockToggle = false;
         }
 
+	if (keyCode == KeyEvent.KEYCODE_BACK && !down) {
+            mHandler.removeCallbacks(mBackLongPress);
+        }
+
         // First we always handle the home key here, so applications
         // can never break it, although if keyguard is on, we do let
         // it handle it, because that gives us the correct 5 second
@@ -4518,6 +4546,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 launchAssistAction(Intent.EXTRA_ASSIST_INPUT_HINT_KEYBOARD, event.getDeviceId());
             }
             return -1;
+	} else if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mKillAppLongpressBack) {
+                if (down && repeatCount == 0) {
+                    mHandler.postDelayed(mBackLongPress, mBackKillTimeout);
+                }
+            }
         }
 
         // Shortcuts are invoked through Search+key, so intercept those here
