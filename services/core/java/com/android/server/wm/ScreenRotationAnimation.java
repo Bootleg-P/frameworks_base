@@ -27,6 +27,7 @@ import static com.android.server.wm.ScreenRotationAnimationProto.ANIMATION_RUNNI
 import static com.android.server.wm.ScreenRotationAnimationProto.STARTED;
 
 import android.content.Context;
+import android.graphics.GraphicBuffer;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.os.IBinder;
@@ -37,6 +38,7 @@ import android.view.DisplayInfo;
 import android.view.Surface;
 import android.view.Surface.OutOfResourcesException;
 import android.view.SurfaceControl;
+import android.view.SurfaceControl.Transaction;
 import android.view.SurfaceSession;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -268,6 +270,12 @@ class ScreenRotationAnimation {
                     .setSecure(isSecure)
                     .build();
 
+            // In case display bounds change, screenshot buffer and surface may mismatch so set a
+            // scaling mode.
+            Transaction t2 = new Transaction();
+            t2.setOverrideScalingMode(mSurfaceControl, Surface.SCALING_MODE_SCALE_TO_WINDOW);
+            t2.apply(true /* sync */);
+
             // capture a screenshot into the surface we just created
             // TODO(multidisplay): we should use the proper display
             final int displayId = SurfaceControl.BUILT_IN_DISPLAY_ID_MAIN;
@@ -278,10 +286,27 @@ class ScreenRotationAnimation {
             if (displayHandle != null) {
                 Surface sur = new Surface();
                 sur.copyFrom(mSurfaceControl);
-                SurfaceControl.screenshot(displayHandle, sur);
-                t.setLayer(mSurfaceControl, SCREEN_FREEZE_LAYER_SCREENSHOT);
-                t.setAlpha(mSurfaceControl, 0);
-                t.show(mSurfaceControl);
+                GraphicBuffer gb = SurfaceControl.screenshotToBufferWithSecureLayersUnsafe(
+                        new Rect(), 0 /* width */, 0 /* height */, 0 /* minLayer */,
+                        0 /* maxLayer */, false /* useIdentityTransform */, 0 /* rotation */);
+                if (gb != null) {
+                    try {
+                        sur.attachAndQueueBuffer(gb);
+                    } catch (RuntimeException e) {
+                        Slog.w(TAG, "Failed to attach screenshot - " + e.getMessage());
+                    }
+                    // If the screenshot contains secure layers, we have to make sure the
+                    // screenshot surface we display it in also has FLAG_SECURE so that
+                    // the user can not screenshot secure layers via the screenshot surface.
+                    if (gb.doesContainSecureLayers()) {
+                        t.setSecure(mSurfaceControl, true);
+                    }
+                    t.setLayer(mSurfaceControl, SCREEN_FREEZE_LAYER_SCREENSHOT);
+                    t.setAlpha(mSurfaceControl, 0);
+                    t.show(mSurfaceControl);
+                } else {
+                    Slog.w(TAG, "Unable to take screenshot of display " + displayId);
+                }
                 sur.destroy();
             } else {
                 Slog.w(TAG, "Built-in display " + displayId + " is null.");

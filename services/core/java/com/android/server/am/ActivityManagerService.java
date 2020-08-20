@@ -3986,7 +3986,8 @@ public class ActivityManagerService extends IActivityManager.Stub
             final int procCount = procs.size();
             for (int i = 0; i < procCount; i++) {
                 final int procUid = procs.keyAt(i);
-                if (UserHandle.isApp(procUid) || !UserHandle.isSameUser(procUid, uid)) {
+                if (UserHandle.isApp(procUid) || !UserHandle.isSameUser(procUid, uid)
+                        || UserHandle.isIsolated(procUid)) {
                     // Don't use an app process or different user process for system component.
                     continue;
                 }
@@ -4215,6 +4216,7 @@ public class ActivityManagerService extends IActivityManager.Stub
             }
             checkTime(startTime, "startProcess: done removing from pids map");
             app.setPid(0);
+            app.startSeq = 0;
         }
 
         if (DEBUG_PROCESSES && mProcessesOnHold.contains(app)) Slog.v(TAG_PROCESSES,
@@ -4405,6 +4407,14 @@ public class ActivityManagerService extends IActivityManager.Stub
         app.killedByAm = false;
         app.removed = false;
         app.killed = false;
+        if (app.startSeq != 0) {
+            Slog.wtf(TAG, "startProcessLocked processName:" + app.processName
+                    + " with non-zero startSeq:" + app.startSeq);
+        }
+        if (app.pid != 0) {
+            Slog.wtf(TAG, "startProcessLocked processName:" + app.processName
+                    + " with non-zero pid:" + app.pid);
+        }
         final long startSeq = app.startSeq = ++mProcStartSeqCounter;
         app.setStartParams(uid, hostingType, hostingNameStr, seInfo, startTime);
         if (mConstants.FLAG_PROCESS_START_ASYNC) {
@@ -4590,8 +4600,11 @@ public class ActivityManagerService extends IActivityManager.Stub
         // If there is already an app occupying that pid that hasn't been cleaned up
         if (oldApp != null && !app.isolated) {
             // Clean up anything relating to this pid first
-            Slog.w(TAG, "Reusing pid " + pid
-                    + " while app is still mapped to it");
+          Slog.wtf(TAG, "handleProcessStartedLocked process:" + app.processName
+                  + " startSeq:" + app.startSeq
+                  + " pid:" + pid
+                  + " belongs to another existing app:" + oldApp.processName
+                  + " startSeq:" + oldApp.startSeq);
             cleanUpApplicationRecordLocked(oldApp, false, false, -1,
                     true /*replacingPid*/);
         }
@@ -5586,9 +5599,9 @@ public class ActivityManagerService extends IActivityManager.Stub
         userId = mUserController.handleIncomingUser(Binder.getCallingPid(), Binder.getCallingUid(),
                 userId, false, ALLOW_FULL_ONLY, reason, null);
         // TODO: Switch to user app stacks here.
-        int ret = mActivityStartController.startActivities(caller, -1, callingPackage,
-                intents, resolvedTypes, resultTo, SafeActivityOptions.fromBundle(bOptions), userId,
-                reason);
+        int ret = mActivityStartController.startActivities(caller, -1, 0,
+                UserHandle.USER_NULL, callingPackage, intents, resolvedTypes, resultTo,
+                SafeActivityOptions.fromBundle(bOptions), userId, reason);
         return ret;
     }
 
@@ -5750,7 +5763,7 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     @Override
     public void crashApplication(int uid, int initialPid, String packageName, int userId,
-            String message) {
+            String message, boolean force) {
         if (checkCallingPermission(android.Manifest.permission.FORCE_STOP_PACKAGES)
                 != PackageManager.PERMISSION_GRANTED) {
             String msg = "Permission Denial: crashApplication() from pid="
@@ -5762,7 +5775,8 @@ public class ActivityManagerService extends IActivityManager.Stub
         }
 
         synchronized(this) {
-            mAppErrors.scheduleAppCrashLocked(uid, initialPid, packageName, userId, message);
+            mAppErrors.scheduleAppCrashLocked(uid, initialPid, packageName, userId,
+                    message, force);
         }
     }
 
@@ -7569,7 +7583,7 @@ public class ActivityManagerService extends IActivityManager.Stub
     }
 
     @GuardedBy("this")
-    private final boolean attachApplicationLocked(IApplicationThread thread,
+    private boolean attachApplicationLocked(@NonNull IApplicationThread thread,
             int pid, int callingUid, long startSeq) {
 
         // Find the application record that is being attached...  either via
@@ -7581,6 +7595,26 @@ public class ActivityManagerService extends IActivityManager.Stub
             synchronized (mPidsSelfLocked) {
                 app = mPidsSelfLocked.get(pid);
             }
+            if (app != null && (app.startUid != callingUid || app.startSeq != startSeq)) {
+                String processName = null;
+                final ProcessRecord pending = mPendingStarts.get(startSeq);
+                if (pending != null) {
+                    processName = pending.processName;
+                }
+                final String msg = "attachApplicationLocked process:" + processName
+                      + " startSeq:" + startSeq
+                      + " pid:" + pid
+                      + " belongs to another existing app:" + app.processName
+                      + " startSeq:" + app.startSeq;
+                Slog.wtf(TAG, msg);
+                // SafetyNet logging for b/131105245.
+                EventLog.writeEvent(0x534e4554, "131105245", app.startUid, msg);
+                // If there is already an app occupying that pid that hasn't been cleaned up
+                cleanUpApplicationRecordLocked(app, false, false, -1,
+                    true /*replacingPid*/);
+                mPidsSelfLocked.remove(pid);
+                app = null;
+            }
         } else {
             app = null;
         }
@@ -7589,7 +7623,7 @@ public class ActivityManagerService extends IActivityManager.Stub
         // update the internal state.
         if (app == null && startSeq > 0) {
             final ProcessRecord pending = mPendingStarts.get(startSeq);
-            if (pending != null && pending.startUid == callingUid
+            if (pending != null && pending.startUid == callingUid && pending.startSeq == startSeq
                     && handleProcessStartedLocked(pending, pid, pending.usingWrapper,
                             startSeq, true)) {
                 app = pending;
@@ -7930,6 +7964,9 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     @Override
     public final void attachApplication(IApplicationThread thread, long startSeq) {
+        if (thread == null) {
+            throw new SecurityException("Invalid application interface");
+        }
         synchronized (this) {
             int callingPid = Binder.getCallingPid();
             final int callingUid = Binder.getCallingUid();
@@ -9626,10 +9663,17 @@ public class ActivityManagerService extends IActivityManager.Stub
             }
         }
 
-        // If we're extending a persistable grant, then we always need to create
-        // the grant data structure so that take/release APIs work
+        // Figure out the value returned when access is allowed
+        final int allowedResult;
         if ((modeFlags & Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION) != 0) {
-            return targetUid;
+            // If we're extending a persistable grant, then we need to return
+            // "targetUid" so that we always create a grant data structure to
+            // support take/release APIs
+            allowedResult = targetUid;
+        } else {
+            // Otherwise, we can return "-1" to indicate that no grant data
+            // structures need to be created
+            allowedResult = -1;
         }
 
         if (targetUid >= 0) {
@@ -9638,7 +9682,7 @@ public class ActivityManagerService extends IActivityManager.Stub
                 // No need to grant the target this permission.
                 if (DEBUG_URI_PERMISSION) Slog.v(TAG_URI_PERMISSION,
                         "Target " + targetPkg + " already has full permission to " + grantUri);
-                return -1;
+                return allowedResult;
             }
         } else {
             // First...  there is no target package, so can anyone access it?
@@ -9673,7 +9717,7 @@ public class ActivityManagerService extends IActivityManager.Stub
                 }
             }
             if (allowed) {
-                return -1;
+                return allowedResult;
             }
         }
 
