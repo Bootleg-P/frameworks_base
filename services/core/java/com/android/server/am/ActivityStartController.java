@@ -393,7 +393,6 @@ public class ActivityStartController {
                             // Top activity decides on animation being run, so we allow only for the
                             // top one as otherwise an activity below might consume it.
                             .setAllowPendingRemoteAnimationRegistryLookup(top /* allowLookup*/)
-                            .setOriginatingPendingIntent(originatingPendingIntent)
                             .execute();
 
                     if (res < 0) {

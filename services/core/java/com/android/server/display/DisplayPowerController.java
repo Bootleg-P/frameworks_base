@@ -28,6 +28,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
+import android.content.ContentResolver;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ParceledListSlice;

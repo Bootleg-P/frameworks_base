@@ -26792,7 +26792,7 @@ public class ActivityManagerService extends IActivityManager.Stub
                         packageUid, packageName,
                         intents, resolvedTypes, null /* resultTo */,
                         SafeActivityOptions.fromBundle(bOptions), userId,
-                        false /* validateIncomingUser */, null /* originatingPendingIntent */);
+                        false /* validateIncomingUser */);
             }
         }
 
