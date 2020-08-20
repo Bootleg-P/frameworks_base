@@ -4631,31 +4631,10 @@ public class ActivityManagerService extends IActivityManager.Stub
             Watchdog.getInstance().processStarted(app.processName, pid);
         }
 
-        checkTime(app.startTime, "startProcess: building log message");
-        StringBuilder buf = mStringBuilder;
-        buf.setLength(0);
-        buf.append("Start proc ");
-        buf.append(pid);
-        buf.append(':');
-        buf.append(app.processName);
-        buf.append('/');
-        UserHandle.formatUid(buf, app.startUid);
-        if (app.isolatedEntryPoint != null) {
-            buf.append(" [");
-            buf.append(app.isolatedEntryPoint);
-            buf.append("]");
-        }
-        buf.append(" for ");
-        buf.append(app.hostingType);
-        if (app.hostingNameStr != null) {
-            buf.append(" ");
-            buf.append(app.hostingNameStr);
-        }
-        reportUidInfoMessageLocked(TAG, buf.toString(), app.startUid);
         app.setPid(pid);
         app.usingWrapper = usingWrapper;
         app.pendingStart = false;
-        checkTime(app.startTime, "startProcess: starting to update pids map");
+//        checkTime(app.startTime, "startProcess: starting to update pids map");
         ProcessRecord oldApp;
         synchronized (mPidsSelfLocked) {
             oldApp = mPidsSelfLocked.get(pid);
@@ -4663,11 +4642,11 @@ public class ActivityManagerService extends IActivityManager.Stub
         // If there is already an app occupying that pid that hasn't been cleaned up
         if (oldApp != null && !app.isolated) {
             // Clean up anything relating to this pid first
-          Slog.wtf(TAG, "handleProcessStartedLocked process:" + app.processName
-                  + " startSeq:" + app.startSeq
-                  + " pid:" + pid
-                  + " belongs to another existing app:" + oldApp.processName
-                  + " startSeq:" + oldApp.startSeq);
+  //        Slog.wtf(TAG, "handleProcessStartedLocked process:" + app.processName
+    //              + " startSeq:" + app.startSeq
+      //            + " pid:" + pid
+       //           + " belongs to another existing app:" + oldApp.processName
+        //          + " startSeq:" + oldApp.startSeq);
             cleanUpApplicationRecordLocked(oldApp, false, false, -1,
                     true /*replacingPid*/);
         }
@@ -12236,7 +12215,7 @@ public class ActivityManagerService extends IActivityManager.Stub
         long now = SystemClock.uptimeMillis();
         if ((now-startTime) > 50) {
             // If we are taking more than 50ms, log about it.
-            Slog.w(TAG, "Slow operation: " + (now-startTime) + "ms so far, now at " + where);
+           // Slog.w(TAG, "Slow operation: " + (now-startTime) + "ms so far, now at " + where);
         }
     }
 
