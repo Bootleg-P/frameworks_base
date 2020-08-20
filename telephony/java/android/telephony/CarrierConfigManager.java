@@ -77,6 +77,30 @@ public class CarrierConfigManager {
     public static final String
             KEY_CARRIER_VOLTE_PROVISIONED_BOOL = "carrier_volte_provisioned_bool";
 
+    /**
+     * Boolean indicating if the "Call forwarding" item is visible in the Call Settings menu.
+     * true means visible. false means gone.
+     * @hide
+     */
+    public static final String KEY_CALL_FORWARDING_VISIBILITY_BOOL =
+            "call_forwarding_visibility_bool";
+
+    /**
+     * Boolean indicating if the "Caller ID" item is visible in the Additional Settings menu.
+     * true means visible. false means gone.
+     * @hide
+     */
+    public static final String KEY_ADDITIONAL_SETTINGS_CALLER_ID_VISIBILITY_BOOL =
+            "additional_settings_caller_id_visibility_bool";
+
+    /**
+     * Boolean indicating if the "Call Waiting" item is visible in the Additional Settings menu.
+     * true means visible. false means gone.
+     * @hide
+     */
+    public static final String KEY_ADDITIONAL_SETTINGS_CALL_WAITING_VISIBILITY_BOOL =
+            "additional_settings_call_waiting_visibility_bool";
+
    /**
     * Boolean indicating if the "Call barring" item is visible in the Call Settings menu.
     * true means visible. false means gone.
@@ -84,6 +108,28 @@ public class CarrierConfigManager {
     */
     public static final String KEY_CALL_BARRING_VISIBILITY_BOOL =
             "call_barring_visibility_bool";
+
+    /**
+     * Flag indicating whether or not changing the call barring password via the "Call Barring"
+     * settings menu is supported. If true, the option will be visible in the "Call
+     * Barring" settings menu. If false, the option will not be visible.
+     *
+     * Enabled by default.
+     * @hide
+     */
+    public static final String KEY_CALL_BARRING_SUPPORTS_PASSWORD_CHANGE_BOOL =
+            "call_barring_supports_password_change_bool";
+
+    /**
+     * Flag indicating whether or not deactivating all call barring features via the "Call Barring"
+     * settings menu is supported. If true, the option will be visible in the "Call
+     * Barring" settings menu. If false, the option will not be visible.
+     *
+     * Enabled by default.
+     * @hide
+     */
+    public static final String KEY_CALL_BARRING_SUPPORTS_DEACTIVATE_ALL_BOOL =
+            "call_barring_supports_deactivate_all_bool";
 
     /**
      * Flag indicating whether the Phone app should ignore EVENT_SIM_NETWORK_LOCKED
@@ -128,9 +174,17 @@ public class CarrierConfigManager {
      * Flag indicating whether radio is to be restarted on error PDP_FAIL_REGULAR_DEACTIVATION
      * This is false by default.
      */
-    public static final String
-            KEY_RESTART_RADIO_ON_PDP_FAIL_REGULAR_DEACTIVATION_BOOL =
-                    "restart_radio_on_pdp_fail_regular_deactivation_bool";
+    public static final String KEY_RESTART_RADIO_ON_PDP_FAIL_REGULAR_DEACTIVATION_BOOL =
+            "restart_radio_on_pdp_fail_regular_deactivation_bool";
+
+    /**
+     * A list of failure cause codes that will trigger a modem restart when telephony receiving
+     * one of those during data setup. The cause codes are defined in 3GPP TS 24.008 Annex I and
+     * TS 24.301 Annex B.
+     * @hide
+     */
+    public static final String KEY_RADIO_RESTART_FAILURE_CAUSES_INT_ARRAY =
+            "radio_restart_failure_causes_int_array";
 
     /**
      * If true, enable vibration (haptic feedback) for key presses in the EmergencyDialer activity.
@@ -188,6 +242,13 @@ public class CarrierConfigManager {
      */
     public static final String
             KEY_ALLOW_EMERGENCY_NUMBERS_IN_CALL_LOG_BOOL = "allow_emergency_numbers_in_call_log_bool";
+
+    /**
+     * A string array containing numbers that shouldn't be included in the call log.
+     * @hide
+     */
+    public static final String KEY_UNLOGGABLE_NUMBERS_STRING_ARRAY =
+            "unloggable_numbers_string_array";
 
     /** If true, removes the Voice Privacy option from Call Settings */
     public static final String KEY_VOICE_PRIVACY_DISABLE_UI_BOOL = "voice_privacy_disable_ui_bool";
@@ -1031,6 +1092,39 @@ public class CarrierConfigManager {
     public static final String KEY_CARRIER_NAME_STRING = "carrier_name_string";
 
     /**
+     * String to override sim country iso.
+     * Sim country iso is based on sim MCC which is coarse and doesn't work with dual IMSI SIM where
+     * a SIM can have multiple MCC from different countries.
+     * Instead, each sim carrier should have a single country code, apply per carrier based iso
+     * code as an override. The overridden value can be read from
+     * {@link TelephonyManager#getSimCountryIso()} and {@link SubscriptionInfo#getCountryIso()}
+     *
+     * @hide
+     */
+    public static final String KEY_SIM_COUNTRY_ISO_OVERRIDE_STRING =
+            "sim_country_iso_override_string";
+
+    /**
+     * Override the registered PLMN name using #KEY_CDMA_HOME_REGISTERED_PLMN_NAME_STRING.
+     *
+     * If true, then the registered PLMN name (only for CDMA/CDMA-LTE and only when not roaming)
+     * will be #KEY_CDMA_HOME_REGISTERED_PLMN_NAME_STRING. If false, or if phone type is not
+     * CDMA/CDMA-LTE or if roaming, then #KEY_CDMA_HOME_REGISTERED_PLMN_NAME_STRING will be ignored.
+     * @hide
+     */
+    public static final String KEY_CDMA_HOME_REGISTERED_PLMN_NAME_OVERRIDE_BOOL =
+            "cdma_home_registered_plmn_name_override_bool";
+
+    /**
+     * String to identify registered PLMN name in CarrierConfig app. This string overrides
+     * registered PLMN name if #KEY_CDMA_HOME_REGISTERED_PLMN_NAME_OVERRIDE_BOOL is true, phone type
+     * is CDMA/CDMA-LTE and device is not in roaming state; otherwise, it will be ignored.
+     * @hide
+     */
+    public static final String KEY_CDMA_HOME_REGISTERED_PLMN_NAME_STRING =
+            "cdma_home_registered_plmn_name_string";
+
+    /**
      * If this is true, the SIM card (through Customer Service Profile EF file) will be able to
      * prevent manual operator selection. If false, this SIM setting will be ignored and manual
      * operator selection will always be available. See CPHS4_2.WW6, CPHS B.4.7.1 for more
@@ -1438,6 +1532,15 @@ public class CarrierConfigManager {
             "always_play_remote_hold_tone_bool";
 
     /**
+     * When true, the Telephony stack will automatically turn off airplane mode and retry a wifi
+     * emergency call over the cell network if the initial attempt at dialing was met with a SIP 308
+     * error.
+     * @hide
+     */
+    public static final String KEY_AUTO_RETRY_FAILED_WIFI_EMERGENCY_CALL =
+            "auto_retry_failed_wifi_emergency_call";
+
+    /**
      * When true, indicates that adding a call is disabled when there is an ongoing video call
      * or when there is an ongoing call on wifi which was downgraded from video and VoWifi is
      * turned off.
@@ -1502,9 +1605,19 @@ public class CarrierConfigManager {
      * When {@code false}, use default title for Enhanced 4G LTE Mode settings.
      * When {@code true}, use the variant.
      * @hide
+     * @deprecated use {@link #KEY_ENHANCED_4G_LTE_TITLE_VARIANT_INT}.
      */
+    @Deprecated
     public static final String KEY_ENHANCED_4G_LTE_TITLE_VARIANT_BOOL =
             "enhanced_4g_lte_title_variant_bool";
+
+    /**
+     * The index indicates the carrier specified title string of Enahnce 4G LTE Mode settings.
+     * Default value is 0, which indicates the default title string.
+     * @hide
+     */
+    public static final String KEY_ENHANCED_4G_LTE_TITLE_VARIANT_INT =
+            "enhanced_4g_lte_title_variant_int";
 
     /**
      * Indicates whether the carrier wants to notify the user when handover of an LTE video call to
@@ -1545,7 +1658,7 @@ public class CarrierConfigManager {
     public static final String KEY_EDITABLE_WFC_ROAMING_MODE_BOOL =
             "editable_wfc_roaming_mode_bool";
 
-   /**
+    /**
      * Determine whether current lpp_mode used for E-911 needs to be kept persistently.
      * {@code false} - not keeping the lpp_mode means using default configuration of gps.conf
      *                 when sim is not presented.
@@ -1957,6 +2070,13 @@ public class CarrierConfigManager {
     public static final String KEY_UNDELIVERED_SMS_MESSAGE_EXPIRATION_TIME =
             "undelivered_sms_message_expiration_time";
 
+    /**
+     * Indicates use 3GPP application to replace 3GPP2 application even if it's a CDMA/CDMA-LTE
+     * phone, becasue some carriers's CSIM application is present but not supported.
+     * @hide
+     */
+    public static final String KEY_USE_USIM_BOOL = "use_usim_bool";
+
     /** The default value for every variable. */
     private final static PersistableBundle sDefaults;
 
@@ -1965,8 +2085,10 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_ALLOW_HOLD_IN_IMS_CALL_BOOL, true);
         sDefaults.putBoolean(KEY_CARRIER_ALLOW_DEFLECT_IMS_CALL_BOOL, false);
         sDefaults.putBoolean(KEY_ALWAYS_PLAY_REMOTE_HOLD_TONE_BOOL, false);
+        sDefaults.putBoolean(KEY_AUTO_RETRY_FAILED_WIFI_EMERGENCY_CALL, false);
         sDefaults.putBoolean(KEY_ADDITIONAL_CALL_SETTING_BOOL, true);
         sDefaults.putBoolean(KEY_ALLOW_EMERGENCY_NUMBERS_IN_CALL_LOG_BOOL, false);
+        sDefaults.putStringArray(KEY_UNLOGGABLE_NUMBERS_STRING_ARRAY, null);
         sDefaults.putBoolean(KEY_ALLOW_LOCAL_DTMF_TONES_BOOL, true);
         sDefaults.putBoolean(KEY_PLAY_CALL_RECORDING_TONE_BOOL, false);
         sDefaults.putBoolean(KEY_APN_EXPAND_BOOL, true);
@@ -2015,6 +2137,11 @@ public class CarrierConfigManager {
 
         sDefaults.putBoolean(KEY_CARRIER_VOLTE_PROVISIONED_BOOL, false);
         sDefaults.putBoolean(KEY_CALL_BARRING_VISIBILITY_BOOL, false);
+        sDefaults.putBoolean(KEY_CALL_BARRING_SUPPORTS_PASSWORD_CHANGE_BOOL, true);
+        sDefaults.putBoolean(KEY_CALL_BARRING_SUPPORTS_DEACTIVATE_ALL_BOOL, true);
+        sDefaults.putBoolean(KEY_CALL_FORWARDING_VISIBILITY_BOOL, true);
+        sDefaults.putBoolean(KEY_ADDITIONAL_SETTINGS_CALLER_ID_VISIBILITY_BOOL, true);
+        sDefaults.putBoolean(KEY_ADDITIONAL_SETTINGS_CALL_WAITING_VISIBILITY_BOOL, true);
         sDefaults.putBoolean(KEY_IGNORE_SIM_NETWORK_LOCKED_EVENTS_BOOL, false);
         sDefaults.putBoolean(KEY_MDN_IS_ADDITIONAL_VOICEMAIL_NUMBER_BOOL, false);
         sDefaults.putBoolean(KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
@@ -2035,6 +2162,7 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_WORLD_PHONE_BOOL, false);
         sDefaults.putBoolean(KEY_REQUIRE_ENTITLEMENT_CHECKS_BOOL, true);
         sDefaults.putBoolean(KEY_RESTART_RADIO_ON_PDP_FAIL_REGULAR_DEACTIVATION_BOOL, false);
+        sDefaults.putIntArray(KEY_RADIO_RESTART_FAILURE_CAUSES_INT_ARRAY, new int[]{});
         sDefaults.putInt(KEY_VOLTE_REPLACEMENT_RAT_INT, 0);
         sDefaults.putString(KEY_DEFAULT_SIM_CALL_MANAGER_STRING, "");
         sDefaults.putString(KEY_VVM_DESTINATION_NUMBER_STRING, "");
@@ -2129,6 +2257,9 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_CONFIG_WIFI_DISABLE_IN_ECBM, false);
         sDefaults.putBoolean(KEY_CARRIER_NAME_OVERRIDE_BOOL, false);
         sDefaults.putString(KEY_CARRIER_NAME_STRING, "");
+        sDefaults.putString(KEY_SIM_COUNTRY_ISO_OVERRIDE_STRING, "");
+        sDefaults.putBoolean(KEY_CDMA_HOME_REGISTERED_PLMN_NAME_OVERRIDE_BOOL, false);
+        sDefaults.putString(KEY_CDMA_HOME_REGISTERED_PLMN_NAME_STRING, "");
         sDefaults.putBoolean(KEY_SUPPORT_DIRECT_FDN_DIALING_BOOL, false);
         sDefaults.putBoolean(KEY_CARRIER_DEFAULT_DATA_ROAMING_ENABLED_BOOL, false);
         sDefaults.putBoolean(KEY_SKIP_CF_FAIL_TO_DISABLE_DIALOG_BOOL, false);
@@ -2197,12 +2328,9 @@ public class CarrierConfigManager {
                 //6: CARRIER_ACTION_CANCEL_ALL_NOTIFICATIONS
                 //8: CARRIER_ACTION_DISABLE_DEFAULT_URL_HANDLER
                 });
-        sDefaults.putStringArray(KEY_CARRIER_DEFAULT_ACTIONS_ON_DEFAULT_NETWORK_AVAILABLE,
-                new String[] {
-                        String.valueOf(false) + ": 7",
-                        //7: CARRIER_ACTION_ENABLE_DEFAULT_URL_HANDLER
-                        String.valueOf(true) + ": 8"
-                        //8: CARRIER_ACTION_DISABLE_DEFAULT_URL_HANDLER
+        sDefaults.putStringArray(KEY_CARRIER_DEFAULT_ACTIONS_ON_DEFAULT_NETWORK_AVAILABLE, new String[] {
+                String.valueOf(false) + ": 7", //7: CARRIER_ACTION_ENABLE_DEFAULT_URL_HANDLER
+                String.valueOf(true) + ": 8"  //8: CARRIER_ACTION_DISABLE_DEFAULT_URL_HANDLER
                 });
         sDefaults.putStringArray(KEY_CARRIER_DEFAULT_REDIRECTION_URL_STRING_ARRAY, null);
 
@@ -2229,6 +2357,7 @@ public class CarrierConfigManager {
 
         sDefaults.putStringArray(KEY_IMS_REASONINFO_MAPPING_STRING_ARRAY, null);
         sDefaults.putBoolean(KEY_ENHANCED_4G_LTE_TITLE_VARIANT_BOOL, false);
+        sDefaults.putInt(KEY_ENHANCED_4G_LTE_TITLE_VARIANT_INT, 0);
         sDefaults.putBoolean(KEY_NOTIFY_VT_HANDOVER_TO_WIFI_FAILURE_BOOL, false);
         sDefaults.putStringArray(KEY_FILTERED_CNAP_NAMES_STRING_ARRAY, null);
         sDefaults.putBoolean(KEY_EDITABLE_WFC_ROAMING_MODE_BOOL, false);
@@ -2280,6 +2409,7 @@ public class CarrierConfigManager {
                         -85  /* SIGNAL_STRENGTH_GREAT */
                 });
         sDefaults.putString(KEY_WCDMA_DEFAULT_SIGNAL_STRENGTH_MEASUREMENT_STRING, "");
+        sDefaults.putBoolean(KEY_USE_USIM_BOOL, false);
     }
 
     /**

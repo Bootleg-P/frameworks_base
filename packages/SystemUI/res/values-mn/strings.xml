@@ -170,7 +170,7 @@
     <string name="carrier_network_change_mode" msgid="8149202439957837762">"Оператор компанийн сүлжээг өөрчилж байна"</string>
     <string name="accessibility_battery_details" msgid="7645516654955025422">"Тэжээлийн дэлгэрэнгүй мэдээллийг нээх"</string>
     <string name="accessibility_battery_level" msgid="7451474187113371965">"Батерей <xliff:g id="NUMBER">%d</xliff:g> хувьтай."</string>
-    <string name="accessibility_battery_level_charging" msgid="1147587904439319646">"Тэжээлийг цэнэглэж байна, <xliff:g id="BATTERY_PERCENTAGE">%d</xliff:g> хувь."</string>
+    <string name="accessibility_battery_level_charging" msgid="1147587904439319646">"Батарейг цэнэглэж байна, <xliff:g id="BATTERY_PERCENTAGE">%d</xliff:g>%%."</string>
     <string name="accessibility_settings_button" msgid="799583911231893380">"Системийн тохиргоо."</string>
     <string name="accessibility_notifications_button" msgid="4498000369779421892">"Мэдэгдэл."</string>
     <string name="accessibility_overflow_action" msgid="5681882033274783311">"Бүх мэдэгдлийг харах"</string>
@@ -397,6 +397,7 @@
     <string name="interruption_level_none_twoline" msgid="3957581548190765889">"Дуугүй\nболгох"</string>
     <string name="interruption_level_priority_twoline" msgid="1564715335217164124">"Зөвхөн\nхамгийн чухлыг"</string>
     <string name="interruption_level_alarms_twoline" msgid="3266909566410106146">"Зөвхөн\nсэрүүлэг"</string>
+    <string name="keyguard_indication_charging_time_wireless" msgid="5376059837186496558">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Утасгүй цэнэглэж байна (дүүргэхэд <xliff:g id="CHARGING_TIME_LEFT">%1$s</xliff:g> шаардлагатай)"</string>
     <string name="keyguard_indication_charging_time" msgid="2056340799276374421">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Цэнэглэж байна (дүүргэхэд <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> шаардлагатай)"</string>
     <string name="keyguard_indication_charging_time_fast" msgid="7767562163577492332">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Хурдан цэнэглэж байна (дүүргэхэд <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> шаардлагатай)"</string>
     <string name="keyguard_indication_charging_time_slowly" msgid="3769655133567307069">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Удаан цэнэглэж байна (дүүргэхэд <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> шаардлагатай)"</string>
@@ -520,7 +521,6 @@
     <string name="quick_settings_reset_confirmation_title" msgid="748792586749897883">"<xliff:g id="TILE_LABEL">%1$s</xliff:g>-ийг нуух уу?"</string>
     <string name="quick_settings_reset_confirmation_message" msgid="2235970126803317374">"Тохируулгын хэсэгт үүнийг асаахад энэ дахин харагдана."</string>
     <string name="quick_settings_reset_confirmation_button" msgid="2660339101868367515">"Нуух"</string>
-    <string name="managed_profile_foreground_toast" msgid="5421487114739245972">"Та өөрийн ажлын профайлыг ашиглаж байна"</string>
     <string name="stream_voice_call" msgid="4410002696470423714">"Залгах"</string>
     <string name="stream_system" msgid="7493299064422163147">"Систем"</string>
     <string name="stream_ring" msgid="8213049469184048338">"Хонх"</string>
@@ -797,6 +797,9 @@
     <string name="high_temp_title" msgid="4589508026407318374">"Утас халж эхэлж байна"</string>
     <string name="high_temp_notif_message" msgid="5642466103153429279">"Таны утас хөрж байх зуур зарим онцлогийг хязгаарласан"</string>
     <string name="high_temp_dialog_message" msgid="6840700639374113553">"Таны утас автоматаар хөрөх болно. Та утсаа ашиглаж болох хэдий ч удаан ажиллаж болзошгүй.\n\nТаны утас хөрсний дараагаар хэвийн ажиллана."</string>
+    <string name="high_temp_alarm_title" msgid="442812040762745210">"Цэнэглэгчийг салгана уу"</string>
+    <string name="high_temp_alarm_notify_message" msgid="519359725058131592">"Энэ төхөөрөмжийг цэнэглэхэд асуудал гарлаа. Тэжээлийн залгуурыг салгана уу. Кабель халсан байж болзошгүй тул болгоомжтой байгаарай."</string>
+    <string name="high_temp_alarm_help_care_steps" msgid="3631075329318070726">"Хянамж болгоомжийн алхмыг харна уу"</string>
     <string name="lockscreen_shortcut_left" msgid="2182769107618938629">"Зүүн товчлол"</string>
     <string name="lockscreen_shortcut_right" msgid="3328683699505226536">"Баруун товчлол"</string>
     <string name="lockscreen_unlock_left" msgid="2043092136246951985">"Зүүн товчлол нь мөн түгжээг тайлдаг"</string>
@@ -845,10 +848,10 @@
     <string name="slice_permission_allow" msgid="2340244901366722709">"Зөвшөөрөх"</string>
     <string name="slice_permission_deny" msgid="7683681514008048807">"Татгалзах"</string>
     <string name="auto_saver_title" msgid="1217959994732964228">"Тэжээл хэмнэгч онцлогийг хуваарилахын тулд товших"</string>
-    <string name="auto_saver_text" msgid="6324376061044218113">"Батерей <xliff:g id="PERCENTAGE">%d</xliff:g>%% болох үед автоматаар асаах"</string>
+    <string name="auto_saver_text" msgid="6324376061044218113">"Батарей <xliff:g id="PERCENTAGE">%d</xliff:g>%% болох үед автоматаар асаах"</string>
     <string name="no_auto_saver_action" msgid="8086002101711328500">"Үгүй, баярлалаа"</string>
     <string name="auto_saver_enabled_title" msgid="6726474226058316862">"Тэжээл хэмнэгч онцлогийн хуваарийг асаасан"</string>
-    <string name="auto_saver_enabled_text" msgid="874711029884777579">"Батерей <xliff:g id="PERCENTAGE">%d</xliff:g>%%-с бага болсон үед Тэжээл хэмнэгч онцлог автоматаар асна."</string>
+    <string name="auto_saver_enabled_text" msgid="874711029884777579">"Батарей <xliff:g id="PERCENTAGE">%d</xliff:g>%%-с бага болсон үед Тэжээл хэмнэгч автоматаар асна."</string>
     <string name="open_saver_setting_action" msgid="8314624730997322529">"Тохиргоо"</string>
     <string name="auto_saver_okay_action" msgid="2701221740227683650">"Ойлголоо"</string>
     <string name="heap_dump_tile_name" msgid="9141031328971226374">"Dump SysUI Heap"</string>

@@ -28,6 +28,8 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources.Theme;
 import android.database.sqlite.SQLiteCompatibilityWalFlags;
+import android.database.sqlite.SQLiteGlobal;
+import android.hardware.display.DisplayManagerInternal;
 import android.os.BaseBundle;
 import android.os.Binder;
 import android.os.Build;
@@ -346,6 +348,10 @@ public final class SystemServer {
             Binder.setWarnOnBlocking(true);
             // The system server should always load safe labels
             PackageItemInfo.setForceSafeLabels(true);
+
+            // Default to FULL within the system server.
+            SQLiteGlobal.sDefaultSyncMode = SQLiteGlobal.SYNC_MODE_FULL;
+
             // Deactivate SQLiteCompatibilityWalFlags until settings provider is initialized
             SQLiteCompatibilityWalFlags.init(null);
 
@@ -672,8 +678,16 @@ public final class SystemServer {
 
         // Manages Overlay packages
         traceBeginAndSlog("StartOverlayManagerService");
-        mSystemServiceManager.startService(new OverlayManagerService(mSystemContext, installer));
+        OverlayManagerService overlayManagerService = new OverlayManagerService(
+                mSystemContext, installer);
+        mSystemServiceManager.startService(overlayManagerService);
         traceEnd();
+
+        if (SystemProperties.getInt("persist.sys.displayinset.top", 0) > 0) {
+            // DisplayManager needs the overlay immediately.
+            overlayManagerService.updateSystemUiContext();
+            LocalServices.getService(DisplayManagerInternal.class).onOverlayChanged();
+        }
 
         // The sensor service needs access to package manager service, app ops
         // service, and permissions service, therefore we start it after them.
@@ -752,6 +766,9 @@ public final class SystemServer {
 
         boolean isWatch = context.getPackageManager().hasSystemFeature(
                 PackageManager.FEATURE_WATCH);
+
+        boolean enableVrService = context.getPackageManager().hasSystemFeature(
+                PackageManager.FEATURE_VR_MODE_HIGH_PERFORMANCE);
 
         // For debugging RescueParty
         if (Build.IS_DEBUGGABLE && SystemProperties.getBoolean("debug.crash_system", false)) {
@@ -886,7 +903,7 @@ public final class SystemServer {
                 traceLog.traceEnd();
             }, START_HIDL_SERVICES);
 
-            if (!isWatch) {
+            if (!isWatch && enableVrService) {
                 traceBeginAndSlog("StartVrManagerService");
                 mSystemServiceManager.startService(VrManagerService.class);
                 traceEnd();
@@ -1173,7 +1190,6 @@ public final class SystemServer {
                 ServiceManager.addService(Context.CONNECTIVITY_SERVICE, connectivity,
                             /* allowIsolated= */ false,
                     DUMP_FLAG_PRIORITY_HIGH | DUMP_FLAG_PRIORITY_NORMAL);
-                networkStats.bindConnectivityManager(connectivity);
                 networkPolicy.bindConnectivityManager(connectivity);
             } catch (Throwable e) {
                 reportWtf("starting Connectivity Service", e);

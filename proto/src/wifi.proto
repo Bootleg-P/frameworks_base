@@ -457,6 +457,14 @@ message WifiLog {
   // Identifier for experimental scoring parameter settings.
   optional string score_experiment_id = 117;
 
+  // Histogram of the EAP method type of all installed Passpoint profiles
+  repeated PasspointProfileTypeCount installed_passpoint_profile_type = 123;
+
+  // Hardware revision (EVT, DVT, PVT etc.)
+  optional string hardware_revision = 124;
+
+  // Total wifi link layer usage data over the logging duration in ms.
+  optional WifiLinkLayerUsageStats wifi_link_layer_usage_stats = 125;
 }
 
 // Information that gets logged for every WiFi connection.
@@ -776,6 +784,12 @@ message StaEvent {
 
     // Framework changed Sta interface MAC address
     TYPE_MAC_CHANGE = 17;
+
+    // Wifi is turned on
+    TYPE_WIFI_ENABLED = 18;
+
+    // Wifi is turned off
+    TYPE_WIFI_DISABLED = 19;
   }
 
   enum FrameworkDisconnectReason {
@@ -1502,4 +1516,49 @@ message WifiRttLog {
     // number of samples in the bucket
     optional int32 count = 2;
   }
+}
+
+message PasspointProfileTypeCount {
+  enum EapMethod {
+    // Unknown Type
+    TYPE_UNKNOWN = 0;
+
+    // EAP_TLS (13)
+    TYPE_EAP_TLS = 1;
+
+    // EAP_TTLS (21)
+    TYPE_EAP_TTLS = 2;
+
+    // EAP_SIM (18)
+    TYPE_EAP_SIM = 3;
+
+    // EAP_AKA (23)
+    TYPE_EAP_AKA = 4;
+
+    // EAP_AKA_PRIME (50)
+    TYPE_EAP_AKA_PRIME = 5;
+  }
+
+  // Eap method type set in Passpoint profile
+  optional EapMethod eap_method_type = 1;
+
+  // Num of installed Passpoint profile with same eap method
+  optional int32 count = 2;
+}
+
+message WifiLinkLayerUsageStats {
+  // Total logging duration in ms.
+  optional int64 logging_duration_ms = 1;
+
+  // Total time the wifi radio is on in ms over the logging duration.
+  optional int64 radio_on_time_ms = 2;
+
+  // Total time the wifi radio is doing tx in ms over the logging duration.
+  optional int64 radio_tx_time_ms = 3;
+
+  // Total time the wifi radio is doing rx in ms over the logging duration.
+  optional int64 radio_rx_time_ms = 4;
+
+  // Total time the wifi radio is scanning in ms over the logging duration.
+  optional int64 radio_scan_time_ms = 5;
 }

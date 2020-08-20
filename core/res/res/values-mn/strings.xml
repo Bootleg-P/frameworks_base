@@ -133,8 +133,8 @@
     <item msgid="4397097370387921767">"%s Wi-Fi Дуудлага"</item>
   </string-array>
     <string name="wifi_calling_off_summary" msgid="8720659586041656098">"Идэвхгүй"</string>
-    <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"Wi-Fi илүү эрхэмлэдэг"</string>
-    <string name="wfc_mode_cellular_preferred_summary" msgid="1988279625335345908">"Давуу эрхтэй мобайл"</string>
+    <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"Wi-Fi давуу эрхтэй"</string>
+    <string name="wfc_mode_cellular_preferred_summary" msgid="1988279625335345908">"Мобайл давуу эрхтэй"</string>
     <string name="wfc_mode_wifi_only_summary" msgid="2379919155237869320">"Зөвхөн Wi-Fi"</string>
     <string name="cfTemplateNotForwarded" msgid="1683685883841272560">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: дамжуулагдаагүй"</string>
     <string name="cfTemplateForwarded" msgid="1302922117498590521">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: <xliff:g id="DIALING_NUMBER">{1}</xliff:g>"</string>
@@ -729,7 +729,7 @@
     <string name="keyguard_password_enter_pin_password_code" msgid="6391755146112503443">"Тайлах PIN-г оруулна уу"</string>
     <string name="keyguard_password_wrong_pin_code" msgid="2422225591006134936">"Буруу PIN код."</string>
     <string name="keyguard_label_text" msgid="861796461028298424">"Тайлах бол Цэсийг дараад 0."</string>
-    <string name="emergency_call_dialog_number_for_display" msgid="696192103195090970">"Яаралтай дугаар"</string>
+    <string name="emergency_call_dialog_number_for_display" msgid="696192103195090970">"Яаралтай тусламжийн дугаар"</string>
     <string name="lockscreen_carrier_default" msgid="6169005837238288522">"Үйлчилгээ байхгүй"</string>
     <string name="lockscreen_screen_locked" msgid="7288443074806832904">"Дэлгэц түгжигдсэн."</string>
     <string name="lockscreen_instructions_when_pattern_enabled" msgid="46154051614126049">"Яаралтай дуудлага хийх буюу эсвэл түгжээг тайлах бол цэсийг дарна уу."</string>
@@ -1012,23 +1012,23 @@
     <string name="deleteText" msgid="6979668428458199034">"Устгах"</string>
     <string name="inputMethod" msgid="1653630062304567879">"Оруулах арга"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"Текст үйлдэл"</string>
-    <string name="email" msgid="4560673117055050403">"Имэйл"</string>
+    <string name="email" msgid="4560673117055050403">"Имэйл бичих"</string>
     <string name="email_desc" msgid="3638665569546416795">"Сонгосон хаяг руу имэйл илгээх"</string>
     <string name="dial" msgid="1253998302767701559">"Залгах"</string>
     <string name="dial_desc" msgid="6573723404985517250">"Сонгосон утасны дугаар руу залгах"</string>
-    <string name="map" msgid="5441053548030107189">"Газрын зураг"</string>
+    <string name="map" msgid="5441053548030107189">"Газрын зураг хийх"</string>
     <string name="map_desc" msgid="1836995341943772348">"Сонгосон хаягийг байршуулах"</string>
     <string name="browse" msgid="1245903488306147205">"Нээх"</string>
     <string name="browse_desc" msgid="8220976549618935044">"Сонгосон URL-г нээх"</string>
-    <string name="sms" msgid="4560537514610063430">"Зурвас"</string>
+    <string name="sms" msgid="4560537514610063430">"Зурвас бичих"</string>
     <string name="sms_desc" msgid="7526588350969638809">"Сонгосон утасны дугаар руу мессеж илгээх"</string>
     <string name="add_contact" msgid="7867066569670597203">"Нэмэх"</string>
     <string name="add_contact_desc" msgid="4830217847004590345">"Харилцагчид нэмэх"</string>
     <string name="view_calendar" msgid="979609872939597838">"Үзэх"</string>
     <string name="view_calendar_desc" msgid="5828320291870344584">"Календариас сонгосон огноог харах"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"Хуваарь"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"Хуваарь гаргах"</string>
     <string name="add_calendar_event_desc" msgid="4326891793260687388">"Aрга хэмжээг сонгосон цагт хуваарилах"</string>
-    <string name="view_flight" msgid="7691640491425680214">"Бичлэг"</string>
+    <string name="view_flight" msgid="7691640491425680214">"Хянах"</string>
     <string name="view_flight_desc" msgid="3876322502674253506">"Сонгосон нислэгийг хянах"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"Сангийн хэмжээ дутагдаж байна"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"Зарим систем функц ажиллахгүй байна"</string>
@@ -1128,7 +1128,7 @@
     <string name="dump_heap_text" msgid="4809417337240334941">"Энэ үйл явц <xliff:g id="PROC">%1$s</xliff:g> нь үйл ажиллагааны санах ойн хязгаар болох <xliff:g id="SIZE">%2$s</xliff:g> хэмжээг давсан байна. Та хэт их хуримтлагдсан мэдээллийг тэдгээрийн өөрсдийнх нь хөгжүүлэгчтэй хуваалцах боломжтой. Болгоомжтой байгаарай: энэхүү хэт их хуримтлагдсан мэдээлэлд аппликейшнаас нэвтрэх боломжтой таны хувийн мэдээлэл агуулагдсан байж болно."</string>
     <string name="sendText" msgid="5209874571959469142">"Текст илгээх үйлдлийг сонгох"</string>
     <string name="volume_ringtone" msgid="6885421406845734650">"Хонхны аяны хэмжээ"</string>
-    <string name="volume_music" msgid="5421651157138628171">"Медиа дууны хэмжээ"</string>
+    <string name="volume_music" msgid="5421651157138628171">"Медиа дууны түвшин"</string>
     <string name="volume_music_hint_playing_through_bluetooth" msgid="9165984379394601533">"Блютүүтээр тоглож байна"</string>
     <string name="volume_music_hint_silent_ringtone_selected" msgid="8310739960973156272">"Хонхны дууг чимээгүй болгов"</string>
     <string name="volume_call" msgid="3941680041282788711">"Ирсэн дуудлагын дууны хэмжээ"</string>
@@ -1139,7 +1139,7 @@
     <string name="volume_icon_description_bluetooth" msgid="6538894177255964340">"Блютүүтын хэмжээ"</string>
     <string name="volume_icon_description_ringer" msgid="3326003847006162496">"Хонхны дууны хэмжээ"</string>
     <string name="volume_icon_description_incall" msgid="8890073218154543397">"Дуудлагын дууны хэмжээ"</string>
-    <string name="volume_icon_description_media" msgid="4217311719665194215">"Медиа дууны хэмжээ"</string>
+    <string name="volume_icon_description_media" msgid="4217311719665194215">"Медиа дууны түвшин"</string>
     <string name="volume_icon_description_notification" msgid="7044986546477282274">"Мэдэгдлийн дууны хэмжээ"</string>
     <string name="ringtone_default" msgid="3789758980357696936">"Үндсэн хонхны ая"</string>
     <string name="ringtone_default_with_actual" msgid="1767304850491060581">"Үндсэн (<xliff:g id="ACTUAL_RINGTONE">%1$s</xliff:g>)"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi-д интернет хандалт алга"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Сонголт хийхийн тулд товшино уу"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Таны сүлжээний цэгийн тохиргооны өөрчлөлт"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Таны сүлжээний цэгийн зурвасыг өөрчилсөн."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Энэ төхөөрөмж таны \"зөвхөн 5Гц\" гэсэн давуу сонголтыг дэмждэггүй. Үүний оронд энэ төхөөрөмж 5Гц зурвасыг боломжтой үед нь ашиглах болно."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"<xliff:g id="NETWORK_TYPE">%1$s</xliff:g> руу шилжүүлсэн"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"<xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> интернет холболтгүй үед төхөөрөмж <xliff:g id="NEW_NETWORK">%1$s</xliff:g>-г ашигладаг. Төлбөр гарч болзошгүй."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g>-с <xliff:g id="NEW_NETWORK">%2$s</xliff:g> руу шилжүүлсэн"</string>

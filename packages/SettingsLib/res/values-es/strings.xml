@@ -217,8 +217,8 @@
     <string name="bluetooth_select_avrcp_version_dialog_title" msgid="7277329668298705702">"Selecciona la versión AVRCP del Bluetooth"</string>
     <string name="bluetooth_select_a2dp_codec_type" msgid="90597356942154882">"Códec de audio de Bluetooth"</string>
     <string name="bluetooth_select_a2dp_codec_type_dialog_title" msgid="8436224899475822557">"Activar el códec de audio por Bluetooth\nSelección"</string>
-    <string name="bluetooth_select_a2dp_codec_sample_rate" msgid="4788245703824623062">"Porcentaje de muestreo de audio por Bluetooth"</string>
-    <string name="bluetooth_select_a2dp_codec_sample_rate_dialog_title" msgid="8010380028880963535">"Activar el códec de audio por Bluetooth\nSelección: porcentaje de muestreo"</string>
+    <string name="bluetooth_select_a2dp_codec_sample_rate" msgid="4788245703824623062">"Frecuencia de muestreo de audio por Bluetooth"</string>
+    <string name="bluetooth_select_a2dp_codec_sample_rate_dialog_title" msgid="8010380028880963535">"Activar el códec de audio por Bluetooth\nSelección: frecuencia de muestreo"</string>
     <string name="bluetooth_select_a2dp_codec_bits_per_sample" msgid="2099645202720164141">"Bits por muestra del audio Bluetooth"</string>
     <string name="bluetooth_select_a2dp_codec_bits_per_sample_dialog_title" msgid="8063859754619484760">"Activar el códec de audio por Bluetooth\nSelección: bits por muestra"</string>
     <string name="bluetooth_select_a2dp_codec_channel_mode" msgid="884855779449390540">"Modo de canal de audio por Bluetooth"</string>
@@ -228,7 +228,7 @@
     <string name="bluetooth_select_a2dp_codec_streaming_label" msgid="5347862512596240506">"Streaming: <xliff:g id="STREAMING_PARAMETER">%1$s</xliff:g>"</string>
     <string name="select_private_dns_configuration_title" msgid="3700456559305263922">"DNS privado"</string>
     <string name="select_private_dns_configuration_dialog_title" msgid="9221994415765826811">"Selecciona el modo de DNS privado"</string>
-    <string name="private_dns_mode_off" msgid="8236575187318721684">"No"</string>
+    <string name="private_dns_mode_off" msgid="8236575187318721684">"Desactivado"</string>
     <string name="private_dns_mode_opportunistic" msgid="8314986739896927399">"Automático"</string>
     <string name="private_dns_mode_provider" msgid="8354935160639360804">"Nombre de host del proveedor de DNS privado"</string>
     <string name="private_dns_mode_provider_hostname_hint" msgid="2487492386970928143">"Introduce el host del proveedor de DNS"</string>
@@ -238,11 +238,11 @@
     <string name="wifi_connected_mac_randomization_summary" msgid="1743059848752201485">"Ordenar las direcciones MAC de forma aleatoria al conectarse a redes Wi‑Fi"</string>
     <string name="wifi_metered_label" msgid="4514924227256839725">"Medida"</string>
     <string name="wifi_unmetered_label" msgid="6124098729457992931">"No medida"</string>
-    <string name="select_logd_size_title" msgid="7433137108348553508">"Tamaños de búfer de registrador"</string>
+    <string name="select_logd_size_title" msgid="7433137108348553508">"Tamaños del búfer para registrar"</string>
     <string name="select_logd_size_dialog_title" msgid="1206769310236476760">"Elige el tamaño del Logger por búfer"</string>
     <string name="dev_logpersist_clear_warning_title" msgid="684806692440237967">"¿Borrar almacenamiento continuo del registrador?"</string>
     <string name="dev_logpersist_clear_warning_message" msgid="2256582531342994562">"Cuando ya no supervisamos la actividad con el registrador de forma continua, estamos obligados a borrar los datos del registrador almacenados en el dispositivo."</string>
-    <string name="select_logpersist_title" msgid="7530031344550073166">"Guardar datos de forma continua"</string>
+    <string name="select_logpersist_title" msgid="7530031344550073166">"Guardar datos de registro de forma continua"</string>
     <string name="select_logpersist_dialog_title" msgid="4003400579973269060">"Seleccionar búferes de registro para guardarlos de forma continua en dispositivo"</string>
     <string name="select_usb_configuration_title" msgid="2649938511506971843">"Seleccionar configuración de USB"</string>
     <string name="select_usb_configuration_dialog_title" msgid="6385564442851599963">"Seleccionar configuración de USB"</string>
@@ -374,9 +374,9 @@
     <string name="power_discharging_duration_enhanced" msgid="1992003260664804080">"Tiempo restante aproximado según tu uso: <xliff:g id="TIME_REMAINING">%1$s</xliff:g> (<xliff:g id="LEVEL">%2$s</xliff:g>)"</string>
     <string name="power_remaining_duration_only_short" msgid="3463575350656389957">"Tiempo restante: <xliff:g id="TIME_REMAINING">%1$s</xliff:g>"</string>
     <string name="power_discharge_by_enhanced" msgid="2095821536747992464">"Debería durar aproximadamente hasta <xliff:g id="TIME">%1$s</xliff:g> según el uso (<xliff:g id="LEVEL">%2$s</xliff:g>)"</string>
-    <string name="power_discharge_by_only_enhanced" msgid="2175151772952365149">"Debería durar aproximadamente hasta <xliff:g id="TIME">%1$s</xliff:g> según el uso"</string>
+    <string name="power_discharge_by_only_enhanced" msgid="2175151772952365149">"Duración aproximada hasta: <xliff:g id="TIME">%1$s</xliff:g> (según el uso)"</string>
     <string name="power_discharge_by" msgid="6453537733650125582">"Debería durar aproximadamente hasta <xliff:g id="TIME">%1$s</xliff:g> (<xliff:g id="LEVEL">%2$s</xliff:g>)"</string>
-    <string name="power_discharge_by_only" msgid="107616694963545745">"Debería durar aproximadamente hasta <xliff:g id="TIME">%1$s</xliff:g>"</string>
+    <string name="power_discharge_by_only" msgid="107616694963545745">"Duración aproximada hasta: <xliff:g id="TIME">%1$s</xliff:g>"</string>
     <string name="power_remaining_less_than_duration_only" msgid="5996752448813295329">"Tiempo restante: menos de <xliff:g id="THRESHOLD">%1$s</xliff:g>"</string>
     <string name="power_remaining_less_than_duration" msgid="5751885147712659423">"Queda menos del <xliff:g id="THRESHOLD">%1$s</xliff:g> (<xliff:g id="LEVEL">%2$s</xliff:g>)"</string>
     <string name="power_remaining_more_than_subtext" msgid="3176771815132876675">"Queda más del <xliff:g id="TIME_REMAINING">%1$s</xliff:g> (<xliff:g id="LEVEL">%2$s</xliff:g>)"</string>
@@ -398,7 +398,7 @@
     <string name="battery_info_status_full" msgid="2824614753861462808">"Completa"</string>
     <string name="disabled_by_admin_summary_text" msgid="6750513964908334617">"Controlada por el administrador"</string>
     <string name="enabled_by_admin" msgid="5302986023578399263">"Habilitada por el administrador"</string>
-    <string name="disabled_by_admin" msgid="8505398946020816620">"Inhabilitada por el administrador"</string>
+    <string name="disabled_by_admin" msgid="8505398946020816620">"Inhabilitado por el administrador"</string>
     <string name="disabled" msgid="9206776641295849915">"Inhabilitada"</string>
     <string name="external_source_trusted" msgid="2707996266575928037">"Autorizadas"</string>
     <string name="external_source_untrusted" msgid="2677442511837596726">"No autorizadas"</string>

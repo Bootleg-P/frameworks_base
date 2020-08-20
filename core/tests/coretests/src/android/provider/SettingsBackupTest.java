@@ -67,7 +67,6 @@ public class SettingsBackupTest {
                     Settings.System.LOCKSCREEN_DISABLED, // ?
                     Settings.System.MEDIA_BUTTON_RECEIVER, // candidate for backup?
                     Settings.System.MUTE_STREAMS_AFFECTED, //  candidate for backup?
-                    Settings.System.NOTIFICATION_LIGHT_PULSE, // candidate for backup?
                     Settings.System.NOTIFICATION_SOUND_CACHE, // internal cache
                     Settings.System.POINTER_LOCATION, // backup candidate?
                     Settings.System.RINGTONE_CACHE, // internal cache
@@ -98,6 +97,7 @@ public class SettingsBackupTest {
     private static final Set<String> BACKUP_BLACKLISTED_GLOBAL_SETTINGS =
             newHashSet(
                     Settings.Global.ACTIVITY_MANAGER_CONSTANTS,
+                    Settings.Global.ACTIVITY_STARTS_LOGGING_ENABLED,
                     Settings.Global.ADAPTIVE_BATTERY_MANAGEMENT_ENABLED,
                     Settings.Global.ADB_ENABLED,
                     Settings.Global.ADD_USERS_WHEN_LOCKED,
@@ -507,6 +507,8 @@ public class SettingsBackupTest {
                  Settings.Secure.ANR_SHOW_BACKGROUND,
                  Settings.Secure.ASSISTANT,
                  Settings.Secure.ASSIST_DISCLOSURE_ENABLED,
+                 Settings.Secure.ASSIST_GESTURE_SENSITIVITY,
+                 Settings.Secure.ASSIST_GESTURE_SETUP_COMPLETE,
                  Settings.Secure.ASSIST_SCREENSHOT_ENABLED,
                  Settings.Secure.ASSIST_STRUCTURE_ENABLED,
                  Settings.Secure.AUTOFILL_FEATURE_FIELD_CLASSIFICATION,
@@ -551,10 +553,8 @@ public class SettingsBackupTest {
                  Settings.Secure.LAST_SETUP_SHOWN,
                  Settings.Secure.LOCATION_CHANGER,
                  Settings.Secure.LOCATION_MODE,
-                 Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS, // Candidate?
                  Settings.Secure.LOCK_SCREEN_ALLOW_REMOTE_INPUT, // Candidate?
                  Settings.Secure.LOCK_SCREEN_LOCK_AFTER_TIMEOUT,
-                 Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS, // Candidate?
                  Settings.Secure.LOCK_TO_APP_EXIT_LOCKED,
                  Settings.Secure.MANAGED_PROFILE_CONTACT_REMOTE_SEARCH,
                  Settings.Secure.MULTI_PRESS_TIMEOUT,

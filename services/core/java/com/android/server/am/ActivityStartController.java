@@ -248,7 +248,8 @@ public class ActivityStartController {
     final int startActivityInPackage(int uid, int realCallingPid, int realCallingUid,
             String callingPackage, Intent intent, String resolvedType, IBinder resultTo,
             String resultWho, int requestCode, int startFlags, SafeActivityOptions options,
-            int userId, TaskRecord inTask, String reason, boolean validateIncomingUser) {
+            int userId, TaskRecord inTask, String reason, boolean validateIncomingUser,
+            PendingIntentRecord originatingPendingIntent) {
 
         userId = checkTargetUser(userId, validateIncomingUser, realCallingPid, realCallingUid,
                 reason);
@@ -267,6 +268,7 @@ public class ActivityStartController {
                 .setActivityOptions(options)
                 .setMayWait(userId)
                 .setInTask(inTask)
+                .setOriginatingPendingIntent(originatingPendingIntent)
                 .execute();
     }
 
@@ -278,6 +280,8 @@ public class ActivityStartController {
      * @param intents Intents to start.
      * @param userId Start the intents on this user.
      * @param validateIncomingUser Set true to skip checking {@code userId} with the calling UID.
+     * @param originatingPendingIntent PendingIntentRecord that originated this activity start or
+     *        null if not originated by PendingIntent
      */
     final int startActivitiesInPackage(int uid, String callingPackage, Intent[] intents,
             String[] resolvedTypes, IBinder resultTo, SafeActivityOptions options, int userId,
@@ -389,6 +393,7 @@ public class ActivityStartController {
                             // Top activity decides on animation being run, so we allow only for the
                             // top one as otherwise an activity below might consume it.
                             .setAllowPendingRemoteAnimationRegistryLookup(top /* allowLookup*/)
+                            .setOriginatingPendingIntent(originatingPendingIntent)
                             .execute();
 
                     if (res < 0) {

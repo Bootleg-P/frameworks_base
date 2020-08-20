@@ -48,7 +48,7 @@
     <string name="invalidPin" msgid="3850018445187475377">"Մուտքագրեք PIN, որը 4-ից 8 թիվ է:"</string>
     <string name="invalidPuk" msgid="8761456210898036513">"Մուտքագրեք PUK, որն 8 կամ ավել թիվ ունի:"</string>
     <string name="needPuk" msgid="919668385956251611">"Ձեր SIM քարտը PUK-ով կողպված է: Մուտքագրեք PUK կոդը այն ապակողպելու համար:"</string>
-    <string name="needPuk2" msgid="4526033371987193070">"Մուտքագրեք PUK2-ը` SIM քարտն արգելաբացելու համար:"</string>
+    <string name="needPuk2" msgid="4526033371987193070">"Մուտքագրեք PUK2-ը` SIM քարտն արգելահանելու համար:"</string>
     <string name="enablePin" msgid="209412020907207950">"Ձախողվեց: Միացրեք SIM/RUIM կողպումը:"</string>
     <plurals name="pinpuk_attempts" formatted="false" msgid="1251012001539225582">
       <item quantity="one">Մնաց <xliff:g id="NUMBER_1">%d</xliff:g> փորձ, որից հետո SIM քարտն արգելափակվելու է:</item>
@@ -219,23 +219,23 @@
     <string name="global_action_emergency" msgid="7112311161137421166">"Շտապ կանչ"</string>
     <string name="global_action_bug_report" msgid="7934010578922304799">"Վրիպակի զեկույց"</string>
     <string name="global_action_logout" msgid="935179188218826050">"Ավարտել աշխատաշրջանը"</string>
-    <string name="global_action_screenshot" msgid="8329831278085426283">"Էկրանի պատկեր"</string>
+    <string name="global_action_screenshot" msgid="8329831278085426283">"Սքրինշոթ"</string>
     <string name="bugreport_title" msgid="2667494803742548533">"Հաղորդել սխալի մասին"</string>
     <string name="bugreport_message" msgid="398447048750350456">"Սա տեղեկություններ կհավաքագրի ձեր սարքի առկա կարգավիճակի մասին և կուղարկի այն էլեկտրոնային նամակով: Որոշակի ժամանակ կպահանջվի վրիպակի մասին զեկուցելու պահից սկսած մինչ ուղարկելը: Խնդրում ենք փոքր-ինչ համբերատար լինել:"</string>
     <string name="bugreport_option_interactive_title" msgid="8635056131768862479">"Ինտերակտիվ զեկույց"</string>
-    <string name="bugreport_option_interactive_summary" msgid="229299488536107968">"Հիմնականում օգտագործեք այս տարբերակը: Այն ձեզ թույլ է տալիս հետևել զեկույցի ստեղծման գործընթացին, խնդրի մասին լրացուցիչ տեղեկություններ մուտքագրել և էկրանի պատկերներ կորզել: Կարող է բաց թողնել քիչ օգտագործվող որոշ բաժինները, որոնց ստեղծումը երկար է տևում:"</string>
+    <string name="bugreport_option_interactive_summary" msgid="229299488536107968">"Հիմնականում օգտագործեք այս տարբերակը: Այն ձեզ թույլ է տալիս հետևել զեկույցի ստեղծման գործընթացին, խնդրի մասին լրացուցիչ տեղեկություններ մուտքագրել և սքրինշոթներ ստեղծել: Կարող է բաց թողնել քիչ օգտագործվող որոշ բաժիններ, որոնց ստեղծումը երկար է տևում:"</string>
     <string name="bugreport_option_full_title" msgid="6354382025840076439">"Ամբողջական զեկույց"</string>
     <string name="bugreport_option_full_summary" msgid="7210859858969115745">"Օգտագործեք այս տարբերակը համակարգի միջամտությունը նվազեցնելու համար՝ երբ սարքը չի արձագանքում կամ շատ դանդաղ է աշխատում, կամ երբ ձեզ հարկավոր են զեկույցի բոլոր բաժինները: Թույլ չի տալիս լրացուցիչ տվյալներ մուտքագրել կամ էկրանի լրացուցիչ պատկերներ ստանալ:"</string>
     <plurals name="bugreport_countdown" formatted="false" msgid="6878900193900090368">
-      <item quantity="one">Վրիպակի զեկույցի համար էկրանի պատկերի լուսանկարումը կատարվելու է <xliff:g id="NUMBER_1">%d</xliff:g> վայրկյանից:</item>
-      <item quantity="other">Վրիպակի զեկույցի համար էկրանի պատկերի լուսանկարումը կատարվելու է <xliff:g id="NUMBER_1">%d</xliff:g> վայրկյանից:</item>
+      <item quantity="one">Սքրինշոթը կարվի <xliff:g id="NUMBER_1">%d</xliff:g> վայրկյանից:</item>
+      <item quantity="other">Սքրինշոթը կարվի <xliff:g id="NUMBER_1">%d</xliff:g> վայրկյանից:</item>
     </plurals>
     <string name="global_action_toggle_silent_mode" msgid="8219525344246810925">"Անձայն ռեժիմ"</string>
     <string name="global_action_silent_mode_on_status" msgid="3289841937003758806">"Ձայնը անջատված է"</string>
     <string name="global_action_silent_mode_off_status" msgid="1506046579177066419">"Ձայնը միացված է"</string>
-    <string name="global_actions_toggle_airplane_mode" msgid="5884330306926307456">"Ինքնաթիռի ռեժիմ"</string>
-    <string name="global_actions_airplane_mode_on_status" msgid="2719557982608919750">"Ինքնաթիռի ռեժիմը միացված է"</string>
-    <string name="global_actions_airplane_mode_off_status" msgid="5075070442854490296">"Ինքնաթիռի ռեժիմը անջատված է"</string>
+    <string name="global_actions_toggle_airplane_mode" msgid="5884330306926307456">"Ավիառեժիմ"</string>
+    <string name="global_actions_airplane_mode_on_status" msgid="2719557982608919750">"Ավիառեժիմը միացված է"</string>
+    <string name="global_actions_airplane_mode_off_status" msgid="5075070442854490296">"Ավիառեժիմը անջատված է"</string>
     <string name="global_action_toggle_battery_saver" msgid="708515500418994208">"Մարտկոցի տնտեսում"</string>
     <string name="global_action_battery_saver_on_status" msgid="484059130698197787">"Անջատել"</string>
     <string name="global_action_battery_saver_off_status" msgid="75550964969478405">"Միացնել"</string>
@@ -1064,7 +1064,7 @@
     <string name="whichImageCaptureApplication" msgid="3680261417470652882">"Լուսանկարել այս հավելվածի օգնությամբ"</string>
     <string name="whichImageCaptureApplicationNamed" msgid="8619384150737825003">"Լուսանկարել %1$s հավելվածի օգնությամբ"</string>
     <string name="whichImageCaptureApplicationLabel" msgid="6390303445371527066">"Լուսանկարել"</string>
-    <string name="alwaysUse" msgid="4583018368000610438">"Օգտագործել լռելյայն այս գործողության համար:"</string>
+    <string name="alwaysUse" msgid="4583018368000610438">"Օգտագործել ըստ կանխադրման այս գործողության համար:"</string>
     <string name="use_a_different_app" msgid="8134926230585710243">"Օգտագործել այլ հավելված"</string>
     <string name="clearDefaultHintMsg" msgid="3252584689512077257">"Մաքրել լռելյայնը Համակարգի կարգավորումներ &gt; Ծրագրեր &gt;Ներբեռնված էջից:"</string>
     <string name="chooseActivity" msgid="7486876147751803333">"Ընտրել գործողություն"</string>
@@ -1072,8 +1072,8 @@
     <string name="noApplications" msgid="2991814273936504689">"Ոչ մի հավելված չի կարող կատարել այս գործողությունը:"</string>
     <string name="aerr_application" msgid="250320989337856518">"<xliff:g id="APPLICATION">%1$s</xliff:g> – աշխատանքն ընդհատվեց"</string>
     <string name="aerr_process" msgid="6201597323218674729">"<xliff:g id="PROCESS">%1$s</xliff:g> գործընթացն ընդհատվել է"</string>
-    <string name="aerr_application_repeated" msgid="3146328699537439573">"<xliff:g id="APPLICATION">%1$s</xliff:g> հավելվածի աշխատանքը շարունակաբար ընդհատվում է"</string>
-    <string name="aerr_process_repeated" msgid="6235302956890402259">"<xliff:g id="PROCESS">%1$s</xliff:g> գործընթացը շարունակաբար ընդհատվում է"</string>
+    <string name="aerr_application_repeated" msgid="3146328699537439573">"<xliff:g id="APPLICATION">%1$s</xliff:g>-ն էլի ընդհատվեց"</string>
+    <string name="aerr_process_repeated" msgid="6235302956890402259">"<xliff:g id="PROCESS">%1$s</xliff:g>՝ նորից ընդհատվեց"</string>
     <string name="aerr_restart" msgid="7581308074153624475">"Կրկին բացել հավելվածը"</string>
     <string name="aerr_report" msgid="5371800241488400617">"Հաղորդել"</string>
     <string name="aerr_close" msgid="2991640326563991340">"Փակել"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi ցանցում ինտերնետ կապ չկա"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Հպեք՝ ընտրանքները տեսնելու համար"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Փոփոխություններ թեժ կետի կարգավորումներում"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Ձեր թեժ կետի հաճախականությունը փոխվել է։"</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Սարքը չի կարող աշխատել միայն 5 ԳՀց հաճախականությամբ։ Այդ հաճախականությունը կօգտագործվի հնարավորության դեպքում։"</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Անցել է <xliff:g id="NETWORK_TYPE">%1$s</xliff:g> ցանցի"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"Երբ <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> ցանցում ինտերնետ կապ չի լինում, սարքն անցնում է <xliff:g id="NEW_NETWORK">%1$s</xliff:g> ցանցի: Նման դեպքում կարող են վճարներ գանձվել:"</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> ցանցից անցել է <xliff:g id="NEW_NETWORK">%2$s</xliff:g> ցանցի"</string>
@@ -1814,7 +1817,7 @@
     <string name="app_category_social" msgid="5842783057834965912">"Սոցցանցեր և հաղորդակցություն"</string>
     <string name="app_category_news" msgid="7496506240743986873">"Նորություններ և ամսագրեր"</string>
     <string name="app_category_maps" msgid="5878491404538024367">"Քարտեզներ և նավարկում"</string>
-    <string name="app_category_productivity" msgid="3742083261781538852">"Աշխատանք"</string>
+    <string name="app_category_productivity" msgid="3742083261781538852">"Արդյունավետություն"</string>
     <string name="device_storage_monitor_notification_channel" msgid="3295871267414816228">"Սարքի հիշողություն"</string>
     <string name="adb_debugging_notification_channel_tv" msgid="5537766997350092316">"USB վրիպազերծում"</string>
     <string name="time_picker_hour_label" msgid="2979075098868106450">"ժամ"</string>

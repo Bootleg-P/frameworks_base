@@ -77,6 +77,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * <p>For more information about using a ContentResolver with content providers, read the
  * <a href="{@docRoot}guide/topics/providers/content-providers.html">Content Providers</a>
  * developer guide.</p>
+ * </div>
  */
 public abstract class ContentResolver {
     /**
@@ -1845,7 +1846,7 @@ public abstract class ContentResolver {
      * that services the content at uri, starting the provider if necessary. Returns
      * null if there is no provider associated wih the uri. The caller must indicate that they are
      * done with the provider by calling {@link ContentProviderClient#release} which will allow
-     * the system to release the provider it it determines that there is no other reason for
+     * the system to release the provider if it determines that there is no other reason for
      * keeping it active.
      * @param uri specifies which provider should be acquired
      * @return a {@link ContentProviderClient} that is associated with the {@link ContentProvider}
@@ -1865,7 +1866,7 @@ public abstract class ContentResolver {
      * with the authority of name, starting the provider if necessary. Returns
      * null if there is no provider associated wih the uri. The caller must indicate that they are
      * done with the provider by calling {@link ContentProviderClient#release} which will allow
-     * the system to release the provider it it determines that there is no other reason for
+     * the system to release the provider if it determines that there is no other reason for
      * keeping it active.
      * @param name specifies which provider should be acquired
      * @return a {@link ContentProviderClient} that is associated with the {@link ContentProvider}

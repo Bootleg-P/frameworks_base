@@ -2,13 +2,16 @@ package com.android.server.am;
 
 import static android.app.ActivityManager.START_SUCCESS;
 import static android.app.ActivityManager.START_TASK_TO_FRONT;
+import static android.app.ActivityManager.processStateAmToProto;
 import static android.app.ActivityManagerInternal.APP_TRANSITION_TIMEOUT;
-import static android.app.WindowConfiguration.WINDOWING_MODE_SPLIT_SCREEN_PRIMARY;
 import static android.app.WindowConfiguration.WINDOWING_MODE_FREEFORM;
 import static android.app.WindowConfiguration.WINDOWING_MODE_FULLSCREEN;
 import static android.app.WindowConfiguration.WINDOWING_MODE_PINNED;
+import static android.app.WindowConfiguration.WINDOWING_MODE_SPLIT_SCREEN_PRIMARY;
 import static android.app.WindowConfiguration.WINDOWING_MODE_SPLIT_SCREEN_SECONDARY;
 import static android.app.WindowConfiguration.WINDOWING_MODE_UNDEFINED;
+
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_ACTIVITY_START;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.APP_TRANSITION;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.APP_TRANSITION_BIND_APPLICATION_DELAY_MS;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.APP_TRANSITION_CALLING_PACKAGE_NAME;
@@ -21,10 +24,50 @@ import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.APP_TR
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.APP_TRANSITION_REPORTED_DRAWN_MS;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.APP_TRANSITION_STARTING_WINDOW_DELAY_MS;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.APP_TRANSITION_WINDOWS_DRAWN_DELAY_MS;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_FLAGS;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_IS_FULLSCREEN;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_IS_NO_DISPLAY;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_IS_VISIBLE;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_IS_VISIBLE_IGNORING_KEYGUARD;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_LAUNCH_MODE;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_MILLIS_SINCE_LAST_LAUNCH;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_MILLIS_SINCE_LAST_VISIBLE;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_PROCESS_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_REAL_ACTIVITY;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_RESULT_TO_PKG_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_RESULT_TO_SHORT_COMPONENT_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_SHORT_COMPONENT_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_ACTIVITY_RECORD_TARGET_ACTIVITY;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_CALLING_PACKAGE_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_CALLING_UID;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_CALLING_UID_HAS_ANY_VISIBLE_WINDOW;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_CALLING_UID_PROC_STATE;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_CLASS_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_COMING_FROM_PENDING_INTENT;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_INSTANT_APP_LAUNCH_TOKEN;
-import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.PACKAGE_OPTIMIZATION_COMPILATION_REASON;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_INTENT_ACTION;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_CUR_PROC_STATE;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_HAS_CLIENT_ACTIVITIES;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_HAS_FOREGROUND_ACTIVITIES;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_HAS_FOREGROUND_SERVICES;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_HAS_OVERLAY_UI;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_HAS_TOP_UI;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_MILLIS_SINCE_FG_INTERACTION;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_MILLIS_SINCE_LAST_INTERACTION_EVENT;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_MILLIS_SINCE_UNIMPORTANT;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_PENDING_UI_CLEAN;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_PROCESS_RECORD_PROCESS_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_REAL_CALLING_UID;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_REAL_CALLING_UID_HAS_ANY_VISIBLE_WINDOW;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_REAL_CALLING_UID_PROC_STATE;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_TARGET_PACKAGE_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_TARGET_SHORT_COMPONENT_NAME;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_TARGET_UID;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_TARGET_UID_HAS_ANY_VISIBLE_WINDOW;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_TARGET_UID_PROC_STATE;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.FIELD_TARGET_WHITELIST_TAG;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.PACKAGE_OPTIMIZATION_COMPILATION_FILTER;
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.PACKAGE_OPTIMIZATION_COMPILATION_REASON;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.TYPE_TRANSITION_COLD_LAUNCH;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.TYPE_TRANSITION_HOT_LAUNCH;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.TYPE_TRANSITION_REPORTED_DRAWN_NO_BUNDLE;
@@ -33,10 +76,12 @@ import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.TYPE_T
 import static com.android.server.am.ActivityManagerDebugConfig.DEBUG_METRICS;
 import static com.android.server.am.ActivityManagerDebugConfig.TAG_AM;
 import static com.android.server.am.ActivityManagerDebugConfig.TAG_WITH_CLASS_NAME;
+import static com.android.server.am.EventLogTags.AM_ACTIVITY_LAUNCH_TIME;
 import static com.android.server.am.MemoryStatUtil.MemoryStat;
 import static com.android.server.am.MemoryStatUtil.readMemoryStatFromFilesystem;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.dex.ArtManagerInternal;
 import android.content.pm.dex.PackageOptimizationInfo;
@@ -45,10 +90,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.os.Trace;
+import android.util.EventLog;
+import android.util.Log;
 import android.util.Slog;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.util.StatsLog;
+import android.util.TimeUtils;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.os.BackgroundThread;
@@ -58,7 +107,12 @@ import com.android.server.LocalServices;
 import java.util.ArrayList;
 
 /**
- * Handles logging into Tron.
+ * Listens to activity launches, transitions, visibility changes and window drawn callbacks to
+ * determine app launch times and draw delays. Source of truth for activity metrics and provides
+ * data for Tron, logcat, event logs and {@link android.app.WaitResult}.
+ *
+ * Tests:
+ * atest CtsActivityManagerDeviceTestCases:ActivityMetricsLoggerTests
  */
 class ActivityMetricsLogger {
 
@@ -73,6 +127,8 @@ class ActivityMetricsLogger {
     private static final int WINDOW_STATE_INVALID = -1;
 
     private static final long INVALID_START_TIME = -1;
+    private static final int INVALID_DELAY = -1;
+    private static final int INVALID_TRANSITION_TYPE = -1;
 
     private static final int MSG_CHECK_VISIBILITY = 0;
 
@@ -101,6 +157,8 @@ class ActivityMetricsLogger {
     private final H mHandler;
 
     private ArtManagerInternal mArtManagerInternal;
+    private boolean mDrawingTraceActive;
+    private final StringBuilder mStringBuilder = new StringBuilder();
 
     private final class H extends Handler {
 
@@ -123,45 +181,69 @@ class ActivityMetricsLogger {
         private ActivityRecord launchedActivity;
         private int startResult;
         private boolean currentTransitionProcessRunning;
+        /** Elapsed time from when we launch an activity to when its windows are drawn. */
         private int windowsDrawnDelayMs;
-        private int startingWindowDelayMs = -1;
-        private int bindApplicationDelayMs = -1;
+        private int startingWindowDelayMs = INVALID_DELAY;
+        private int bindApplicationDelayMs = INVALID_DELAY;
         private int reason = APP_TRANSITION_TIMEOUT;
         private boolean loggedWindowsDrawn;
         private boolean loggedStartingWindowDrawn;
+        private boolean launchTraceActive;
     }
 
-    private final class WindowingModeTransitionInfoSnapshot {
+    final class WindowingModeTransitionInfoSnapshot {
         final private ApplicationInfo applicationInfo;
         final private ProcessRecord processRecord;
-        final private String packageName;
-        final private String launchedActivityName;
+        final String packageName;
+        final String launchedActivityName;
         final private String launchedActivityLaunchedFromPackage;
         final private String launchedActivityLaunchToken;
         final private String launchedActivityAppRecordRequiredAbi;
+        final String launchedActivityShortComponentName;
         final private String processName;
         final private int reason;
         final private int startingWindowDelayMs;
         final private int bindApplicationDelayMs;
-        final private int windowsDrawnDelayMs;
-        final private int type;
+        final int windowsDrawnDelayMs;
+        final int type;
+        final int userId;
+        /**
+         * Elapsed time from when we launch an activity to when the app reported it was
+         * fully drawn. If this is not reported then the value is set to INVALID_DELAY.
+         */
+        final int windowsFullyDrawnDelayMs;
+        final int activityRecordIdHashCode;
 
         private WindowingModeTransitionInfoSnapshot(WindowingModeTransitionInfo info) {
-            applicationInfo = info.launchedActivity.appInfo;
-            packageName = info.launchedActivity.packageName;
-            launchedActivityName = info.launchedActivity.info.name;
-            launchedActivityLaunchedFromPackage = info.launchedActivity.launchedFromPackage;
-            launchedActivityLaunchToken = info.launchedActivity.info.launchToken;
-            launchedActivityAppRecordRequiredAbi = info.launchedActivity.app == null
+            this(info, info.launchedActivity);
+        }
+
+        private WindowingModeTransitionInfoSnapshot(WindowingModeTransitionInfo info,
+                ActivityRecord launchedActivity) {
+            this(info, launchedActivity, INVALID_DELAY);
+        }
+
+        private WindowingModeTransitionInfoSnapshot(WindowingModeTransitionInfo info,
+                ActivityRecord launchedActivity, int windowsFullyDrawnDelayMs) {
+            applicationInfo = launchedActivity.appInfo;
+            packageName = launchedActivity.packageName;
+            launchedActivityName = launchedActivity.info.name;
+            launchedActivityLaunchedFromPackage = launchedActivity.launchedFromPackage;
+            launchedActivityLaunchToken = launchedActivity.info.launchToken;
+            launchedActivityAppRecordRequiredAbi = launchedActivity.app == null
                     ? null
-                    : info.launchedActivity.app.requiredAbi;
+                    : launchedActivity.app.requiredAbi;
             reason = info.reason;
             startingWindowDelayMs = info.startingWindowDelayMs;
             bindApplicationDelayMs = info.bindApplicationDelayMs;
             windowsDrawnDelayMs = info.windowsDrawnDelayMs;
             type = getTransitionType(info);
-            processRecord = findProcessForActivity(info.launchedActivity);
-            processName = info.launchedActivity.processName;
+            processRecord = findProcessForActivity(launchedActivity);
+            processName = launchedActivity.processName;
+            userId = launchedActivity.userId;
+            launchedActivityShortComponentName = launchedActivity.shortComponentName;
+            activityRecordIdHashCode = System.identityHashCode(launchedActivity);
+            this.windowsFullyDrawnDelayMs = windowsFullyDrawnDelayMs;
         }
     }
 
@@ -281,18 +363,24 @@ class ActivityMetricsLogger {
                 + " processRunning=" + processRunning
                 + " processSwitch=" + processSwitch);
 
-        // If we are already in an existing transition, only update the activity name, but not the
-        // other attributes.
         final int windowingMode = launchedActivity != null
                 ? launchedActivity.getWindowingMode()
                 : WINDOWING_MODE_UNDEFINED;
-
+        final WindowingModeTransitionInfo info = mWindowingModeTransitionInfo.get(windowingMode);
         if (mCurrentTransitionStartTime == INVALID_START_TIME) {
+            // No transition is active ignore this launch.
             return;
         }
 
-        final WindowingModeTransitionInfo info = mWindowingModeTransitionInfo.get(windowingMode);
+        if (launchedActivity != null && launchedActivity.drawn) {
+            // Launched activity is already visible. We cannot measure windows drawn delay.
+            reset(true /* abort */, info);
+            return;
+        }
+
         if (launchedActivity != null && info != null) {
+            // If we are already in an existing transition, only update the activity name, but not
+            // the other attributes.
             info.launchedActivity = launchedActivity;
             return;
         }
@@ -301,9 +389,8 @@ class ActivityMetricsLogger {
                 mWindowingModeTransitionInfo.size() > 0 && info == null;
         if ((!isLoggableResultCode(resultCode) || launchedActivity == null || !processSwitch
                 || windowingMode == WINDOWING_MODE_UNDEFINED) && !otherWindowModesLaunching) {
-
             // Failed to launch or it was not a process switch, so we don't care about the timing.
-            reset(true /* abort */);
+            reset(true /* abort */, info);
             return;
         } else if (otherWindowModesLaunching) {
             // Don't log this windowing mode but continue with the other windowing modes.
@@ -319,6 +406,7 @@ class ActivityMetricsLogger {
         mWindowingModeTransitionInfo.put(windowingMode, newInfo);
         mLastWindowingModeTransitionInfo.put(windowingMode, newInfo);
         mCurrentTransitionDeviceUptime = (int) (SystemClock.uptimeMillis() / 1000);
+        startTraces(newInfo);
     }
 
     /**
@@ -332,18 +420,21 @@ class ActivityMetricsLogger {
     /**
      * Notifies the tracker that all windows of the app have been drawn.
      */
-    void notifyWindowsDrawn(int windowingMode, long timestamp) {
+    WindowingModeTransitionInfoSnapshot notifyWindowsDrawn(int windowingMode, long timestamp) {
         if (DEBUG_METRICS) Slog.i(TAG, "notifyWindowsDrawn windowingMode=" + windowingMode);
 
         final WindowingModeTransitionInfo info = mWindowingModeTransitionInfo.get(windowingMode);
         if (info == null || info.loggedWindowsDrawn) {
-            return;
+            return null;
         }
         info.windowsDrawnDelayMs = calculateDelay(timestamp);
         info.loggedWindowsDrawn = true;
+        final WindowingModeTransitionInfoSnapshot infoSnapshot =
+                new WindowingModeTransitionInfoSnapshot(info);
         if (allWindowsDrawn() && mLoggedTransitionStarting) {
-            reset(false /* abort */);
+            reset(false /* abort */, info);
         }
+        return infoSnapshot;
     }
 
     /**
@@ -362,7 +453,7 @@ class ActivityMetricsLogger {
      * Notifies the tracker that the app transition is starting.
      *
      * @param windowingModeToReason A map from windowing mode to a reason integer, which must be on
-     *                              of ActivityManagerInternal.APP_TRANSITION_* reasons.
+     *                              of ActivityTaskManagerInternal.APP_TRANSITION_* reasons.
      */
     void notifyTransitionStarting(SparseIntArray windowingModeToReason, long timestamp) {
         if (!isAnyTransitionActive() || mLoggedTransitionStarting) {
@@ -381,7 +472,7 @@ class ActivityMetricsLogger {
             info.reason = windowingModeToReason.valueAt(index);
         }
         if (allWindowsDrawn()) {
-            reset(false /* abort */);
+            reset(false /* abort */, null /* WindowingModeTransitionInfo */);
         }
     }
 
@@ -406,6 +497,16 @@ class ActivityMetricsLogger {
         mHandler.obtainMessage(MSG_CHECK_VISIBILITY, args).sendToTarget();
     }
 
+    private boolean hasVisibleNonFinishingActivity(TaskRecord t) {
+        for (int i = t.mActivities.size() - 1; i >= 0; --i) {
+            final ActivityRecord r = t.mActivities.get(i);
+            if (r.visible && !r.finishing) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void checkVisibility(TaskRecord t, ActivityRecord r) {
         synchronized (mSupervisor.mService) {
 
@@ -414,14 +515,15 @@ class ActivityMetricsLogger {
 
             // If we have an active transition that's waiting on a certain activity that will be
             // invisible now, we'll never get onWindowsDrawn, so abort the transition if necessary.
-            if (info != null && !t.isVisible()) {
+            if (info != null && !hasVisibleNonFinishingActivity(t)) {
                 if (DEBUG_METRICS) Slog.i(TAG, "notifyVisibilityChanged to invisible"
                         + " activity=" + r);
                 logAppTransitionCancel(info);
                 mWindowingModeTransitionInfo.remove(r.getWindowingMode());
                 if (mWindowingModeTransitionInfo.size() == 0) {
-                    reset(true /* abort */);
+                    reset(true /* abort */, info);
                 }
+                stopFullyDrawnTraceIfNeeded();
             }
         }
     }
@@ -456,19 +558,19 @@ class ActivityMetricsLogger {
                 && mWindowingModeTransitionInfo.size() > 0;
     }
 
-    private void reset(boolean abort) {
+    private void reset(boolean abort, WindowingModeTransitionInfo info) {
         if (DEBUG_METRICS) Slog.i(TAG, "reset abort=" + abort);
         if (!abort && isAnyTransitionActive()) {
             logAppTransitionMultiEvents();
         }
+        stopLaunchTrace(info);
         mCurrentTransitionStartTime = INVALID_START_TIME;
-        mCurrentTransitionDelayMs = -1;
+        mCurrentTransitionDelayMs = INVALID_DELAY;
         mLoggedTransitionStarting = false;
         mWindowingModeTransitionInfo.clear();
     }
 
     private int calculateCurrentDelay() {
-
         // Shouldn't take more than 25 days to launch an app, so int is fine here.
         return (int) (SystemClock.uptimeMillis() - mCurrentTransitionStartTime);
     }
@@ -480,7 +582,7 @@ class ActivityMetricsLogger {
 
     private void logAppTransitionCancel(WindowingModeTransitionInfo info) {
         final int type = getTransitionType(info);
-        if (type == -1) {
+        if (type == INVALID_TRANSITION_TYPE) {
             return;
         }
         final LogMaker builder = new LogMaker(APP_TRANSITION_CANCELLED);
@@ -501,7 +603,7 @@ class ActivityMetricsLogger {
         for (int index = mWindowingModeTransitionInfo.size() - 1; index >= 0; index--) {
             final WindowingModeTransitionInfo info = mWindowingModeTransitionInfo.valueAt(index);
             final int type = getTransitionType(info);
-            if (type == -1) {
+            if (type == INVALID_TRANSITION_TYPE) {
                 return;
             }
 
@@ -513,6 +615,7 @@ class ActivityMetricsLogger {
             final int currentTransitionDelayMs = mCurrentTransitionDelayMs;
             BackgroundThread.getHandler().post(() -> logAppTransition(
                     currentTransitionDeviceUptime, currentTransitionDelayMs, infoSnapshot));
+            BackgroundThread.getHandler().post(() -> logAppDisplayed(infoSnapshot));
 
             info.launchedActivity.info.launchToken = null;
         }
@@ -539,11 +642,11 @@ class ActivityMetricsLogger {
                 currentTransitionDeviceUptime);
         builder.addTaggedData(APP_TRANSITION_DELAY_MS, currentTransitionDelayMs);
         builder.setSubtype(info.reason);
-        if (info.startingWindowDelayMs != -1) {
+        if (info.startingWindowDelayMs != INVALID_DELAY) {
             builder.addTaggedData(APP_TRANSITION_STARTING_WINDOW_DELAY_MS,
                     info.startingWindowDelayMs);
         }
-        if (info.bindApplicationDelayMs != -1) {
+        if (info.bindApplicationDelayMs != INVALID_DELAY) {
             builder.addTaggedData(APP_TRANSITION_BIND_APPLICATION_DELAY_MS,
                     info.bindApplicationDelayMs);
         }
@@ -580,6 +683,24 @@ class ActivityMetricsLogger {
         logAppStartMemoryStateCapture(info);
     }
 
+    private void logAppDisplayed(WindowingModeTransitionInfoSnapshot info) {
+        if (info.type != TYPE_TRANSITION_WARM_LAUNCH && info.type != TYPE_TRANSITION_COLD_LAUNCH) {
+            return;
+        }
+
+        EventLog.writeEvent(AM_ACTIVITY_LAUNCH_TIME,
+                info.userId, info.activityRecordIdHashCode, info.launchedActivityShortComponentName,
+                info.windowsDrawnDelayMs);
+
+        StringBuilder sb = mStringBuilder;
+        sb.setLength(0);
+        sb.append("Displayed ");
+        sb.append(info.launchedActivityShortComponentName);
+        sb.append(": ");
+        TimeUtils.formatDuration(info.windowsDrawnDelayMs, sb);
+        Log.i(TAG, sb.toString());
+    }
+
     private int convertAppStartTransitionType(int tronType) {
         if (tronType == TYPE_TRANSITION_COLD_LAUNCH) {
             return StatsLog.APP_START_OCCURRED__TYPE__COLD;
@@ -593,11 +714,12 @@ class ActivityMetricsLogger {
         return StatsLog.APP_START_OCCURRED__TYPE__UNKNOWN;
      }
 
-    void logAppTransitionReportedDrawn(ActivityRecord r, boolean restoredFromBundle) {
+    WindowingModeTransitionInfoSnapshot logAppTransitionReportedDrawn(ActivityRecord r,
+            boolean restoredFromBundle) {
         final WindowingModeTransitionInfo info = mLastWindowingModeTransitionInfo.get(
                 r.getWindowingMode());
         if (info == null) {
-            return;
+            return null;
         }
         final LogMaker builder = new LogMaker(APP_TRANSITION_REPORTED_DRAWN);
         builder.setPackageName(r.packageName);
@@ -620,6 +742,114 @@ class ActivityMetricsLogger {
                 info.launchedActivity.info.name,
                 info.currentTransitionProcessRunning,
                 startupTimeMs);
+        stopFullyDrawnTraceIfNeeded();
+        final WindowingModeTransitionInfoSnapshot infoSnapshot =
+                new WindowingModeTransitionInfoSnapshot(info, r, (int) startupTimeMs);
+        BackgroundThread.getHandler().post(() -> logAppFullyDrawn(infoSnapshot));
+        return infoSnapshot;
+    }
+
+    private void logAppFullyDrawn(WindowingModeTransitionInfoSnapshot info) {
+        if (info.type != TYPE_TRANSITION_WARM_LAUNCH && info.type != TYPE_TRANSITION_COLD_LAUNCH) {
+            return;
+        }
+
+        StringBuilder sb = mStringBuilder;
+        sb.setLength(0);
+        sb.append("Fully drawn ");
+        sb.append(info.launchedActivityShortComponentName);
+        sb.append(": ");
+        TimeUtils.formatDuration(info.windowsFullyDrawnDelayMs, sb);
+        Log.i(TAG, sb.toString());
+    }
+
+    void logActivityStart(Intent intent, ProcessRecord callerApp, ActivityRecord r,
+            int callingUid, String callingPackage, int callingUidProcState,
+            boolean callingUidHasAnyVisibleWindow,
+            int realCallingUid, int realCallingUidProcState,
+            boolean realCallingUidHasAnyVisibleWindow,
+            int targetUid, String targetPackage, int targetUidProcState,
+            boolean targetUidHasAnyVisibleWindow, String targetWhitelistTag,
+            boolean comingFromPendingIntent) {
+
+        final long nowElapsed = SystemClock.elapsedRealtime();
+        final long nowUptime = SystemClock.uptimeMillis();
+        final LogMaker builder = new LogMaker(ACTION_ACTIVITY_START);
+        builder.setTimestamp(System.currentTimeMillis());
+        builder.addTaggedData(FIELD_CALLING_UID, callingUid);
+        builder.addTaggedData(FIELD_CALLING_PACKAGE_NAME, callingPackage);
+        builder.addTaggedData(FIELD_CALLING_UID_PROC_STATE,
+                processStateAmToProto(callingUidProcState));
+        builder.addTaggedData(FIELD_CALLING_UID_HAS_ANY_VISIBLE_WINDOW,
+                callingUidHasAnyVisibleWindow ? 1 : 0);
+        builder.addTaggedData(FIELD_REAL_CALLING_UID, realCallingUid);
+        builder.addTaggedData(FIELD_REAL_CALLING_UID_PROC_STATE,
+                processStateAmToProto(realCallingUidProcState));
+        builder.addTaggedData(FIELD_REAL_CALLING_UID_HAS_ANY_VISIBLE_WINDOW,
+                realCallingUidHasAnyVisibleWindow ? 1 : 0);
+        builder.addTaggedData(FIELD_TARGET_UID, targetUid);
+        builder.addTaggedData(FIELD_TARGET_PACKAGE_NAME, targetPackage);
+        builder.addTaggedData(FIELD_TARGET_UID_PROC_STATE,
+                processStateAmToProto(targetUidProcState));
+        builder.addTaggedData(FIELD_TARGET_UID_HAS_ANY_VISIBLE_WINDOW,
+                targetUidHasAnyVisibleWindow ? 1 : 0);
+        builder.addTaggedData(FIELD_TARGET_WHITELIST_TAG, targetWhitelistTag);
+        builder.addTaggedData(FIELD_TARGET_SHORT_COMPONENT_NAME, r.shortComponentName);
+        builder.addTaggedData(FIELD_COMING_FROM_PENDING_INTENT, comingFromPendingIntent ? 1 : 0);
+        builder.addTaggedData(FIELD_INTENT_ACTION, intent.getAction());
+        if (callerApp != null) {
+            builder.addTaggedData(FIELD_PROCESS_RECORD_PROCESS_NAME, callerApp.processName);
+            builder.addTaggedData(FIELD_PROCESS_RECORD_CUR_PROC_STATE,
+                    processStateAmToProto(callerApp.curProcState));
+            builder.addTaggedData(FIELD_PROCESS_RECORD_HAS_CLIENT_ACTIVITIES,
+                    callerApp.hasClientActivities ? 1 : 0);
+            builder.addTaggedData(FIELD_PROCESS_RECORD_HAS_FOREGROUND_SERVICES,
+                    callerApp.hasForegroundServices() ? 1 : 0);
+            builder.addTaggedData(FIELD_PROCESS_RECORD_HAS_FOREGROUND_ACTIVITIES,
+                    callerApp.foregroundActivities ? 1 : 0);
+            builder.addTaggedData(FIELD_PROCESS_RECORD_HAS_TOP_UI, callerApp.hasTopUi ? 1 : 0);
+            builder.addTaggedData(FIELD_PROCESS_RECORD_HAS_OVERLAY_UI,
+                    callerApp.hasOverlayUi ? 1 : 0);
+            builder.addTaggedData(FIELD_PROCESS_RECORD_PENDING_UI_CLEAN,
+                    callerApp.pendingUiClean ? 1 : 0);
+            if (callerApp.interactionEventTime != 0) {
+                builder.addTaggedData(FIELD_PROCESS_RECORD_MILLIS_SINCE_LAST_INTERACTION_EVENT,
+                        (nowElapsed - callerApp.interactionEventTime));
+            }
+            if (callerApp.fgInteractionTime != 0) {
+                builder.addTaggedData(FIELD_PROCESS_RECORD_MILLIS_SINCE_FG_INTERACTION,
+                        (nowElapsed - callerApp.fgInteractionTime));
+            }
+            if (callerApp.whenUnimportant != 0) {
+                builder.addTaggedData(FIELD_PROCESS_RECORD_MILLIS_SINCE_UNIMPORTANT,
+                        (nowUptime - callerApp.whenUnimportant));
+            }
+        }
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_LAUNCH_MODE, r.info.launchMode);
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_TARGET_ACTIVITY, r.info.targetActivity);
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_FLAGS, r.info.flags);
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_REAL_ACTIVITY, r.realActivity.toShortString());
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_SHORT_COMPONENT_NAME, r.shortComponentName);
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_PROCESS_NAME, r.processName);
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_IS_FULLSCREEN, r.fullscreen ? 1 : 0);
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_IS_NO_DISPLAY, r.noDisplay ? 1 : 0);
+        if (r.lastVisibleTime != 0) {
+            builder.addTaggedData(FIELD_ACTIVITY_RECORD_MILLIS_SINCE_LAST_VISIBLE,
+                    (nowUptime - r.lastVisibleTime));
+        }
+        if (r.resultTo != null) {
+            builder.addTaggedData(FIELD_ACTIVITY_RECORD_RESULT_TO_PKG_NAME, r.resultTo.packageName);
+            builder.addTaggedData(FIELD_ACTIVITY_RECORD_RESULT_TO_SHORT_COMPONENT_NAME,
+                    r.resultTo.shortComponentName);
+        }
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_IS_VISIBLE, r.visible ? 1 : 0);
+        builder.addTaggedData(FIELD_ACTIVITY_RECORD_IS_VISIBLE_IGNORING_KEYGUARD,
+                r.visibleIgnoringKeyguard ? 1 : 0);
+        if (r.lastLaunchTime != 0) {
+            builder.addTaggedData(FIELD_ACTIVITY_RECORD_MILLIS_SINCE_LAST_LAUNCH,
+                    (nowUptime - r.lastLaunchTime));
+        }
+        mMetricsLogger.write(builder);
     }
 
     private int getTransitionType(WindowingModeTransitionInfo info) {
@@ -632,7 +862,7 @@ class ActivityMetricsLogger {
         } else if (info.startResult == START_SUCCESS) {
             return TYPE_TRANSITION_COLD_LAUNCH;
         }
-        return -1;
+        return INVALID_TRANSITION_TYPE;
     }
 
     private void logAppStartMemoryStateCapture(WindowingModeTransitionInfoSnapshot info) {
@@ -676,5 +906,47 @@ class ActivityMetricsLogger {
             mArtManagerInternal = LocalServices.getService(ArtManagerInternal.class);
         }
         return mArtManagerInternal;
+    }
+
+    /**
+     * Starts traces for app launch and draw times. We stop the fully drawn trace if its already
+     * active since the app may not have reported fully drawn in the previous launch.
+     *
+     * See {@link android.app.Activity#reportFullyDrawn()}
+     *
+     * @param info
+     * */
+    private void startTraces(WindowingModeTransitionInfo info) {
+        if (info == null) {
+            return;
+        }
+        stopFullyDrawnTraceIfNeeded();
+        int transitionType = getTransitionType(info);
+        if (!info.launchTraceActive && transitionType == TYPE_TRANSITION_WARM_LAUNCH
+                || transitionType == TYPE_TRANSITION_COLD_LAUNCH) {
+            Trace.asyncTraceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "launching: "
+                    + info.launchedActivity.packageName, 0);
+            Trace.asyncTraceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "drawing", 0);
+            mDrawingTraceActive = true;
+            info.launchTraceActive = true;
+        }
+    }
+
+    private void stopLaunchTrace(WindowingModeTransitionInfo info) {
+        if (info == null) {
+            return;
+        }
+        if (info.launchTraceActive) {
+            Trace.asyncTraceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER, "launching: "
+                    + info.launchedActivity.packageName, 0);
+            info.launchTraceActive = false;
+        }
+    }
+
+    void stopFullyDrawnTraceIfNeeded() {
+        if (mDrawingTraceActive) {
+            Trace.asyncTraceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER, "drawing", 0);
+            mDrawingTraceActive = false;
+        }
     }
 }

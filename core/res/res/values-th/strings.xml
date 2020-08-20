@@ -1026,9 +1026,9 @@
     <string name="add_contact_desc" msgid="4830217847004590345">"เพิ่มในรายชื่อติดต่อ"</string>
     <string name="view_calendar" msgid="979609872939597838">"ดู"</string>
     <string name="view_calendar_desc" msgid="5828320291870344584">"ดูเวลาที่เลือกในปฏิทิน"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"กำหนดการ"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"ตั้งเวลา"</string>
     <string name="add_calendar_event_desc" msgid="4326891793260687388">"ตั้งเวลากิจกรรมสำหรับเวลาที่เลือก"</string>
-    <string name="view_flight" msgid="7691640491425680214">"แทร็ก"</string>
+    <string name="view_flight" msgid="7691640491425680214">"ติดตาม"</string>
     <string name="view_flight_desc" msgid="3876322502674253506">"ติดตามเที่ยวบินที่เลือก"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"พื้นที่จัดเก็บเหลือน้อย"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"บางฟังก์ชันระบบอาจไม่ทำงาน"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi เชื่อมต่ออินเทอร์เน็ตไม่ได้"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"แตะเพื่อดูตัวเลือก"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"มีการเปลี่ยนแปลงการตั้งค่าฮอตสปอต"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"ย่านความถี่ฮอตสปอตมีการเปลี่ยนแปลง"</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"อุปกรณ์นี้ไม่รองรับค่ากำหนดของคุณเฉพาะสำหรับ 5 GHz เท่านั้น และจะใช้ย่านความถี่ 5 GHz แทน เมื่อใช้ได้"</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"เปลี่ยนเป็น <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"อุปกรณ์จะใช้ <xliff:g id="NEW_NETWORK">%1$s</xliff:g> เมื่อ <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> เข้าถึงอินเทอร์เน็ตไม่ได้ โดยอาจมีค่าบริการ"</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"เปลี่ยนจาก <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> เป็น <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
@@ -1252,7 +1255,7 @@
     <string name="usb_notification_message" msgid="3370903770828407960">"แตะเพื่อดูตัวเลือกเพิ่มเติม"</string>
     <string name="usb_power_notification_message" msgid="4647527153291917218">"กำลังชาร์จอุปกรณ์ที่เชื่อมต่อ แตะเพื่อดูตัวเลือกเพิ่มเติม"</string>
     <string name="usb_unsupported_audio_accessory_title" msgid="3529881374464628084">"ตรวจพบอุปกรณ์เสริมสำหรับเสียงแบบแอนะล็อก"</string>
-    <string name="usb_unsupported_audio_accessory_message" msgid="6309553946441565215">"อุปกรณ์ที่พ่วงไม่สามารถใช้งานร่วมกับโทรศัพท์นี้ แตะเพื่อเรียนรู้เพิ่มเติม"</string>
+    <string name="usb_unsupported_audio_accessory_message" msgid="6309553946441565215">"อุปกรณ์ที่พ่วงไม่สามารถใช้งานร่วมกับโทรศัพท์นี้ แตะเพื่อดูข้อมูลเพิ่มเติม"</string>
     <string name="adb_active_notification_title" msgid="6729044778949189918">"เชื่อมต่อการแก้ไขข้อบกพร่องผ่าน USB แล้ว"</string>
     <string name="adb_active_notification_message" msgid="7463062450474107752">"แตะเพื่อปิดการแก้ไขข้อบกพร่อง USB"</string>
     <string name="adb_active_notification_message" product="tv" msgid="8470296818270110396">"เลือกเพื่อปิดใช้งานการแก้ไขข้อบกพร่อง USB"</string>
@@ -1453,7 +1456,7 @@
     <string name="data_usage_mobile_limit_snoozed_title" msgid="3171402244827034372">"เกินปริมาณเน็ตมือถือที่กำหนดไว้"</string>
     <string name="data_usage_wifi_limit_snoozed_title" msgid="3547771791046344188">"เกินขีดจำกัดของข้อมูล Wi-Fi"</string>
     <string name="data_usage_limit_snoozed_body" msgid="1671222777207603301">"คุณใช้อินเทอร์เน็ตเกินไป <xliff:g id="SIZE">%s</xliff:g> จากปริมาณที่กำหนดไว้"</string>
-    <string name="data_usage_restricted_title" msgid="5965157361036321914">"จำกัดข้อมูลแบ็กกราวด์"</string>
+    <string name="data_usage_restricted_title" msgid="5965157361036321914">"จำกัดอินเทอร์เน็ตที่ใช้งานอยู่เบื้องหลัง"</string>
     <string name="data_usage_restricted_body" msgid="469866376337242726">"แตะเพื่อนำข้อจำกัดออก"</string>
     <string name="data_usage_rapid_title" msgid="1809795402975261331">"ปริมาณการใช้เน็ตมือถือสูง"</string>
     <string name="data_usage_rapid_body" msgid="6897825788682442715">"แอปของคุณใช้อินเทอร์เน็ตมากกว่าปกติ"</string>

@@ -403,11 +403,11 @@
     <string name="permlab_accessLocationExtraCommands" msgid="2836308076720553837">"接收額外的位置提供者指令"</string>
     <string name="permdesc_accessLocationExtraCommands" msgid="6078307221056649927">"允許應用程式存取額外的位置提供者指令。這項設定可能會使應用程式干擾 GPS 或其他位置來源的運作。"</string>
     <string name="permlab_accessFineLocation" msgid="251034415460950944">"存取精確位置 (根據 GPS 和網絡)"</string>
-    <string name="permdesc_accessFineLocation" msgid="5821994817969957884">"此應用程式可以根據 GPS 或網絡位置來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的手機必須支援並啟用這些位置資訊服務，應用程式方可使用這項功能。這可能會增加耗電量。"</string>
+    <string name="permdesc_accessFineLocation" msgid="5821994817969957884">"此應用程式可以根據 GPS 或網絡位置來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的手機必須支援並啟用這些定位服務，應用程式方可使用這項功能。這可能會增加耗電量。"</string>
     <string name="permlab_accessCoarseLocation" msgid="7715277613928539434">"存取約略位置 (根據網絡)"</string>
-    <string name="permdesc_accessCoarseLocation" product="tablet" msgid="3373266766487862426">"此應用程式可以根據您的網絡來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的平板電腦必須支援並啟用這些位置資訊服務，應用程式方可使用這項功能。"</string>
-    <string name="permdesc_accessCoarseLocation" product="tv" msgid="1884022719818788511">"此應用程式可以根據您的網絡來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的電視必須支援並啟用這些位置資訊服務，應用程式方可使用這項功能。"</string>
-    <string name="permdesc_accessCoarseLocation" product="default" msgid="7788009094906196995">"此應用程式可以根據您的網絡來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的手機必須支援並啟用這些位置資訊服務，應用程式方可使用這項功能。"</string>
+    <string name="permdesc_accessCoarseLocation" product="tablet" msgid="3373266766487862426">"此應用程式可以根據您的網絡來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的平板電腦必須支援並啟用這些定位服務，應用程式方可使用這項功能。"</string>
+    <string name="permdesc_accessCoarseLocation" product="tv" msgid="1884022719818788511">"此應用程式可以根據您的網絡來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的電視必須支援並啟用這些定位服務，應用程式方可使用這項功能。"</string>
+    <string name="permdesc_accessCoarseLocation" product="default" msgid="7788009094906196995">"此應用程式可以根據您的網絡來源 (例如手機訊號塔和 Wi-Fi 網絡) 取得您的位置。您的手機必須支援並啟用這些定位服務，應用程式方可使用這項功能。"</string>
     <string name="permlab_modifyAudioSettings" msgid="6095859937069146086">"更改音效設定"</string>
     <string name="permdesc_modifyAudioSettings" msgid="3522565366806248517">"允許應用程式修改全域音頻設定，例如音量和用於輸出的喇叭。"</string>
     <string name="permlab_recordAudio" msgid="3876049771427466323">"錄製音效"</string>
@@ -1020,7 +1020,7 @@
     <string name="map_desc" msgid="1836995341943772348">"搵出指定地址"</string>
     <string name="browse" msgid="1245903488306147205">"開啟"</string>
     <string name="browse_desc" msgid="8220976549618935044">"打開指定網址"</string>
-    <string name="sms" msgid="4560537514610063430">"短訊"</string>
+    <string name="sms" msgid="4560537514610063430">"發短訊"</string>
     <string name="sms_desc" msgid="7526588350969638809">"Send 短訊去指定電話號碼"</string>
     <string name="add_contact" msgid="7867066569670597203">"新增"</string>
     <string name="add_contact_desc" msgid="4830217847004590345">"加入通訊錄"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi 並未連接互聯網"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"輕按即可查看選項"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"您的熱點設定變更"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"您的熱點頻段已變更。"</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"此裝置不支援只限 5 GHz 的偏好設定，但會在 5 GHz 頻段可用時採用。"</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"已切換至<xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"裝置會在 <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> 無法連線至互聯網時使用<xliff:g id="NEW_NETWORK">%1$s</xliff:g> (可能需要支付相關費用)。"</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"已從<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g>切換至<xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
@@ -1736,7 +1739,7 @@
     <string name="zen_mode_forever_dnd" msgid="3792132696572189081">"直至您關閉「請勿騷擾」功能"</string>
     <string name="zen_mode_rule_name_combination" msgid="191109939968076477">"<xliff:g id="FIRST">%1$s</xliff:g>/<xliff:g id="REST">%2$s</xliff:g>"</string>
     <string name="toolbar_collapse_description" msgid="2821479483960330739">"收合"</string>
-    <string name="zen_mode_feature_name" msgid="5254089399895895004">"請勿干擾"</string>
+    <string name="zen_mode_feature_name" msgid="5254089399895895004">"請勿騷擾"</string>
     <string name="zen_mode_downtime_feature_name" msgid="2626974636779860146">"休息時間"</string>
     <string name="zen_mode_default_weeknights_name" msgid="3081318299464998143">"平日夜間"</string>
     <string name="zen_mode_default_weekends_name" msgid="2786495801019345244">"週末"</string>

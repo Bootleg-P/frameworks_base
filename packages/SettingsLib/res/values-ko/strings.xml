@@ -135,7 +135,7 @@
     <string name="tether_settings_title_usb_bluetooth" msgid="5355828977109785001">"테더링"</string>
     <string name="tether_settings_title_all" msgid="8356136101061143841">"테더링 및 휴대용 핫스팟"</string>
     <string name="managed_user_title" msgid="8109605045406748842">"모든 직장 앱"</string>
-    <string name="user_guest" msgid="8475274842845401871">"손님"</string>
+    <string name="user_guest" msgid="8475274842845401871">"게스트"</string>
     <string name="unknown" msgid="1592123443519355854">"알 수 없음"</string>
     <string name="running_process_item_user_label" msgid="3129887865552025943">"사용자: <xliff:g id="USER_NAME">%1$s</xliff:g>"</string>
     <string name="launch_defaults_some" msgid="313159469856372621">"일부 기본값이 설정됨"</string>
@@ -441,7 +441,7 @@
     <string name="cancel" msgid="6859253417269739139">"취소"</string>
     <string name="okay" msgid="1997666393121016642">"확인"</string>
     <string name="zen_mode_enable_dialog_turn_on" msgid="8287824809739581837">"켜기"</string>
-    <string name="zen_mode_settings_turn_on_dialog_title" msgid="2297134204747331078">"알림 일시중지 사용 설정"</string>
+    <string name="zen_mode_settings_turn_on_dialog_title" msgid="2297134204747331078">"방해 금지 모드 사용 설정"</string>
     <string name="zen_mode_settings_summary_off" msgid="6119891445378113334">"사용 안함"</string>
     <string name="zen_interruption_level_priority" msgid="2078370238113347720">"중요 알림만"</string>
     <string name="zen_mode_and_condition" msgid="4927230238450354412">"<xliff:g id="ZEN_MODE">%1$s</xliff:g>. <xliff:g id="EXIT_CONDITION">%2$s</xliff:g>"</string>

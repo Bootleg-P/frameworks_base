@@ -1254,16 +1254,13 @@ class ActivityStack<T extends StackWindowController> extends ConfigurationContai
                 + " callers=" + Debug.getCallers(5));
         r.setState(RESUMED, "minimalResumeActivityLocked");
         r.completeResumeLocked();
-        mStackSupervisor.getLaunchTimeTracker().setLaunchTime(r);
         if (DEBUG_SAVED_STATE) Slog.i(TAG_SAVED_STATE,
                 "Launch completed; removing icicle of " + r.icicle);
     }
 
     private void clearLaunchTime(ActivityRecord r) {
         // Make sure that there is no activity waiting for this to launch.
-        if (mStackSupervisor.mWaitingActivityLaunched.isEmpty()) {
-            r.displayStartTime = r.fullyDrawnStartTime = 0;
-        } else {
+        if (!mStackSupervisor.mWaitingActivityLaunched.isEmpty()) {
             mStackSupervisor.removeTimeoutsForActivityLocked(r);
             mStackSupervisor.scheduleIdleTimeoutLocked(r);
         }
@@ -1449,7 +1446,7 @@ class ActivityStack<T extends StackWindowController> extends ConfigurationContai
         prev.getTask().touchActiveTime();
         clearLaunchTime(prev);
 
-        mStackSupervisor.getLaunchTimeTracker().stopFullyDrawnTraceIfNeeded(getWindowingMode());
+        mStackSupervisor.getActivityMetricsLogger().stopFullyDrawnTraceIfNeeded();
 
         mService.updateCpuStats();
 
@@ -1654,6 +1651,16 @@ class ActivityStack<T extends StackWindowController> extends ConfigurationContai
     void addToStopping(ActivityRecord r, boolean scheduleIdle, boolean idleDelayed) {
         if (!mStackSupervisor.mStoppingActivities.contains(r)) {
             mStackSupervisor.mStoppingActivities.add(r);
+
+            // Some activity is waiting for another activity to become visible before it's being
+            // stopped, which means that we also want to wait with stopping this one to avoid
+            // flickers.
+            if (!mStackSupervisor.mActivitiesWaitingForVisibleActivity.isEmpty()
+                    && !mStackSupervisor.mActivitiesWaitingForVisibleActivity.contains(r)) {
+                if (DEBUG_SWITCH) Slog.i(TAG_SWITCH, "adding to waiting visible activity=" + r
+                        + " existing=" + mStackSupervisor.mActivitiesWaitingForVisibleActivity);
+                mStackSupervisor.mActivitiesWaitingForVisibleActivity.add(r);
+            }
         }
 
         // If we already have a few activities waiting to stop, then give up
@@ -2487,7 +2494,9 @@ class ActivityStack<T extends StackWindowController> extends ConfigurationContai
 
         if (prev != null && prev != next) {
             if (!mStackSupervisor.mActivitiesWaitingForVisibleActivity.contains(prev)
-                    && next != null && !next.nowVisible) {
+                    && next != null && !next.nowVisible
+                    && checkKeyguardVisibility(next, true /* shouldBeVisible */,
+                            next.isTopRunningActivity())) {
                 mStackSupervisor.mActivitiesWaitingForVisibleActivity.add(prev);
                 if (DEBUG_SWITCH) Slog.v(TAG_SWITCH,
                         "Resuming top, waiting visible to hide: " + prev);

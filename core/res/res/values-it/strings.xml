@@ -134,7 +134,7 @@
   </string-array>
     <string name="wifi_calling_off_summary" msgid="8720659586041656098">"Non attiva"</string>
     <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"Rete preferita: Wi-Fi"</string>
-    <string name="wfc_mode_cellular_preferred_summary" msgid="1988279625335345908">"Modalità preferita: dati mobili"</string>
+    <string name="wfc_mode_cellular_preferred_summary" msgid="1988279625335345908">"Rete preferita: dati mobili"</string>
     <string name="wfc_mode_wifi_only_summary" msgid="2379919155237869320">"Solo Wi-Fi"</string>
     <string name="cfTemplateNotForwarded" msgid="1683685883841272560">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: inoltro non effettuato"</string>
     <string name="cfTemplateForwarded" msgid="1302922117498590521">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: <xliff:g id="DIALING_NUMBER">{1}</xliff:g>"</string>
@@ -272,31 +272,31 @@
     <string name="managed_profile_label" msgid="8947929265267690522">"Passa a profilo di lavoro"</string>
     <string name="permgrouplab_contacts" msgid="3657758145679177612">"Contatti"</string>
     <string name="permgroupdesc_contacts" msgid="6951499528303668046">"accedere ai contatti"</string>
-    <string name="permgrouprequest_contacts" msgid="6032805601881764300">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai tuoi contatti?"</string>
+    <string name="permgrouprequest_contacts" msgid="6032805601881764300">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai tuoi contatti?"</string>
     <string name="permgrouplab_location" msgid="7275582855722310164">"Geolocalizzazione"</string>
     <string name="permgroupdesc_location" msgid="1346617465127855033">"accedere alla posizione di questo dispositivo"</string>
-    <string name="permgrouprequest_location" msgid="3788275734953323491">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione di questo dispositivo?"</string>
+    <string name="permgrouprequest_location" msgid="3788275734953323491">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione di questo dispositivo?"</string>
     <string name="permgrouplab_calendar" msgid="5863508437783683902">"Calendario"</string>
     <string name="permgroupdesc_calendar" msgid="3889615280211184106">"accedere al calendario"</string>
-    <string name="permgrouprequest_calendar" msgid="289900767793189421">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere al tuo calendario?"</string>
+    <string name="permgrouprequest_calendar" msgid="289900767793189421">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere al tuo calendario?"</string>
     <string name="permgrouplab_sms" msgid="228308803364967808">"SMS"</string>
     <string name="permgroupdesc_sms" msgid="4656988620100940350">"inviare e visualizzare SMS"</string>
-    <string name="permgrouprequest_sms" msgid="7168124215838204719">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviare e visualizzare SMS?"</string>
+    <string name="permgrouprequest_sms" msgid="7168124215838204719">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviare e visualizzare SMS?"</string>
     <string name="permgrouplab_storage" msgid="1971118770546336966">"Archiviazione"</string>
     <string name="permgroupdesc_storage" msgid="637758554581589203">"accedere a foto, contenuti multimediali e file sul dispositivo"</string>
     <string name="permgrouprequest_storage" msgid="7885942926944299560">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a foto, contenuti multimediali e file memorizzati sul dispositivo?"</string>
     <string name="permgrouplab_microphone" msgid="171539900250043464">"Microfono"</string>
     <string name="permgroupdesc_microphone" msgid="4988812113943554584">"registrare audio"</string>
-    <string name="permgrouprequest_microphone" msgid="9167492350681916038">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di registrare audio?"</string>
+    <string name="permgrouprequest_microphone" msgid="9167492350681916038">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di registrare audio?"</string>
     <string name="permgrouplab_camera" msgid="4820372495894586615">"Fotocamera"</string>
     <string name="permgroupdesc_camera" msgid="3250611594678347720">"scattare foto e registrare video"</string>
     <string name="permgrouprequest_camera" msgid="1299833592069671756">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di scattare foto e registrare video?"</string>
     <string name="permgrouplab_calllog" msgid="8798646184930388160">"Registri chiamate"</string>
     <string name="permgroupdesc_calllog" msgid="3006237336748283775">"leggere e scrivere il registro chiamate del telefono"</string>
-    <string name="permgrouprequest_calllog" msgid="8487355309583773267">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai registri chiamate del tuo telefono?"</string>
+    <string name="permgrouprequest_calllog" msgid="8487355309583773267">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai registri chiamate del tuo telefono?"</string>
     <string name="permgrouplab_phone" msgid="5229115638567440675">"Telefono"</string>
     <string name="permgroupdesc_phone" msgid="6234224354060641055">"eseguire e gestire le telefonate"</string>
-    <string name="permgrouprequest_phone" msgid="9166979577750581037">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di effettuare e gestire telefonate?"</string>
+    <string name="permgrouprequest_phone" msgid="9166979577750581037">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di effettuare e gestire telefonate?"</string>
     <string name="permgrouplab_sensors" msgid="416037179223226722">"Sensori per il corpo"</string>
     <string name="permgroupdesc_sensors" msgid="7147968539346634043">"accedere ai dati dei sensori relativi ai tuoi parametri vitali"</string>
     <string name="permgrouprequest_sensors" msgid="6349806962814556786">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori relativi ai parametri vitali?"</string>
@@ -779,7 +779,7 @@
     <string name="lockscreen_forgot_pattern_button_text" msgid="2626999449610695930">"Hai dimenticato la sequenza?"</string>
     <string name="lockscreen_glogin_forgot_pattern" msgid="2588521501166032747">"Sblocco account"</string>
     <string name="lockscreen_glogin_too_many_attempts" msgid="2751368605287288808">"Troppi tentativi di inserimento della sequenza"</string>
-    <string name="lockscreen_glogin_instructions" msgid="3931816256100707784">"Per sbloccare, accedi tramite il tuo account Google."</string>
+    <string name="lockscreen_glogin_instructions" msgid="3931816256100707784">"Per sbloccare, accedi tramite il tuo Account Google."</string>
     <string name="lockscreen_glogin_username_hint" msgid="8846881424106484447">"Nome utente (email)"</string>
     <string name="lockscreen_glogin_password_hint" msgid="5958028383954738528">"Password"</string>
     <string name="lockscreen_glogin_submit_button" msgid="7130893694795786300">"Accedi"</string>
@@ -1012,7 +1012,7 @@
     <string name="deleteText" msgid="6979668428458199034">"Elimina"</string>
     <string name="inputMethod" msgid="1653630062304567879">"Metodo inserimento"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"Azioni testo"</string>
-    <string name="email" msgid="4560673117055050403">"Invia una email"</string>
+    <string name="email" msgid="4560673117055050403">"Invia email"</string>
     <string name="email_desc" msgid="3638665569546416795">"Invia un\'email all\'indirizzo selezionato"</string>
     <string name="dial" msgid="1253998302767701559">"Chiama"</string>
     <string name="dial_desc" msgid="6573723404985517250">"Chiama il numero di telefono selezionato"</string>
@@ -1113,7 +1113,7 @@
     <string name="app_upgrading_toast" msgid="3008139776215597053">"Upgrade dell\'app <xliff:g id="APPLICATION">%1$s</xliff:g>…"</string>
     <string name="android_upgrading_apk" msgid="7904042682111526169">"Ottimizzazione applicazione <xliff:g id="NUMBER_0">%1$d</xliff:g> di <xliff:g id="NUMBER_1">%2$d</xliff:g>."</string>
     <string name="android_preparing_apk" msgid="8162599310274079154">"<xliff:g id="APPNAME">%1$s</xliff:g> in preparazione."</string>
-    <string name="android_upgrading_starting_apps" msgid="451464516346926713">"Avvio applicazioni."</string>
+    <string name="android_upgrading_starting_apps" msgid="451464516346926713">"Avvio app."</string>
     <string name="android_upgrading_complete" msgid="1405954754112999229">"Conclusione dell\'avvio."</string>
     <string name="heavy_weight_notification" msgid="9087063985776626166">"<xliff:g id="APP">%1$s</xliff:g> in esecuzione"</string>
     <string name="heavy_weight_notification_detail" msgid="2304833848484424985">"Tocca per tornare al gioco"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"La rete Wi-Fi non ha accesso a Internet"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Tocca per le opzioni"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Modifiche alle tue impostazioni dell\'hotspot"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"La tua banda di hotspot è cambiata."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Questo dispositivo non supporta la tua preferenza esclusiva per 5 GHz. Utilizzerà invece la banda a 5 GHz solo quando è disponibile."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Passato a <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"Il dispositivo utilizza <xliff:g id="NEW_NETWORK">%1$s</xliff:g> quando <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> non ha accesso a Internet. Potrebbero essere applicati costi."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Passato da <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> a <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
@@ -1529,7 +1532,7 @@
     <string name="kg_invalid_puk" msgid="3638289409676051243">"Inserisci di nuovo il codice PUK corretto. Ripetuti tentativi comportano la disattivazione definitiva della scheda SIM."</string>
     <string name="kg_invalid_confirm_pin_hint" product="default" msgid="7003469261464593516">"I codici PIN non corrispondono"</string>
     <string name="kg_login_too_many_attempts" msgid="6486842094005698475">"Troppi tentativi di inserimento della sequenza"</string>
-    <string name="kg_login_instructions" msgid="1100551261265506448">"Per sbloccare, accedi con il tuo account Google."</string>
+    <string name="kg_login_instructions" msgid="1100551261265506448">"Per sbloccare, accedi con il tuo Account Google."</string>
     <string name="kg_login_username_hint" msgid="5718534272070920364">"Nome utente (email)"</string>
     <string name="kg_login_password_hint" msgid="9057289103827298549">"Password"</string>
     <string name="kg_login_submit_button" msgid="5355904582674054702">"Accedi"</string>
@@ -1737,7 +1740,7 @@
     <string name="zen_mode_rule_name_combination" msgid="191109939968076477">"<xliff:g id="FIRST">%1$s</xliff:g>/<xliff:g id="REST">%2$s</xliff:g>"</string>
     <string name="toolbar_collapse_description" msgid="2821479483960330739">"Comprimi"</string>
     <string name="zen_mode_feature_name" msgid="5254089399895895004">"Non disturbare"</string>
-    <string name="zen_mode_downtime_feature_name" msgid="2626974636779860146">"Tempo di inattività"</string>
+    <string name="zen_mode_downtime_feature_name" msgid="2626974636779860146">"Tempo di riposo"</string>
     <string name="zen_mode_default_weeknights_name" msgid="3081318299464998143">"Notte di un giorno feriale"</string>
     <string name="zen_mode_default_weekends_name" msgid="2786495801019345244">"Fine settimana"</string>
     <string name="zen_mode_default_events_name" msgid="8158334939013085363">"Evento"</string>

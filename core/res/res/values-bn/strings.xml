@@ -301,7 +301,7 @@
     <string name="permgroupdesc_sensors" msgid="7147968539346634043">"আপনার অত্যাবশ্যক লক্ষণগুলির সম্পর্কে সেন্সর ডেটা অ্যাক্সেস করে"</string>
     <string name="permgrouprequest_sensors" msgid="6349806962814556786">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে সেন্সর থেকে আপনার ভাইটাল সাইনের ডেটা অ্যাক্সেস করতে দেবেন?"</string>
     <string name="capability_title_canRetrieveWindowContent" msgid="3901717936930170320">"উইন্ডোর কন্টেন্ট পুনরুদ্ধার করে"</string>
-    <string name="capability_desc_canRetrieveWindowContent" msgid="3772225008605310672">"আপনি ইন্টারঅ্যাক্ট করছেন এমন একটি উইন্ডোর সামগ্রীকে সযত্নে নিরীক্ষণ করে৷"</string>
+    <string name="capability_desc_canRetrieveWindowContent" msgid="3772225008605310672">"ব্যবহার করছেন এমন একটি উইন্ডোর কন্টেন্ট নিরীক্ষণ করে৷"</string>
     <string name="capability_title_canRequestTouchExploration" msgid="3108723364676667320">"স্পর্শের মাধ্যমে অন্বেষণ করা চালু করুন"</string>
     <string name="capability_desc_canRequestTouchExploration" msgid="7543249041581408313">"যে আইটেমগুলিতে আলতো চেপেছেন সেগুলি সশব্দে বলবে এবং ইঙ্গিতগুলি ব্যবহার করে স্ক্রিন অন্বেষণ করা যাবে৷"</string>
     <string name="capability_title_canRequestFilterKeyEvents" msgid="2103440391902412174">"আপনার লেখা পাঠ্যকে নিরীক্ষণ করে"</string>
@@ -587,7 +587,7 @@
     <string name="policylab_resetPassword" msgid="4934707632423915395">"স্ক্রিন লক পরিবর্তন করুন"</string>
     <string name="policydesc_resetPassword" msgid="1278323891710619128">"স্ক্রিন লক পরিবর্তন করুন৷"</string>
     <string name="policylab_forceLock" msgid="2274085384704248431">"স্ক্রিনটি লক করে"</string>
-    <string name="policydesc_forceLock" msgid="1141797588403827138">"স্ক্রিন কখন কিভাবে লক হবে তা নিয়ন্ত্রণ করে৷"</string>
+    <string name="policydesc_forceLock" msgid="1141797588403827138">"স্ক্রিন কখন কীভাবে লক হবে তা নিয়ন্ত্রণ করে৷"</string>
     <string name="policylab_wipeData" msgid="3910545446758639713">"সমস্ত ডেটা মুছে দেয়"</string>
     <string name="policydesc_wipeData" product="tablet" msgid="4306184096067756876">"ফ্যাক্টরি ডেটা আবার সেট কার্য সম্পাদনার দ্বারা কোনো রকম সতর্কতা ছাড়াই ট্যাবলেটের ডেটা মোছে৷"</string>
     <string name="policydesc_wipeData" product="tv" msgid="5816221315214527028">"সতর্কীকরণ ছাড়াই একটি ফ্যাক্টরি ডেটা আবার সেট করার দ্বারা টিভির ডেটা মুছে ফেলে৷"</string>
@@ -1012,23 +1012,23 @@
     <string name="deleteText" msgid="6979668428458199034">"মুছুন"</string>
     <string name="inputMethod" msgid="1653630062304567879">"ইনপুট পদ্ধতি"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"পাঠ্য ক্রিয়াগুলি"</string>
-    <string name="email" msgid="4560673117055050403">"ইমেল"</string>
+    <string name="email" msgid="4560673117055050403">"ইমেল করুন"</string>
     <string name="email_desc" msgid="3638665569546416795">"বেছে নেওয়া আইডিতে ইমেল পাঠান"</string>
-    <string name="dial" msgid="1253998302767701559">"কল"</string>
+    <string name="dial" msgid="1253998302767701559">"কল খুলুন"</string>
     <string name="dial_desc" msgid="6573723404985517250">"বেছে নেওয়া ফোন নম্বরে কল করুন"</string>
-    <string name="map" msgid="5441053548030107189">"ম্যাপ"</string>
+    <string name="map" msgid="5441053548030107189">"ম্যাপ খুলুন"</string>
     <string name="map_desc" msgid="1836995341943772348">"বেছে নেওয়া ঠিকানাটি ম্যাপে দেখুন"</string>
     <string name="browse" msgid="1245903488306147205">"খুলুন"</string>
-    <string name="browse_desc" msgid="8220976549618935044">"বেছে নেওয়া ইউআরএলে যান"</string>
-    <string name="sms" msgid="4560537514610063430">"মেসেজ"</string>
+    <string name="browse_desc" msgid="8220976549618935044">"বেছে নেওয়া ইউআরএল-এ যান"</string>
+    <string name="sms" msgid="4560537514610063430">"মেসেজ করুন"</string>
     <string name="sms_desc" msgid="7526588350969638809">"বেছে নেওয়া ফোন নম্বরে মেসেজ পাঠান"</string>
     <string name="add_contact" msgid="7867066569670597203">"যোগ করুন"</string>
     <string name="add_contact_desc" msgid="4830217847004590345">"পরিচিতিতে যোগ করুন"</string>
     <string name="view_calendar" msgid="979609872939597838">"দেখুন"</string>
     <string name="view_calendar_desc" msgid="5828320291870344584">"বেছে নেওয়া দিনটি ক্যালেন্ডারে দেখুন"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"সময়সূচি"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"সময়সূচি সেট করুন"</string>
     <string name="add_calendar_event_desc" msgid="4326891793260687388">"বেছে নেওয়া সময়ে ইভেন্ট সেট করুন"</string>
-    <string name="view_flight" msgid="7691640491425680214">"ট্র্যাক"</string>
+    <string name="view_flight" msgid="7691640491425680214">"ট্র্যাক করুন"</string>
     <string name="view_flight_desc" msgid="3876322502674253506">"বেছে নেওয়া ফ্লাইট ট্র্যাক করুন"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"স্টোরেজ পূর্ণ হতে চলেছে"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"কিছু কিছু সিস্টেম ক্রিয়াকলাপ কাজ নাও করতে পারে"</string>
@@ -1077,7 +1077,7 @@
     <string name="aerr_restart" msgid="7581308074153624475">"অ্যাপ্লিকেশানটিকে আবার খুলুন"</string>
     <string name="aerr_report" msgid="5371800241488400617">"মতামত জানান"</string>
     <string name="aerr_close" msgid="2991640326563991340">"বন্ধ করুন"</string>
-    <string name="aerr_mute" msgid="1974781923723235953">"ডিভাইসটি পুনরায় আরম্ভ না হওয়া পর্যন্ত নিঃশব্দ করুন"</string>
+    <string name="aerr_mute" msgid="1974781923723235953">"ডিভাইসটি পুনরায় আরম্ভ না হওয়া পর্যন্ত মিউট করুন"</string>
     <string name="aerr_wait" msgid="3199956902437040261">"অপেক্ষা করুন"</string>
     <string name="aerr_close_app" msgid="3269334853724920302">"অ্যাপ্লিকেশান বন্ধ করুন"</string>
     <string name="anr_title" msgid="4351948481459135709"></string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"ওয়াই-ফাই এ ইন্টারনেট অ্যাক্সেস নেই"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"বিকল্পগুলির জন্য আলতো চাপুন"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"আপনার হটস্পট সেটিংসে পরিবর্তনগুলি"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"আপনার হটস্পট ব্যান্ড পরিবর্তন করা হয়েছে।"</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"এই ডিভাইসটি শুধুমাত্র 5GHz এর জন্য আপনার পছন্দ সমর্থন করে না। পরিবর্তে, এই ডিভাইসটি 5GHz ব্যান্ড ব্যবহার করবে।"</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"<xliff:g id="NETWORK_TYPE">%1$s</xliff:g> এ পাল্টানো হয়েছে"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"<xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> এ ইন্টারনেট অ্যাক্সেস না থাকলে <xliff:g id="NEW_NETWORK">%1$s</xliff:g> ব্যবহার করা হয়৷ ডেটা চার্জ প্রযোজ্য৷"</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> থেকে <xliff:g id="NEW_NETWORK">%2$s</xliff:g> এ পাল্টানো হয়েছে"</string>
@@ -1314,7 +1317,7 @@
     <string name="ext_media_status_ejecting" msgid="5463887263101234174">"সরিয়ে ফেলা হচ্ছে..."</string>
     <string name="ext_media_status_formatting" msgid="1085079556538644861">"ফরম্যাট করা হচ্ছে..."</string>
     <string name="ext_media_status_missing" msgid="5638633895221670766">"ঢোকানো হয় নি"</string>
-    <string name="activity_list_empty" msgid="1675388330786841066">"কোনো সমরূপ কার্যকলাপ খুঁজে পাওয়া যায়নি৷"</string>
+    <string name="activity_list_empty" msgid="1675388330786841066">"কোনো সমরূপ অ্যাক্টিভিটি খুঁজে পাওয়া যায়নি৷"</string>
     <string name="permlab_route_media_output" msgid="6243022988998972085">"মিডিয়া আউটপুট রুট করুন"</string>
     <string name="permdesc_route_media_output" msgid="4932818749547244346">"অ্যাপ্লিকেশানটিকে অন্যান্য বহিরাগত ডিভাইসে মিডিয়া আউটপুট রুট করার অনুমতি দেয়৷"</string>
     <string name="permlab_readInstallSessions" msgid="3713753067455750349">"ইনস্টল সেশন পড়ুন"</string>
@@ -1474,7 +1477,7 @@
     <string name="sha256_fingerprint" msgid="4391271286477279263">"SHA-256 আঙ্গুলের ছাপ:"</string>
     <string name="sha1_fingerprint" msgid="7930330235269404581">"SHA-1 আঙ্গুলের ছাপ:"</string>
     <string name="activity_chooser_view_see_all" msgid="4292569383976636200">"সবগুলো দেখুন"</string>
-    <string name="activity_chooser_view_dialog_title_default" msgid="4710013864974040615">"কার্যকলাপ বেছে নিন"</string>
+    <string name="activity_chooser_view_dialog_title_default" msgid="4710013864974040615">"অ্যাক্টিভিটি বেছে নিন"</string>
     <string name="share_action_provider_share_with" msgid="5247684435979149216">"এর সাথে শেয়ার করুন"</string>
     <string name="sending" msgid="3245653681008218030">"পাঠানো হচ্ছে..."</string>
     <string name="launchBrowserDefault" msgid="2057951947297614725">"ব্রাউজার লঞ্চ করতে চান?"</string>
@@ -1808,7 +1811,7 @@
     <string name="suspended_widget_accessibility" msgid="6712143096475264190">"অক্ষম করা <xliff:g id="LABEL">%1$s</xliff:g>"</string>
     <string name="conference_call" msgid="3751093130790472426">"কনফারেন্স কল"</string>
     <string name="tooltip_popup_title" msgid="5253721848739260181">"টুলটিপ"</string>
-    <string name="app_category_game" msgid="5431836943981492993">"গেম্স"</string>
+    <string name="app_category_game" msgid="5431836943981492993">"গেম"</string>
     <string name="app_category_audio" msgid="1659853108734301647">"মিউজিক ও অডিও"</string>
     <string name="app_category_video" msgid="2728726078629384196">"চলচ্চিত্র ও ভিডিওগুলি"</string>
     <string name="app_category_image" msgid="4867854544519846048">"ফটো ও ছবিগুলি"</string>

@@ -209,7 +209,7 @@
     <string name="shutdown_confirm" product="watch" msgid="3490275567476369184">"Сат ће се угасити."</string>
     <string name="shutdown_confirm" product="default" msgid="649792175242821353">"Телефон ће се искључити."</string>
     <string name="shutdown_confirm_question" msgid="2906544768881136183">"Да ли желите да искључите телефон?"</string>
-    <string name="reboot_safemode_title" msgid="7054509914500140361">"Поново покрени систем у безбедном режиму"</string>
+    <string name="reboot_safemode_title" msgid="7054509914500140361">"Рестартуј систем у безбедном режиму"</string>
     <string name="reboot_safemode_confirm" msgid="55293944502784668">"Да ли желите да поново покренете систем у безбедном режиму? Ово ће онемогућити све инсталиране апликације независних произвођача. Оне ће бити враћене када поново покренете систем."</string>
     <string name="recent_tasks_title" msgid="3691764623638127888">"Недавно"</string>
     <string name="no_recent_tasks" msgid="8794906658732193473">"Нема недавних апликација."</string>
@@ -490,11 +490,11 @@
     <string name="permlab_disableKeyguard" msgid="3598496301486439258">"онемогућавање закључавања екрана"</string>
     <string name="permdesc_disableKeyguard" msgid="6034203065077122992">"Дозвољава апликацији да онемогући закључавање тастатуре и све повезане безбедносне мере са лозинкама. На пример, телефон онемогућава закључавање тастатуре при пријему долазног телефонског позива, а затим га поново омогућава по завршетку позива."</string>
     <string name="permlab_useBiometric" msgid="8837753668509919318">"користи биометријски хардвер"</string>
-    <string name="permdesc_useBiometric" msgid="8389855232721612926">"Дозвољава апликацији да користи биометријски хардвер за потврду аутентичности"</string>
+    <string name="permdesc_useBiometric" msgid="8389855232721612926">"Дозвољава апликацији да користи биометријски хардвер за потврду идентитета"</string>
     <string name="permlab_manageFingerprint" msgid="5640858826254575638">"управљај хардвером за отиске прстију"</string>
     <string name="permdesc_manageFingerprint" msgid="178208705828055464">"Дозвољава апликацији да активира методе за додавање и брисање шаблона отисака прстију који ће се користити."</string>
     <string name="permlab_useFingerprint" msgid="3150478619915124905">"користи хардвер за отиске прстију"</string>
-    <string name="permdesc_useFingerprint" msgid="9165097460730684114">"Дозвољава апликацији да користи хардвер за отиске прстију ради потврде аутентичности"</string>
+    <string name="permdesc_useFingerprint" msgid="9165097460730684114">"Дозвољава апликацији да користи хардвер за отиске прстију ради потврде идентитета"</string>
     <string name="fingerprint_acquired_partial" msgid="735082772341716043">"Откривен је делимични отисак прста. Пробајте поново."</string>
     <string name="fingerprint_acquired_insufficient" msgid="4596546021310923214">"Није успела обрада отиска прста. Пробајте поново."</string>
     <string name="fingerprint_acquired_imager_dirty" msgid="1087209702421076105">"Сензор за отиске прстију је прљав. Очистите га и покушајте поново."</string>
@@ -831,7 +831,7 @@
     <string name="factorytest_failed" msgid="5410270329114212041">"Фабричко тестирање није успело"</string>
     <string name="factorytest_not_system" msgid="4435201656767276723">"Радња FACTORY_TEST је подржана само за пакете инсталиране у директоријуму /system/app."</string>
     <string name="factorytest_no_action" msgid="872991874799998561">"Није пронађен ниједан пакет који обезбеђује радњу FACTORY_TEST."</string>
-    <string name="factorytest_reboot" msgid="6320168203050791643">"Поново покрени"</string>
+    <string name="factorytest_reboot" msgid="6320168203050791643">"Рестартуј"</string>
     <string name="js_dialog_title" msgid="1987483977834603872">"На страници на адреси „<xliff:g id="TITLE">%s</xliff:g>“ пише:"</string>
     <string name="js_dialog_title_default" msgid="6961903213729667573">"JavaScript"</string>
     <string name="js_dialog_before_unload_title" msgid="2619376555525116593">"Потврда навигације"</string>
@@ -1036,7 +1036,7 @@
     <string name="email_desc" msgid="3638665569546416795">"Пошаљите имејл на изабрану адресу"</string>
     <string name="dial" msgid="1253998302767701559">"Позови"</string>
     <string name="dial_desc" msgid="6573723404985517250">"Позовите изабрани број телефона"</string>
-    <string name="map" msgid="5441053548030107189">"Мапа"</string>
+    <string name="map" msgid="5441053548030107189">"Прикажи на мапи"</string>
     <string name="map_desc" msgid="1836995341943772348">"Пронађите изабрану адресу"</string>
     <string name="browse" msgid="1245903488306147205">"Отвори"</string>
     <string name="browse_desc" msgid="8220976549618935044">"Отворите изабрани URL"</string>
@@ -1197,6 +1197,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi нема приступ интернету"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Додирните за опције"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Промене подешавања за хотспот"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Опсег хотспота је промењен."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Овај уређај не подржава подешавање само за 5 GHz. Уређај ће користити опсег од 5 GHz када буде доступан."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Прешли сте на тип мреже <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"Уређај користи тип мреже <xliff:g id="NEW_NETWORK">%1$s</xliff:g> када тип мреже <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> нема приступ интернету. Можда ће се наплаћивати трошкови."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Прешли сте са типа мреже <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> на тип мреже <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
@@ -1248,7 +1251,7 @@
     <string name="sim_done_button" msgid="827949989369963775">"Готово"</string>
     <string name="sim_added_title" msgid="3719670512889674693">"SIM картица је додата"</string>
     <string name="sim_added_message" msgid="6599945301141050216">"Рестартујте уређај да бисте могли да приступите мобилној мрежи."</string>
-    <string name="sim_restart_button" msgid="4722407842815232347">"Поново покрени"</string>
+    <string name="sim_restart_button" msgid="4722407842815232347">"Рестартуј"</string>
     <string name="install_carrier_app_notification_title" msgid="9056007111024059888">"Активирајте мобилну услугу"</string>
     <string name="install_carrier_app_notification_text" msgid="3346681446158696001">"Преузмите апликацију мобилног оператера да бисте активирали нови SIM"</string>
     <string name="install_carrier_app_notification_text_app_name" msgid="1196505084835248137">"Преузмите апликацију <xliff:g id="APP_NAME">%1$s</xliff:g> да бисте активирали нову SIM картицу"</string>

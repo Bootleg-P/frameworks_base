@@ -57,7 +57,7 @@
     <string name="usb_accessory_permission_prompt" msgid="2465531696941369047">"อนุญาตให้ <xliff:g id="APPLICATION">%1$s</xliff:g> เข้าถึง <xliff:g id="USB_ACCESSORY">%2$s</xliff:g> ไหม"</string>
     <string name="usb_device_confirm_prompt" msgid="7440562274256843905">"เปิด <xliff:g id="APPLICATION">%1$s</xliff:g> เพื่อจัดการ <xliff:g id="USB_DEVICE">%2$s</xliff:g> ไหม"</string>
     <string name="usb_accessory_confirm_prompt" msgid="4333670517539993561">"เปิด <xliff:g id="APPLICATION">%1$s</xliff:g> เพื่อจัดการ <xliff:g id="USB_ACCESSORY">%2$s</xliff:g> ไหม"</string>
-    <string name="usb_accessory_uri_prompt" msgid="513450621413733343">"แอปพลิเคชันที่ติดตั้งใช้กับอุปกรณ์ USB นี้ไม่ได้ เรียนรู้เพิ่มเติมเกี่ยวกับอุปกรณ์เสริมนี้ที่ <xliff:g id="URL">%1$s</xliff:g>"</string>
+    <string name="usb_accessory_uri_prompt" msgid="513450621413733343">"แอปพลิเคชันที่ติดตั้งใช้กับอุปกรณ์ USB นี้ไม่ได้ ดูข้อมูลเพิ่มเติมเกี่ยวกับอุปกรณ์เสริมนี้ที่ <xliff:g id="URL">%1$s</xliff:g>"</string>
     <string name="title_usb_accessory" msgid="4966265263465181372">"อุปกรณ์เสริม USB"</string>
     <string name="label_view" msgid="6304565553218192990">"ดู"</string>
     <string name="always_use_device" msgid="4015357883336738417">"เปิด <xliff:g id="APPLICATION">%1$s</xliff:g> ทุกครั้งเมื่อเชื่อมต่อกับ <xliff:g id="USB_DEVICE">%2$s</xliff:g>"</string>
@@ -85,7 +85,7 @@
     <string name="accessibility_back" msgid="567011538994429120">"กลับ"</string>
     <string name="accessibility_home" msgid="8217216074895377641">"หน้าแรก"</string>
     <string name="accessibility_menu" msgid="316839303324695949">"เมนู"</string>
-    <string name="accessibility_accessibility_button" msgid="7601252764577607915">"ความสามารถเข้าถึงได้ง่าย"</string>
+    <string name="accessibility_accessibility_button" msgid="7601252764577607915">"การเข้าถึงพิเศษ"</string>
     <string name="accessibility_rotate_button" msgid="7402949513740253006">"หมุนหน้าจอ"</string>
     <string name="accessibility_recent" msgid="5208608566793607626">"ภาพรวม"</string>
     <string name="accessibility_search_light" msgid="1103867596330271848">"ค้นหา"</string>
@@ -399,6 +399,7 @@
     <string name="interruption_level_none_twoline" msgid="3957581548190765889">"ปิดเสียง\nทั้งหมด"</string>
     <string name="interruption_level_priority_twoline" msgid="1564715335217164124">"เฉพาะเรื่อง\nสำคัญ"</string>
     <string name="interruption_level_alarms_twoline" msgid="3266909566410106146">"เฉพาะปลุก\nเท่านั้น"</string>
+    <string name="keyguard_indication_charging_time_wireless" msgid="5376059837186496558">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • กำลังชาร์จแบบไร้สาย (อีก <xliff:g id="CHARGING_TIME_LEFT">%1$s</xliff:g>จะเต็ม)"</string>
     <string name="keyguard_indication_charging_time" msgid="2056340799276374421">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • กำลังชาร์จ (อีก <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> จะเต็ม)"</string>
     <string name="keyguard_indication_charging_time_fast" msgid="7767562163577492332">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • กำลังชาร์จอย่างเร็ว (อีก <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> จะเต็ม)"</string>
     <string name="keyguard_indication_charging_time_slowly" msgid="3769655133567307069">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • กำลังชาร์จอย่างช้าๆ (อีก <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> จะเต็ม)"</string>
@@ -430,7 +431,7 @@
     <string name="user_remove_user_message" msgid="1453218013959498039">"แอปและข้อมูลทั้งหมดของผู้ใช้นี้จะถูกลบ"</string>
     <string name="user_remove_user_remove" msgid="7479275741742178297">"นำออก"</string>
     <string name="battery_saver_notification_title" msgid="8614079794522291840">"เปิดโหมดประหยัดแบตเตอรี่อยู่"</string>
-    <string name="battery_saver_notification_text" msgid="820318788126672692">"ลดการใช้แบตเตอรี่และข้อมูลแบ็กกราวด์"</string>
+    <string name="battery_saver_notification_text" msgid="820318788126672692">"ลดการใช้แบตเตอรี่และอินเทอร์เน็ตที่ใช้งานอยู่เบื้องหลัง"</string>
     <string name="battery_saver_notification_action_text" msgid="132118784269455533">"ปิดโหมดประหยัดแบตเตอรี่"</string>
     <string name="media_projection_dialog_text" msgid="3071431025448218928">"<xliff:g id="APP_SEEKING_PERMISSION">%s</xliff:g> จะเริ่มจับภาพทุกอย่างที่แสดงบนหน้าจอ"</string>
     <string name="media_projection_remember_text" msgid="3103510882172746752">"ไม่ต้องแสดงข้อความนี้อีก"</string>
@@ -480,7 +481,7 @@
     <string name="monitoring_description_do_header_with_name" msgid="5511133708978206460">"<xliff:g id="ORGANIZATION_NAME">%1$s</xliff:g> ใช้ <xliff:g id="DEVICE_OWNER_APP">%2$s</xliff:g> เพื่อจัดการอุปกรณ์"</string>
     <string name="monitoring_description_do_body" msgid="3639594537660975895">"ผู้ดูแลระบบสามารถตรวจสอบและจัดการการตั้งค่า การเข้าถึงของบริษัท แอป ข้อมูลที่เชื่อมโยงกับอุปกรณ์ของคุณ และข้อมูลตำแหน่งของอุปกรณ์"</string>
     <string name="monitoring_description_do_learn_more_separator" msgid="3785251953067436862">" "</string>
-    <string name="monitoring_description_do_learn_more" msgid="1849514470437907421">"เรียนรู้เพิ่มเติม"</string>
+    <string name="monitoring_description_do_learn_more" msgid="1849514470437907421">"ดูข้อมูลเพิ่มเติม"</string>
     <string name="monitoring_description_do_body_vpn" msgid="8255218762488901796">"คุณเชื่อมต่อกับ <xliff:g id="VPN_APP">%1$s</xliff:g> ซึ่งสามารถตรวจสอบกิจกรรมในเครือข่ายของคุณ รวมถึงอีเมล แอป และเว็บไซต์ได้"</string>
     <string name="monitoring_description_vpn_settings_separator" msgid="1933186756733474388">" "</string>
     <string name="monitoring_description_vpn_settings" msgid="6434859242636063861">"เปิดการตั้งค่า VPN"</string>
@@ -522,7 +523,6 @@
     <string name="quick_settings_reset_confirmation_title" msgid="748792586749897883">"ซ่อน <xliff:g id="TILE_LABEL">%1$s</xliff:g> ไหม"</string>
     <string name="quick_settings_reset_confirmation_message" msgid="2235970126803317374">"จะปรากฏอีกครั้งเมื่อคุณเปิดใช้ในการตั้งค่าครั้งถัดไป"</string>
     <string name="quick_settings_reset_confirmation_button" msgid="2660339101868367515">"ซ่อน"</string>
-    <string name="managed_profile_foreground_toast" msgid="5421487114739245972">"คุณกำลังใช้โปรไฟล์งานของคุณ"</string>
     <string name="stream_voice_call" msgid="4410002696470423714">"การโทร"</string>
     <string name="stream_system" msgid="7493299064422163147">"ระบบ"</string>
     <string name="stream_ring" msgid="8213049469184048338">"เสียงเรียกเข้า"</string>
@@ -644,7 +644,7 @@
     <string name="battery_panel_title" msgid="7944156115535366613">"การใช้งานแบตเตอรี่"</string>
     <string name="battery_detail_charging_summary" msgid="1279095653533044008">"ไม่สามารถใช้โหมดประหยัดแบตเตอรี่ระหว่างการชาร์จ"</string>
     <string name="battery_detail_switch_title" msgid="6285872470260795421">"โหมดประหยัดแบตเตอรี่"</string>
-    <string name="battery_detail_switch_summary" msgid="9049111149407626804">"ลดประสิทธิภาพการทำงานและข้อมูลแบ็กกราวด์"</string>
+    <string name="battery_detail_switch_summary" msgid="9049111149407626804">"ลดประสิทธิภาพการทำงานและอินเทอร์เน็ตที่ใช้งานอยู่เบื้องหลัง"</string>
     <string name="keyboard_key_button_template" msgid="6230056639734377300">"ปุ่ม <xliff:g id="NAME">%1$s</xliff:g>"</string>
     <string name="keyboard_key_home" msgid="2243500072071305073">"Home"</string>
     <string name="keyboard_key_back" msgid="2337450286042721351">"กลับ"</string>
@@ -799,6 +799,9 @@
     <string name="high_temp_title" msgid="4589508026407318374">"โทรศัพท์เริ่มเครื่องร้อน"</string>
     <string name="high_temp_notif_message" msgid="5642466103153429279">"ฟีเจอร์บางอย่างจะใช้งานได้จำกัดขณะโทรศัพท์ลดอุณหภูมิลง"</string>
     <string name="high_temp_dialog_message" msgid="6840700639374113553">"โทรศัพท์จะพยายามลดอุณหภูมิลงโดยอัตโนมัติ คุณยังสามารถใช้โทรศัพท์ได้ แต่โทรศัพท์อาจทำงานช้าลง\n\nโทรศัพท์จะทำงานตามปกติเมื่อเย็นลงแล้ว"</string>
+    <string name="high_temp_alarm_title" msgid="442812040762745210">"ถอดปลั๊กที่ชาร์จ"</string>
+    <string name="high_temp_alarm_notify_message" msgid="519359725058131592">"พบปัญหาในการชาร์จอุปกรณ์นี้ โปรดถอดปลั๊กอะแดปเตอร์ด้วยความระมัดระวังเพราะสายอาจร้อน"</string>
+    <string name="high_temp_alarm_help_care_steps" msgid="3631075329318070726">"ดูขั้นตอนในการดูแลรักษา"</string>
     <string name="lockscreen_shortcut_left" msgid="2182769107618938629">"ทางลัดทางซ้าย"</string>
     <string name="lockscreen_shortcut_right" msgid="3328683699505226536">"ทางลัดทางขวา"</string>
     <string name="lockscreen_unlock_left" msgid="2043092136246951985">"ทางลัดทางซ้ายปลดล็อกได้ด้วย"</string>

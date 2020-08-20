@@ -1354,6 +1354,9 @@ public final class ViewRootImpl implements ViewParent,
             }
 
             if (mStopped) {
+                if (mSurfaceHolder != null) {
+                    notifySurfaceDestroyed();
+                }
                 mSurface.release();
             }
         }
@@ -1641,7 +1644,6 @@ public final class ViewRootImpl implements ViewParent,
 
     private Rect ensureInsetsNonNegative(Rect insets, String kind) {
         if (insets.left < 0  || insets.top < 0  || insets.right < 0  || insets.bottom < 0) {
-            Log.wtf(mTag, "Negative " + kind + "Insets: " + insets + ", mFirst=" + mFirst);
             return new Rect(Math.max(0, insets.left),
                     Math.max(0, insets.top),
                     Math.max(0, insets.right),
@@ -2104,7 +2106,7 @@ public final class ViewRootImpl implements ViewParent,
                                         & View.PFLAG_REQUEST_TRANSPARENT_REGIONS) == 0) {
                                     // Don't pre-allocate if transparent regions
                                     // are requested as they may not be needed
-                                    mSurface.allocateBuffers();
+                                    mAttachInfo.mThreadedRenderer.allocateBuffers(mSurface);
                                 }
                             } catch (OutOfResourcesException e) {
                                 handleOutOfResourcesException(e);
@@ -2228,13 +2230,7 @@ public final class ViewRootImpl implements ViewParent,
                     }
                     mIsCreating = false;
                 } else if (hadSurface) {
-                    mSurfaceHolder.ungetCallbacks();
-                    SurfaceHolder.Callback callbacks[] = mSurfaceHolder.getCallbacks();
-                    if (callbacks != null) {
-                        for (SurfaceHolder.Callback c : callbacks) {
-                            c.surfaceDestroyed(mSurfaceHolder);
-                        }
-                    }
+                    notifySurfaceDestroyed();
                     mSurfaceHolder.mSurfaceLock.lock();
                     try {
                         mSurfaceHolder.mSurface = new Surface();
@@ -2496,6 +2492,16 @@ public final class ViewRootImpl implements ViewParent,
         }
 
         mIsInTraversal = false;
+    }
+
+    private void notifySurfaceDestroyed() {
+        mSurfaceHolder.ungetCallbacks();
+        SurfaceHolder.Callback[] callbacks = mSurfaceHolder.getCallbacks();
+        if (callbacks != null) {
+            for (SurfaceHolder.Callback c : callbacks) {
+                c.surfaceDestroyed(mSurfaceHolder);
+            }
+        }
     }
 
     private void maybeHandleWindowMove(Rect frame) {

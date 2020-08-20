@@ -81,7 +81,7 @@
     <string name="usb_preference_title" msgid="6551050377388882787">"Opções de transm. de fich. USB"</string>
     <string name="use_mtp_button_title" msgid="4333504413563023626">"Montar como leitor de multimédia (MTP)"</string>
     <string name="use_ptp_button_title" msgid="7517127540301625751">"Montar como câmara (PTP)"</string>
-    <string name="installer_cd_button_title" msgid="2312667578562201583">"Inst. aplic. Transf. Ficheiros do Android para Mac"</string>
+    <string name="installer_cd_button_title" msgid="2312667578562201583">"Inst. app Transf. Ficheiros do Android para Mac"</string>
     <string name="accessibility_back" msgid="567011538994429120">"Anterior"</string>
     <string name="accessibility_home" msgid="8217216074895377641">"Página inicial"</string>
     <string name="accessibility_menu" msgid="316839303324695949">"Menu"</string>
@@ -399,6 +399,7 @@
     <string name="interruption_level_none_twoline" msgid="3957581548190765889">"Silêncio\ntotal"</string>
     <string name="interruption_level_priority_twoline" msgid="1564715335217164124">"Apenas\nprioridade"</string>
     <string name="interruption_level_alarms_twoline" msgid="3266909566410106146">"Apenas\nalarmes"</string>
+    <string name="keyguard_indication_charging_time_wireless" msgid="5376059837186496558">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Carregamento sem fios (<xliff:g id="CHARGING_TIME_LEFT">%1$s</xliff:g> até ficar completo)"</string>
     <string name="keyguard_indication_charging_time" msgid="2056340799276374421">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • A carregar (<xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> até à carga máxima)…"</string>
     <string name="keyguard_indication_charging_time_fast" msgid="7767562163577492332">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • A carregar rapid. (<xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> até carga máx.)…"</string>
     <string name="keyguard_indication_charging_time_slowly" msgid="3769655133567307069">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • A carregar lentam. (<xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> até carga máx.)…"</string>
@@ -478,7 +479,7 @@
     <string name="monitoring_description_personal_profile_named_vpn" msgid="3133980926929069283">"O seu perfil pessoal está ligado à rede <xliff:g id="VPN_APP">%1$s</xliff:g>, que pode monitorizar a sua atividade de rede, incluindo emails, aplicações e Sites."</string>
     <string name="monitoring_description_do_header_generic" msgid="96588491028288691">"O seu dispositivo é gerido pelo <xliff:g id="DEVICE_OWNER_APP">%1$s</xliff:g>."</string>
     <string name="monitoring_description_do_header_with_name" msgid="5511133708978206460">"A <xliff:g id="ORGANIZATION_NAME">%1$s</xliff:g> utiliza o <xliff:g id="DEVICE_OWNER_APP">%2$s</xliff:g> para gerir o seu dispositivo."</string>
-    <string name="monitoring_description_do_body" msgid="3639594537660975895">"O administ. pode monitorizar e gerir definições, acesso empresarial, aplic. e dados associados ao dispositivo, bem como inf. de localiz. do disp."</string>
+    <string name="monitoring_description_do_body" msgid="3639594537660975895">"O administ. pode monitorizar e gerir definições, acesso empresarial, app e dados associados ao dispositivo, bem como inf. de localiz. do disp."</string>
     <string name="monitoring_description_do_learn_more_separator" msgid="3785251953067436862">" "</string>
     <string name="monitoring_description_do_learn_more" msgid="1849514470437907421">"Saiba mais"</string>
     <string name="monitoring_description_do_body_vpn" msgid="8255218762488901796">"Está ligado à rede <xliff:g id="VPN_APP">%1$s</xliff:g>, que pode monitorizar a sua atividade de rede, incluindo emails, aplicações e Sites."</string>
@@ -522,7 +523,6 @@
     <string name="quick_settings_reset_confirmation_title" msgid="748792586749897883">"Pretende ocultar <xliff:g id="TILE_LABEL">%1$s</xliff:g>?"</string>
     <string name="quick_settings_reset_confirmation_message" msgid="2235970126803317374">"Reaparecerá da próxima vez que a funcionalidade for ativada nas definições."</string>
     <string name="quick_settings_reset_confirmation_button" msgid="2660339101868367515">"Ocultar"</string>
-    <string name="managed_profile_foreground_toast" msgid="5421487114739245972">"Está a utilizar o seu perfil de trabalho"</string>
     <string name="stream_voice_call" msgid="4410002696470423714">"Chamada"</string>
     <string name="stream_system" msgid="7493299064422163147">"Sistema"</string>
     <string name="stream_ring" msgid="8213049469184048338">"Toque"</string>
@@ -799,6 +799,9 @@
     <string name="high_temp_title" msgid="4589508026407318374">"O telemóvel está a aquecer"</string>
     <string name="high_temp_notif_message" msgid="5642466103153429279">"Algumas funcionalidades são limitadas enquanto o telemóvel arrefece"</string>
     <string name="high_temp_dialog_message" msgid="6840700639374113553">"O telemóvel tenta arrefecer automaticamente. Pode continuar a utilizá-lo, mas este poderá funcionar mais lentamente.\n\nAssim que o telemóvel tiver arrefecido, funcionará normalmente."</string>
+    <string name="high_temp_alarm_title" msgid="442812040762745210">"Desligar o carregador"</string>
+    <string name="high_temp_alarm_notify_message" msgid="519359725058131592">"Ocorreu um problema ao carregar este dispositivo. Desligue o transformador e tenha cuidado porque o cabo pode estar quente."</string>
+    <string name="high_temp_alarm_help_care_steps" msgid="3631075329318070726">"Ver os passos a ter em consideração"</string>
     <string name="lockscreen_shortcut_left" msgid="2182769107618938629">"Atalho esquerdo"</string>
     <string name="lockscreen_shortcut_right" msgid="3328683699505226536">"Atalho direito"</string>
     <string name="lockscreen_unlock_left" msgid="2043092136246951985">"O atalho esquerdo também desbloqueia"</string>

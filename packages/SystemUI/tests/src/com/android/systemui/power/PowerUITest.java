@@ -17,6 +17,7 @@ package com.android.systemui.power;
 import static android.os.HardwarePropertiesManager.DEVICE_TEMPERATURE_SKIN;
 import static android.os.HardwarePropertiesManager.TEMPERATURE_CURRENT;
 import static android.os.HardwarePropertiesManager.TEMPERATURE_SHUTDOWN;
+import static android.os.HardwarePropertiesManager.TEMPERATURE_THROTTLING;
 import static android.provider.Settings.Global.SHOW_TEMPERATURE_WARNING;
 
 import static junit.framework.Assert.assertFalse;
@@ -24,6 +25,7 @@ import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -47,6 +49,8 @@ import com.android.systemui.statusbar.phone.StatusBar;
 import java.time.Duration;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -66,6 +70,9 @@ public class PowerUITest extends SysuiTestCase {
     public static final long BELOW_HYBRID_THRESHOLD = TimeUnit.HOURS.toMillis(2);
     public static final long ABOVE_HYBRID_THRESHOLD = TimeUnit.HOURS.toMillis(4);
     private static final long ABOVE_CHARGE_CYCLE_THRESHOLD = Duration.ofHours(8).toMillis();
+    private static final int OLD_BATTERY_LEVEL_NINE = 9;
+    private static final int OLD_BATTERY_LEVEL_10 = 10;
+    private static final int DEFAULT_OVERHEAT_ALARM_THRESHOLD = 58;
     private HardwarePropertiesManager mHardProps;
     private WarningsUI mMockWarnings;
     private PowerUI mPowerUI;
@@ -83,7 +90,13 @@ public class PowerUITest extends SysuiTestCase {
         mContext.addMockSystemService(Context.HARDWARE_PROPERTIES_SERVICE, mHardProps);
         mContext.addMockSystemService(Context.POWER_SERVICE, mPowerManager);
 
+        setUnderThreshold();
         createPowerUi();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        mPowerUI = null;
     }
 
     @Test
@@ -150,8 +163,78 @@ public class PowerUITest extends SysuiTestCase {
         verify(mMockWarnings, never()).showHighTemperatureWarning();
 
         setCurrentTemp(56); // Above threshold.
-        mPowerUI.updateTemperatureWarning();
+        mPowerUI.updateTemperature();
         verify(mMockWarnings).showHighTemperatureWarning();
+    }
+
+    @Test
+    public void testNoConfig_noAlarms() {
+        setOverThreshold();
+        final Boolean overheat = false;
+        final Boolean shouldBeepSound = false;
+        TestableResources resources = mContext.getOrCreateTestableResources();
+        resources.addOverride(R.integer.config_showTemperatureWarning, 0);
+        resources.addOverride(R.integer.config_alarmTemperature, 55);
+        resources.addOverride(R.bool.config_alarmTemperatureBeepSound, shouldBeepSound);
+
+        mPowerUI.start();
+        verify(mMockWarnings, never()).notifyHighTemperatureAlarm(overheat, shouldBeepSound);
+    }
+
+    @Test
+    public void testConfig_noAlarms() {
+        setUnderThreshold();
+        final Boolean overheat = false;
+        final Boolean shouldBeepSound = false;
+        TestableResources resources = mContext.getOrCreateTestableResources();
+        resources.addOverride(R.integer.config_showTemperatureAlarm, 1);
+        resources.addOverride(R.integer.config_alarmTemperature, 58);
+        resources.addOverride(R.bool.config_alarmTemperatureBeepSound, shouldBeepSound);
+
+        mPowerUI.start();
+        verify(mMockWarnings, never()).notifyHighTemperatureAlarm(overheat, shouldBeepSound);
+    }
+
+    @Test
+    public void testConfig_alarms() {
+        setOverThreshold();
+        final Boolean overheat = true;
+        final Boolean shouldBeepSound = false;
+        TestableResources resources = mContext.getOrCreateTestableResources();
+        resources.addOverride(R.integer.config_showTemperatureAlarm, 1);
+        resources.addOverride(R.integer.config_alarmTemperature, 58);
+        resources.addOverride(R.bool.config_alarmTemperatureBeepSound, shouldBeepSound);
+
+        mPowerUI.start();
+        verify(mMockWarnings).notifyHighTemperatureAlarm(overheat, shouldBeepSound);
+    }
+
+    @Test
+    public void testHardPropsThrottlingThreshold_alarms() {
+        setThrottlingThreshold(DEFAULT_OVERHEAT_ALARM_THRESHOLD);
+        setOverThreshold();
+        final Boolean overheat = true;
+        final Boolean shouldBeepSound = false;
+        TestableResources resources = mContext.getOrCreateTestableResources();
+        resources.addOverride(R.integer.config_showTemperatureAlarm, 1);
+        resources.addOverride(R.bool.config_alarmTemperatureBeepSound, shouldBeepSound);
+
+        mPowerUI.start();
+        verify(mMockWarnings).notifyHighTemperatureAlarm(overheat, shouldBeepSound);
+    }
+
+    @Test
+    public void testHardPropsThrottlingThreshold_noAlarms() {
+        setThrottlingThreshold(DEFAULT_OVERHEAT_ALARM_THRESHOLD);
+        setUnderThreshold();
+        final Boolean overheat = false;
+        final Boolean shouldBeepSound = false;
+        TestableResources resources = mContext.getOrCreateTestableResources();
+        resources.addOverride(R.integer.config_showTemperatureAlarm, 1);
+        resources.addOverride(R.bool.config_alarmTemperatureBeepSound, shouldBeepSound);
+
+        mPowerUI.start();
+        verify(mMockWarnings, never()).notifyHighTemperatureAlarm(overheat, shouldBeepSound);
     }
 
     @Test
@@ -307,8 +390,8 @@ public class PowerUITest extends SysuiTestCase {
                 .thenReturn(new Estimate(BELOW_HYBRID_THRESHOLD, true));
         mPowerUI.mBatteryStatus = BatteryManager.BATTERY_HEALTH_GOOD;
 
-        mPowerUI.maybeShowBatteryWarning(UNPLUGGED, UNPLUGGED, ABOVE_WARNING_BUCKET,
-                ABOVE_WARNING_BUCKET);
+        mPowerUI.maybeShowBatteryWarning(OLD_BATTERY_LEVEL_NINE, UNPLUGGED, UNPLUGGED,
+                ABOVE_WARNING_BUCKET, ABOVE_WARNING_BUCKET);
 
         // reduce battery level to handle time based trigger -> level trigger interactions
         mPowerUI.mBatteryLevel = 10;
@@ -320,9 +403,9 @@ public class PowerUITest extends SysuiTestCase {
     }
 
     @Test
-    public void testShouldDismissLowBatteryWarning_dismissWhenPowerSaverEnabled() {
+    public void testShouldDismissLowBatteryWarning_dismissWhenPowerSaverEnabledLegacy() {
         mPowerUI.start();
-        when(mEnhancedEstimates.isHybridNotificationEnabled()).thenReturn(true);
+        when(mEnhancedEstimates.isHybridNotificationEnabled()).thenReturn(false);
         when(mEnhancedEstimates.getLowWarningThreshold()).thenReturn(PowerUI.THREE_HOURS_IN_MILLIS);
         when(mEnhancedEstimates.getSevereWarningThreshold()).thenReturn(ONE_HOUR_MILLIS);
 
@@ -331,6 +414,20 @@ public class PowerUITest extends SysuiTestCase {
                 mPowerUI.shouldDismissLowBatteryWarning(UNPLUGGED, BELOW_WARNING_BUCKET,
                         BELOW_WARNING_BUCKET, ABOVE_HYBRID_THRESHOLD, !POWER_SAVER_OFF);
         assertTrue(shouldDismiss);
+    }
+
+    @Test
+    public void testShouldNotDismissLowBatteryWarning_dismissWhenPowerSaverEnabledHybrid() {
+        mPowerUI.start();
+        when(mEnhancedEstimates.isHybridNotificationEnabled()).thenReturn(true);
+        when(mEnhancedEstimates.getLowWarningThreshold()).thenReturn(PowerUI.THREE_HOURS_IN_MILLIS);
+        when(mEnhancedEstimates.getSevereWarningThreshold()).thenReturn(ONE_HOUR_MILLIS);
+
+        // device that gets power saver turned on should dismiss
+        boolean shouldDismiss =
+            mPowerUI.shouldDismissLowBatteryWarning(UNPLUGGED, BELOW_WARNING_BUCKET,
+                BELOW_WARNING_BUCKET, ABOVE_HYBRID_THRESHOLD, !POWER_SAVER_OFF);
+        assertFalse(shouldDismiss);
     }
 
     @Test
@@ -449,9 +546,41 @@ public class PowerUITest extends SysuiTestCase {
         verify(mMockWarnings, never()).dismissLowBatteryWarning();
     }
 
+    @Test
+    public void testMaybeShowBatteryWarning_onlyQueriesEstimateOnBatteryLevelChangeOrNull() {
+        mPowerUI.start();
+        Estimate estimate = new Estimate(BELOW_HYBRID_THRESHOLD, true);
+        when(mEnhancedEstimates.isHybridNotificationEnabled()).thenReturn(true);
+        when(mEnhancedEstimates.getLowWarningThreshold()).thenReturn(PowerUI.THREE_HOURS_IN_MILLIS);
+        when(mEnhancedEstimates.getSevereWarningThreshold()).thenReturn(ONE_HOUR_MILLIS);
+        when(mEnhancedEstimates.getEstimate()).thenReturn(estimate);
+        mPowerUI.mBatteryStatus = BatteryManager.BATTERY_HEALTH_GOOD;
+
+        // we expect that the first time it will query even if the level is the same
+        mPowerUI.mBatteryLevel = 9;
+        mPowerUI.maybeShowBatteryWarning(OLD_BATTERY_LEVEL_NINE, UNPLUGGED, UNPLUGGED,
+                ABOVE_WARNING_BUCKET, ABOVE_WARNING_BUCKET);
+        verify(mEnhancedEstimates, times(1)).getEstimate();
+
+        // We should NOT query again if the battery level hasn't changed
+        mPowerUI.maybeShowBatteryWarning(OLD_BATTERY_LEVEL_NINE, UNPLUGGED, UNPLUGGED,
+                ABOVE_WARNING_BUCKET, ABOVE_WARNING_BUCKET);
+        verify(mEnhancedEstimates, times(1)).getEstimate();
+
+        // Battery level has changed, so we should query again
+        mPowerUI.maybeShowBatteryWarning(OLD_BATTERY_LEVEL_10, UNPLUGGED, UNPLUGGED,
+                ABOVE_WARNING_BUCKET, ABOVE_WARNING_BUCKET);
+        verify(mEnhancedEstimates, times(2)).getEstimate();
+    }
+
     private void setCurrentTemp(float temp) {
         when(mHardProps.getDeviceTemperatures(DEVICE_TEMPERATURE_SKIN, TEMPERATURE_CURRENT))
-                .thenReturn(new float[] { temp });
+                .thenReturn(new float[] { temp, temp });
+    }
+
+    private void setThrottlingThreshold(float temp) {
+        when(mHardProps.getDeviceTemperatures(DEVICE_TEMPERATURE_SKIN, TEMPERATURE_THROTTLING))
+                .thenReturn(new float[] { temp, temp });
     }
 
     private void setOverThreshold() {

@@ -172,7 +172,7 @@
     <string name="carrier_network_change_mode" msgid="8149202439957837762">"Байланыш оператору өзгөртүлүүдө"</string>
     <string name="accessibility_battery_details" msgid="7645516654955025422">"Батареянын чоо-жайын ачуу"</string>
     <string name="accessibility_battery_level" msgid="7451474187113371965">"Батарея <xliff:g id="NUMBER">%d</xliff:g> пайыз."</string>
-    <string name="accessibility_battery_level_charging" msgid="1147587904439319646">"Батарея кубатталууда, <xliff:g id="BATTERY_PERCENTAGE">%d</xliff:g> пайыз."</string>
+    <string name="accessibility_battery_level_charging" msgid="1147587904439319646">"Батарея кубатталууда, <xliff:g id="BATTERY_PERCENTAGE">%d</xliff:g>%%."</string>
     <string name="accessibility_settings_button" msgid="799583911231893380">"Система тууралоолору."</string>
     <string name="accessibility_notifications_button" msgid="4498000369779421892">"Билдирмелер"</string>
     <string name="accessibility_overflow_action" msgid="5681882033274783311">"Бардык эскертмелерди көрүү"</string>
@@ -209,7 +209,7 @@
     <string name="accessibility_quick_settings_airplane_changed_off" msgid="66846307818850664">"Учак режими өчүрүлдү."</string>
     <string name="accessibility_quick_settings_airplane_changed_on" msgid="8983005603505087728">"Учак режими күйгүзүлдү."</string>
     <string name="accessibility_quick_settings_dnd_none_on" msgid="2960643943620637020">"тымтырс"</string>
-    <string name="accessibility_quick_settings_dnd_alarms_on" msgid="3357131899365865386">"ойготкучтар гана"</string>
+    <string name="accessibility_quick_settings_dnd_alarms_on" msgid="3357131899365865386">"ойготкуч гана"</string>
     <string name="accessibility_quick_settings_dnd" msgid="6607873236717185815">"Тынчымды алба."</string>
     <string name="accessibility_quick_settings_dnd_changed_off" msgid="898107593453022935">"Тынчымды алба деген өчүрүлдү."</string>
     <string name="accessibility_quick_settings_dnd_changed_on" msgid="4483780856613561039">"Тынчымды алба деген күйгүзүлдү."</string>
@@ -276,7 +276,7 @@
     <string name="quick_settings_header_onboarding_text" msgid="8030309023792936283">"Кошумча параметрлерди ачуу үчүн сүрөтчөлөрдү басып, кармап туруңуз"</string>
     <string name="quick_settings_dnd_label" msgid="8735855737575028208">"Тынчымды алба"</string>
     <string name="quick_settings_dnd_priority_label" msgid="483232950670692036">"Шашылыш эскертмелер гана"</string>
-    <string name="quick_settings_dnd_alarms_label" msgid="2559229444312445858">"Ойготкучтар гана"</string>
+    <string name="quick_settings_dnd_alarms_label" msgid="2559229444312445858">"Ойготкуч гана"</string>
     <string name="quick_settings_dnd_none_label" msgid="5025477807123029478">"Тымтырс"</string>
     <string name="quick_settings_bluetooth_label" msgid="6304190285170721401">"Bluetooth"</string>
     <string name="quick_settings_bluetooth_multiple_devices_label" msgid="3912245565613684735">"Bluetooth (<xliff:g id="NUMBER">%d</xliff:g> түзмөк)"</string>
@@ -299,7 +299,7 @@
     <string name="quick_settings_location_off_label" msgid="7464544086507331459">"Жайгашытрууну өчүрүү"</string>
     <string name="quick_settings_media_device_label" msgid="1302906836372603762">"Медиа түзмөгү"</string>
     <string name="quick_settings_rssi_label" msgid="7725671335550695589">"RSSI"</string>
-    <string name="quick_settings_rssi_emergency_only" msgid="2713774041672886750">"Куткаруучуларга чалуу гана"</string>
+    <string name="quick_settings_rssi_emergency_only" msgid="2713774041672886750">"Өзгөчө кырдаалда гана чалууга болот"</string>
     <string name="quick_settings_settings_label" msgid="5326556592578065401">"Жөндөөлөр"</string>
     <string name="quick_settings_time_label" msgid="4635969182239736408">"Убакыт"</string>
     <string name="quick_settings_user_label" msgid="5238995632130897840">"Мен"</string>
@@ -395,10 +395,11 @@
     <string name="interruption_level_none_with_warning" msgid="5114872171614161084">"Толук жымжырттык талап кылынат. Бул экрандагыны окугучтарды да тынчтандырат."</string>
     <string name="interruption_level_none" msgid="6000083681244492992">"Тымтырс"</string>
     <string name="interruption_level_priority" msgid="6426766465363855505">"Шашылыш эскертмелер гана"</string>
-    <string name="interruption_level_alarms" msgid="5226306993448328896">"Ойготкучтар гана"</string>
+    <string name="interruption_level_alarms" msgid="5226306993448328896">"Ойготкуч гана"</string>
     <string name="interruption_level_none_twoline" msgid="3957581548190765889">"Тым-\nтырс"</string>
     <string name="interruption_level_priority_twoline" msgid="1564715335217164124">"Артыкчылыктуу\nгана"</string>
     <string name="interruption_level_alarms_twoline" msgid="3266909566410106146">"Ойготкучтар\nгана"</string>
+    <string name="keyguard_indication_charging_time_wireless" msgid="5376059837186496558">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Зымсыз кубатталууда (толгонго чейин <xliff:g id="CHARGING_TIME_LEFT">%1$s</xliff:g> калды)"</string>
     <string name="keyguard_indication_charging_time" msgid="2056340799276374421">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Кубатталууда (толгонго чейин <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> калды)"</string>
     <string name="keyguard_indication_charging_time_fast" msgid="7767562163577492332">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Тез кубатталууда (толгонго чейин <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> калды)"</string>
     <string name="keyguard_indication_charging_time_slowly" msgid="3769655133567307069">"<xliff:g id="PERCENTAGE">%2$s</xliff:g> • Жай кубатталууда (толгонго чейин <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g> калды)"</string>
@@ -522,7 +523,6 @@
     <string name="quick_settings_reset_confirmation_title" msgid="748792586749897883">"<xliff:g id="TILE_LABEL">%1$s</xliff:g> жашырылсынбы?"</string>
     <string name="quick_settings_reset_confirmation_message" msgid="2235970126803317374">"Бул кийинки жолу жөндөөлөрдөн күйгүзүлгөндө кайра көрүнөт."</string>
     <string name="quick_settings_reset_confirmation_button" msgid="2660339101868367515">"Жашыруу"</string>
-    <string name="managed_profile_foreground_toast" msgid="5421487114739245972">"Жумуш профилиңизди колдонуп жатасыз"</string>
     <string name="stream_voice_call" msgid="4410002696470423714">"Чалуу"</string>
     <string name="stream_system" msgid="7493299064422163147">"Тутум"</string>
     <string name="stream_ring" msgid="8213049469184048338">"Шыңгыратуу"</string>
@@ -799,6 +799,9 @@
     <string name="high_temp_title" msgid="4589508026407318374">"Телефонуңуз ысып баратат"</string>
     <string name="high_temp_notif_message" msgid="5642466103153429279">"Телефон сууганча айрым элементтердин иши чектелген"</string>
     <string name="high_temp_dialog_message" msgid="6840700639374113553">"Телефонуңуз автоматтык түрдө сууйт. Аны колдоно берсеңиз болот, бирок ал жайыраак иштеп калат.\n\nТелефонуңуз суугандан кийин адаттагыдай эле иштеп баштайт."</string>
+    <string name="high_temp_alarm_title" msgid="442812040762745210">"Кубаттагычты сууруңуз"</string>
+    <string name="high_temp_alarm_notify_message" msgid="519359725058131592">"Бул түзмөктү кубаттоодо маселе келип чыкты. Кабель ысып кетиши мүмкүн, андыктан кубаттагыч адаптерин сууруп коюңуз."</string>
+    <string name="high_temp_alarm_help_care_steps" msgid="3631075329318070726">"Тейлөө кадамдарын көрүңүз"</string>
     <string name="lockscreen_shortcut_left" msgid="2182769107618938629">"Сол жактагы кыска жол"</string>
     <string name="lockscreen_shortcut_right" msgid="3328683699505226536">"Оң жактагы кыска жол"</string>
     <string name="lockscreen_unlock_left" msgid="2043092136246951985">"Сол жактагы кыска жол дагы кулпуну ачат"</string>

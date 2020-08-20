@@ -307,7 +307,7 @@ final class PendingIntentRecord extends IIntentSender.Stub {
                             } else if (finalIntent.getComponent() != null) {
                                 finalIntent.getComponent().appendShortString(tag);
                             } else if (finalIntent.getData() != null) {
-                                tag.append(finalIntent.getData());
+                                tag.append(finalIntent.getData().toSafeString());
                             }
                             owner.tempWhitelistForPendingIntentLocked(callingPid,
                                     callingUid, uid, duration, tag.toString());
@@ -352,7 +352,8 @@ final class PendingIntentRecord extends IIntentSender.Stub {
                                         callingPid, callingUid, key.packageName, finalIntent,
                                         resolvedType, resultTo, resultWho, requestCode, 0,
                                         mergedOptions, userId, null, "PendingIntentRecord",
-                                        false /* validateIncomingUser */);
+                                        false /* validateIncomingUser */,
+                                        this /* originatingPendingIntent */);
                             }
                         } catch (RuntimeException e) {
                             Slog.w(TAG, "Unable to send startActivity intent", e);

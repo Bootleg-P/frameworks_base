@@ -1012,23 +1012,23 @@
     <string name="deleteText" msgid="6979668428458199034">"Sil"</string>
     <string name="inputMethod" msgid="1653630062304567879">"Daxiletmə metodu"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"Mətn əməliyyatları"</string>
-    <string name="email" msgid="4560673117055050403">"E-poçt"</string>
+    <string name="email" msgid="4560673117055050403">"E-poçtu aç"</string>
     <string name="email_desc" msgid="3638665569546416795">"Seçilmiş ünvana e-məktub yazın"</string>
-    <string name="dial" msgid="1253998302767701559">"Zəng"</string>
+    <string name="dial" msgid="1253998302767701559">"Zəng edin"</string>
     <string name="dial_desc" msgid="6573723404985517250">"Seçilmiş telefon nömrəsinə zəng edin"</string>
-    <string name="map" msgid="5441053548030107189">"Xəritə"</string>
+    <string name="map" msgid="5441053548030107189">"Xəritəni aç"</string>
     <string name="map_desc" msgid="1836995341943772348">"Seçilmiş ünvanları tapın"</string>
     <string name="browse" msgid="1245903488306147205">"Açın"</string>
     <string name="browse_desc" msgid="8220976549618935044">"Seçilmiş linki açın"</string>
-    <string name="sms" msgid="4560537514610063430">"Mesaj"</string>
+    <string name="sms" msgid="4560537514610063430">"Mesaj yazın"</string>
     <string name="sms_desc" msgid="7526588350969638809">"Seçilmiş telefon nömrəsini mesajla göndərin"</string>
     <string name="add_contact" msgid="7867066569670597203">"Əlavə edin"</string>
     <string name="add_contact_desc" msgid="4830217847004590345">"Kontakta əlavə edin"</string>
     <string name="view_calendar" msgid="979609872939597838">"Baxın"</string>
     <string name="view_calendar_desc" msgid="5828320291870344584">"Təqvimdə seçilmiş vaxta baxın"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"Cədvəl"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"Təqvimdə planlayın"</string>
     <string name="add_calendar_event_desc" msgid="4326891793260687388">"Tədbiri seçilmiş vaxta planlaşdırın"</string>
-    <string name="view_flight" msgid="7691640491425680214">"Trek"</string>
+    <string name="view_flight" msgid="7691640491425680214">"İzləyin"</string>
     <string name="view_flight_desc" msgid="3876322502674253506">"Seçilmiş uçuşu izləyin"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"Yaddaş yeri bitir"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"Bəzi sistem funksiyaları işləməyə bilər"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi şəbəkəsinin internetə girişi yoxdur"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Seçimlər üçün tıklayın"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Hotspot ayarlarınızda dəyişiklik"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Hotspot qrupu dəyişdi."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Bu cihaz yalnız 5GHz üçün tərcihinizi dəstəkləmir. Əvəzinə əlçatan olduqda bu cihaz 5GHz qrupundan istifadə edəcək."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"<xliff:g id="NETWORK_TYPE">%1$s</xliff:g> şəbəkə növünə keçirildi"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"<xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> şəbəkəsinin internetə girişi olmadıqda, cihaz <xliff:g id="NEW_NETWORK">%1$s</xliff:g> şəbəkəsini istifadə edir. Xidmət haqqı tutula bilər."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> şəbəkəsindən <xliff:g id="NEW_NETWORK">%2$s</xliff:g> şəbəkəsinə keçirildi"</string>

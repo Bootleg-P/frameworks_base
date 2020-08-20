@@ -124,7 +124,7 @@
     <string name="roamingTextSearching" msgid="8360141885972279963">"Pretraživanje usluge"</string>
     <string name="wfcRegErrorTitle" msgid="3855061241207182194">"Postavljanje Wi‑Fi poziva nije uspjelo"</string>
   <string-array name="wfcOperatorErrorAlertMessages">
-    <item msgid="3910386316304772394">"Da biste telefonirali i slali poruke putem Wi-Fi-ja, od mobilnog operatera morate tražiti da postavi tu uslugu. Zatim ponovo uključite Wi-Fi pozive u postavkama. (Kôd pogreške: <xliff:g id="CODE">%1$s</xliff:g>)"</item>
+    <item msgid="3910386316304772394">"Da biste telefonirali i slali poruke putem Wi-Fija, od mobilnog operatera morate tražiti da postavi tu uslugu. Zatim ponovo uključite Wi-Fi pozive u postavkama. (Kôd pogreške: <xliff:g id="CODE">%1$s</xliff:g>)"</item>
   </string-array>
   <string-array name="wfcOperatorErrorNotificationMessages">
     <item msgid="7372514042696663278">"Poteškoća s registracijom Wi‑Fi poziva kod mobilnog operatera: <xliff:g id="CODE">%1$s</xliff:g>"</item>
@@ -218,7 +218,7 @@
     <string name="global_actions" product="default" msgid="2406416831541615258">"Opcije telefona"</string>
     <string name="global_action_lock" msgid="2844945191792119712">"Zaključavanje zaslona"</string>
     <string name="global_action_power_off" msgid="4471879440839879722">"Isključi"</string>
-    <string name="global_action_emergency" msgid="7112311161137421166">"Hitno"</string>
+    <string name="global_action_emergency" msgid="7112311161137421166">"Hitne službe"</string>
     <string name="global_action_bug_report" msgid="7934010578922304799">"Izvješće o bugovima"</string>
     <string name="global_action_logout" msgid="935179188218826050">"Završi sesiju"</string>
     <string name="global_action_screenshot" msgid="8329831278085426283">"Snimka zaslona"</string>
@@ -738,7 +738,7 @@
     <string name="lockscreen_instructions_when_pattern_enabled" msgid="46154051614126049">"Pritisnite Izbornik za otključavanje ili pozivanje hitnih službi."</string>
     <string name="lockscreen_instructions_when_pattern_disabled" msgid="686260028797158364">"Pritisnite Izbornik za otključavanje."</string>
     <string name="lockscreen_pattern_instructions" msgid="7478703254964810302">"Iscrtajte uzorak za otključavanje"</string>
-    <string name="lockscreen_emergency_call" msgid="5298642613417801888">"Hitno"</string>
+    <string name="lockscreen_emergency_call" msgid="5298642613417801888">"Hitne službe"</string>
     <string name="lockscreen_return_to_call" msgid="5244259785500040021">"Uzvrati poziv"</string>
     <string name="lockscreen_pattern_correct" msgid="9039008650362261237">"Ispravno!"</string>
     <string name="lockscreen_pattern_wrong" msgid="4317955014948108794">"Pokušajte ponovo"</string>
@@ -1032,24 +1032,24 @@
     <string name="deleteText" msgid="6979668428458199034">"Izbriši"</string>
     <string name="inputMethod" msgid="1653630062304567879">"Način unosa"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"Radnje s tekstom"</string>
-    <string name="email" msgid="4560673117055050403">"E-pošta"</string>
-    <string name="email_desc" msgid="3638665569546416795">"Slanje e-poruke na odabranu adresu"</string>
-    <string name="dial" msgid="1253998302767701559">"Poziv"</string>
-    <string name="dial_desc" msgid="6573723404985517250">"Pozivanje odabranog telefonskog broja"</string>
-    <string name="map" msgid="5441053548030107189">"Karta"</string>
-    <string name="map_desc" msgid="1836995341943772348">"Prikaz odabrane adrese na karti"</string>
+    <string name="email" msgid="4560673117055050403">"Pošalji e-poštu"</string>
+    <string name="email_desc" msgid="3638665569546416795">"Pošalji e-poštu na odabranu adresu"</string>
+    <string name="dial" msgid="1253998302767701559">"Nazovi"</string>
+    <string name="dial_desc" msgid="6573723404985517250">"Nazovi odabrani telefonski broj"</string>
+    <string name="map" msgid="5441053548030107189">"Prikaži na karti"</string>
+    <string name="map_desc" msgid="1836995341943772348">"Prikaži odabrane adrese na karti"</string>
     <string name="browse" msgid="1245903488306147205">"Otvori"</string>
-    <string name="browse_desc" msgid="8220976549618935044">"Otvaranje odabranog URL-a"</string>
-    <string name="sms" msgid="4560537514610063430">"Poruka"</string>
-    <string name="sms_desc" msgid="7526588350969638809">"Slanje poruke na odabrani telefonski broj"</string>
+    <string name="browse_desc" msgid="8220976549618935044">"Otvori odabrani URL"</string>
+    <string name="sms" msgid="4560537514610063430">"Pošalji poruku"</string>
+    <string name="sms_desc" msgid="7526588350969638809">"Pošalji poruku na odabrani telefonski broj"</string>
     <string name="add_contact" msgid="7867066569670597203">"Dodaj"</string>
-    <string name="add_contact_desc" msgid="4830217847004590345">"Dodavanje u kontakte"</string>
+    <string name="add_contact_desc" msgid="4830217847004590345">"Dodaj u kontakte"</string>
     <string name="view_calendar" msgid="979609872939597838">"Prikaži"</string>
-    <string name="view_calendar_desc" msgid="5828320291870344584">"Prikaz odabranog vremena u kalendaru"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"Raspored"</string>
-    <string name="add_calendar_event_desc" msgid="4326891793260687388">"Zakazivanje događaja za određeno vrijeme"</string>
+    <string name="view_calendar_desc" msgid="5828320291870344584">"Prikaži odabrano vrijeme u kalendaru"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"Zakaži"</string>
+    <string name="add_calendar_event_desc" msgid="4326891793260687388">"Zakaži događaj za određeno vrijeme"</string>
     <string name="view_flight" msgid="7691640491425680214">"Prati"</string>
-    <string name="view_flight_desc" msgid="3876322502674253506">"Praćenje odabranog leta"</string>
+    <string name="view_flight_desc" msgid="3876322502674253506">"Prati odabrani let"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"Ponestaje prostora za pohranu"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"Neke sistemske funkcije možda neće raditi"</string>
     <string name="low_internal_storage_view_text_no_boot" msgid="6935190099204693424">"Nema dovoljno pohrane za sustav. Oslobodite 250 MB prostora i pokrenite uređaj ponovo."</string>
@@ -1197,6 +1197,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi nema pristup internetu"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Dodirnite za opcije"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Promjene postavki vaše žarišne točke"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Promijenila se frekvencija vaše žarišne točke."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Ovaj uređaj ne podržava vašu postavku za upotrebu samo 5 GHz. Upotrebljavat će frekvenciju od 5 GHz kada je dostupna."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Prelazak na drugu mrežu: <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"Kada <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> nema pristup internetu, na uređaju se upotrebljava <xliff:g id="NEW_NETWORK">%1$s</xliff:g>. Moguća je naplata naknade."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Mreža je promijenjena: <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> &gt; <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
@@ -1474,7 +1477,7 @@
     <string name="data_usage_wifi_limit_title" msgid="5803363779034792676">"Dost. ogr. Wi-Fi prijenosa pod."</string>
     <string name="data_usage_limit_body" msgid="2908179506560812973">"Podatkovni je promet pauziran za ostatak ciklusa"</string>
     <string name="data_usage_mobile_limit_snoozed_title" msgid="3171402244827034372">"Premašen limit mobilnih podataka"</string>
-    <string name="data_usage_wifi_limit_snoozed_title" msgid="3547771791046344188">"Premašen limit podataka Wi-Fi-ja"</string>
+    <string name="data_usage_wifi_limit_snoozed_title" msgid="3547771791046344188">"Premašen limit podataka Wi-Fija"</string>
     <string name="data_usage_limit_snoozed_body" msgid="1671222777207603301">"Premašili ste postavljeno ograničenje za <xliff:g id="SIZE">%s</xliff:g>"</string>
     <string name="data_usage_restricted_title" msgid="5965157361036321914">"Pozadinski podaci ograničeni"</string>
     <string name="data_usage_restricted_body" msgid="469866376337242726">"Dodirnite i uklonite ograničenje"</string>

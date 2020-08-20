@@ -16,6 +16,7 @@
 
 package android.provider;
 
+import android.annotation.RequiresPermission;
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
 import android.annotation.TestApi;
@@ -1149,6 +1150,58 @@ public final class Telephony {
             @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
             public static final String ACTION_EXTERNAL_PROVIDER_CHANGE =
                           "android.provider.action.EXTERNAL_PROVIDER_CHANGE";
+
+            /**
+             * Broadcast action: When SMS-MMS db is being created. If file-based encryption is
+             * supported, this broadcast indicates creation of the db in credential-encrypted
+             * storage. A boolean is specified in {@link #EXTRA_IS_INITIAL_CREATE} to indicate if
+             * this is the initial create of the db. Requires
+             * {@link android.Manifest.permission#READ_SMS} to receive.
+             *
+             * @see #EXTRA_IS_INITIAL_CREATE
+             *
+             * @hide
+             */
+            @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
+            public static final String ACTION_SMS_MMS_DB_CREATED =
+                    "android.provider.action.SMS_MMS_DB_CREATED";
+
+            /**
+             * Boolean flag passed as an extra with {@link #ACTION_SMS_MMS_DB_CREATED} to indicate
+             * whether the DB creation is the initial creation on the device, that is it is after a
+             * factory-data reset or a new device. Any subsequent creations of the DB (which
+             * happens only in error scenarios) will have this flag set to false.
+             *
+             * @see #ACTION_SMS_MMS_DB_CREATED
+             *
+             * @hide
+             */
+            public static final String EXTRA_IS_INITIAL_CREATE =
+                    "android.provider.extra.IS_INITIAL_CREATE";
+
+            /**
+             * Broadcast intent action indicating that the telephony provider SMS MMS database is
+             * corrupted. A boolean is specified in {@link #EXTRA_IS_CORRUPTED} to indicate if the
+             * database is corrupted. Requires the
+             * {@link android.Manifest.permission#READ_PRIVILEGED_PHONE_STATE permission.
+             *
+             * @hide
+             */
+            @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
+            @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+            public static final String ACTION_SMS_MMS_DB_LOST =
+                    "android.provider.action.SMS_MMS_DB_LOST";
+
+            /**
+             * Boolean flag passed as an extra with {@link #ACTION_SMS_MMS_DB_LOST} to indicate
+             * whether the DB got corrupted or not.
+             *
+             * @see #ACTION_SMS_MMS_DB_LOST
+             *
+             * @hide
+             */
+            public static final String EXTRA_IS_CORRUPTED =
+                    "android.provider.extra.IS_CORRUPTED";
 
             /**
              * Read the PDUs out of an {@link #SMS_RECEIVED_ACTION} or a

@@ -522,7 +522,7 @@ public class SQLiteQueryBuilder
             // would escape the SQL expression while maintaining balanced parentheses
             // in both the wrapped and original forms.
 
-            // NOTE: The ordering of the below operations is important; we must
+	    // NOTE: The ordering of the below operations is important; we must
             // execute the wrapped query to ensure the untrusted clause has been
             // fully isolated.
 

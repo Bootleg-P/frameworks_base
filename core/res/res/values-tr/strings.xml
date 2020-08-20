@@ -133,7 +133,7 @@
     <item msgid="4397097370387921767">"%s Kablosuz Çağrı"</item>
   </string-array>
     <string name="wifi_calling_off_summary" msgid="8720659586041656098">"Kapalı"</string>
-    <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"Kablosuz bağlantı tercih edildi"</string>
+    <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"Kablosuz bağlantı tercihli"</string>
     <string name="wfc_mode_cellular_preferred_summary" msgid="1988279625335345908">"Mobil tercihli"</string>
     <string name="wfc_mode_wifi_only_summary" msgid="2379919155237869320">"Yalnızca kablosuz"</string>
     <string name="cfTemplateNotForwarded" msgid="1683685883841272560">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: Yönlendirilmedi"</string>
@@ -605,7 +605,7 @@
     <string name="policylab_disableCamera" msgid="6395301023152297826">"Kameraları devre dışı bırak"</string>
     <string name="policydesc_disableCamera" msgid="2306349042834754597">"Tüm cihaz kameralarının kullanımını engelleme."</string>
     <string name="policylab_disableKeyguardFeatures" msgid="8552277871075367771">"Ekran kilidinin bazı özelliklerini devre dışı bırakma"</string>
-    <string name="policydesc_disableKeyguardFeatures" msgid="2044755691354158439">"Ekran kilidinin bazı özelliklerinin kullanılmasını önleyin."</string>
+    <string name="policydesc_disableKeyguardFeatures" msgid="2044755691354158439">"Ekran kilidinin bazı özelliklerinin kullanılmasını önleme."</string>
   <string-array name="phoneTypes">
     <item msgid="8901098336658710359">"Ev"</item>
     <item msgid="869923650527136615">"Mobil"</item>
@@ -1127,7 +1127,7 @@
     <string name="dump_heap_title" msgid="5864292264307651673">"Yığın dökümü paylaşılsın mı?"</string>
     <string name="dump_heap_text" msgid="4809417337240334941">"<xliff:g id="PROC">%1$s</xliff:g>, <xliff:g id="SIZE">%2$s</xliff:g> olan işlem bellek sınırını aştı. İşlemin geliştiricisiyle paylaşabileceğiniz bir bellek yığını dökümü hazır. Dikkat: Bu bellek yığını dökümü, uygulamanın erişebildiği tüm kişisel bilgilerinizi içerebilir."</string>
     <string name="sendText" msgid="5209874571959469142">"Kısa mesaj için bir işlem seçin"</string>
-    <string name="volume_ringtone" msgid="6885421406845734650">"Zil sesi düzeyi"</string>
+    <string name="volume_ringtone" msgid="6885421406845734650">"Zil ses düzeyi"</string>
     <string name="volume_music" msgid="5421651157138628171">"Medya ses düzeyi"</string>
     <string name="volume_music_hint_playing_through_bluetooth" msgid="9165984379394601533">"Bluetooth üzerinden çalıyor"</string>
     <string name="volume_music_hint_silent_ringtone_selected" msgid="8310739960973156272">"Sessiz zil sesi ayarlandı"</string>
@@ -1137,7 +1137,7 @@
     <string name="volume_notification" msgid="2422265656744276715">"Bildirim ses düzeyi"</string>
     <string name="volume_unknown" msgid="1400219669770445902">"Ses"</string>
     <string name="volume_icon_description_bluetooth" msgid="6538894177255964340">"Bluetooth ses düzeyi"</string>
-    <string name="volume_icon_description_ringer" msgid="3326003847006162496">"Zil sesi düzeyi"</string>
+    <string name="volume_icon_description_ringer" msgid="3326003847006162496">"Zil ses düzeyi"</string>
     <string name="volume_icon_description_incall" msgid="8890073218154543397">"Çağrı ses düzeyi"</string>
     <string name="volume_icon_description_media" msgid="4217311719665194215">"Medya ses düzeyi"</string>
     <string name="volume_icon_description_notification" msgid="7044986546477282274">"Bildirim ses düzeyi"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Kablosuz bağlantının internet erişimi yok"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Seçenekler için dokunun"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Hotspot ayarlarınız değişti"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Hotspot bandı değişti."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Bu cihaz yalnızca 5 GHz bandının kullanılmasına yönelik tercihinizi desteklemiyor. Bunun yerine, bu cihaz 5 GHz bandını mevcut olduğunda kullanacak."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"<xliff:g id="NETWORK_TYPE">%1$s</xliff:g> ağına geçildi"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"<xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> ağının internet erişimi olmadığında cihaz <xliff:g id="NEW_NETWORK">%1$s</xliff:g> ağını kullanır. Bunun için ödeme alınabilir."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> ağından <xliff:g id="NEW_NETWORK">%2$s</xliff:g> ağına geçildi"</string>

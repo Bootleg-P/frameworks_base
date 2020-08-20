@@ -19,7 +19,6 @@ package com.android.server.appwidget;
 import static android.content.Context.KEYGUARD_SERVICE;
 import static android.content.Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-
 import static com.android.server.pm.PackageManagerService.PLATFORM_PACKAGE_NAME;
 
 import android.annotation.UserIdInt;
@@ -1835,7 +1834,7 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
 
                 if (provider.widgets.isEmpty()) {
                     // cancel the future updates
-                    cancelBroadcasts(provider);
+                    cancelBroadcastsLocked(provider);
 
                     // send the broacast saying that the provider is not in use any more
                     sendDisabledIntentLocked(provider);
@@ -1844,18 +1843,16 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
         }
     }
 
-    private void cancelBroadcasts(Provider provider) {
+    private void cancelBroadcastsLocked(Provider provider) {
         if (DEBUG) {
-            Slog.i(TAG, "cancelBroadcasts() for " + provider);
+            Slog.i(TAG, "cancelBroadcastsLocked() for " + provider);
         }
         if (provider.broadcast != null) {
-            mAlarmManager.cancel(provider.broadcast);
-            long token = Binder.clearCallingIdentity();
-            try {
-                provider.broadcast.cancel();
-            } finally {
-                Binder.restoreCallingIdentity(token);
-            }
+            final PendingIntent broadcast = provider.broadcast;
+            mSaveStateHandler.post(() -> {
+                    mAlarmManager.cancel(broadcast);
+                    broadcast.cancel();
+            });
             provider.broadcast = null;
         }
     }
@@ -2316,7 +2313,7 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
         mProviders.remove(provider);
 
         // no need to send the DISABLE broadcast, since the receiver is gone anyway
-        cancelBroadcasts(provider);
+        cancelBroadcastsLocked(provider);
     }
 
     private void sendEnableIntentLocked(Provider p) {
@@ -2370,17 +2367,14 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
                 Binder.restoreCallingIdentity(token);
             }
             if (!alreadyRegistered) {
-                long period = provider.info.updatePeriodMillis;
-                if (period < MIN_UPDATE_PERIOD) {
-                    period = MIN_UPDATE_PERIOD;
-                }
-                final long oldId = Binder.clearCallingIdentity();
-                try {
+                // Set the alarm outside of our locks; we've latched the first-time
+                // invariant and established the PendingIntent safely.
+                final long period = Math.max(provider.info.updatePeriodMillis, MIN_UPDATE_PERIOD);
+                final PendingIntent broadcast = provider.broadcast;
+                mSaveStateHandler.post(() ->
                     mAlarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                            SystemClock.elapsedRealtime() + period, period, provider.broadcast);
-                } finally {
-                    Binder.restoreCallingIdentity(oldId);
-                }
+                            SystemClock.elapsedRealtime() + period, period, broadcast)
+                );
             }
         }
     }
@@ -2697,7 +2691,12 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
         }
     }
 
-    void onUserUnlocked(int userId) {
+    /**
+     * This does not use the usual onUserUnlocked() listener mechanism because it is
+     * invoked at a choreographed point in the middle of the user unlock sequence,
+     * before the boot-completed broadcast is issued and the listeners notified.
+     */
+    void handleUserUnlocked(int userId) {
         if (isProfileWithLockedParent(userId)) {
             return;
         }
@@ -2734,7 +2733,7 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
                 }
             }
         }
-        Slog.i(TAG, "Async processing of onUserUnlocked u" + userId + " took "
+        Slog.i(TAG, "Processing of handleUserUnlocked u" + userId + " took "
                 + (SystemClock.elapsedRealtime() - time) + " ms");
     }
 
@@ -3378,7 +3377,7 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
                             // Reschedule for the new updatePeriodMillis (don't worry about handling
                             // it specially if updatePeriodMillis didn't change because we just sent
                             // an update, and the next one will be updatePeriodMillis from now).
-                            cancelBroadcasts(provider);
+                            cancelBroadcastsLocked(provider);
                             registerForBroadcastsLocked(provider, appWidgetIds);
                             // If it's currently showing, call back with the new
                             // AppWidgetProviderInfo.
@@ -4801,5 +4800,11 @@ class AppWidgetServiceImpl extends IAppWidgetService.Stub implements WidgetBacku
                 return widgetPackages;
             }
         }
+
+        @Override
+        public void unlockUser(int userId) {
+            handleUserUnlocked(userId);
+        }
+
     }
 }

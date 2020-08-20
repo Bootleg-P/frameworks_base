@@ -272,19 +272,19 @@
     <string name="managed_profile_label" msgid="8947929265267690522">"Byt till jobbprofilen"</string>
     <string name="permgrouplab_contacts" msgid="3657758145679177612">"Kontakter"</string>
     <string name="permgroupdesc_contacts" msgid="6951499528303668046">"få tillgång till dina kontakter"</string>
-    <string name="permgrouprequest_contacts" msgid="6032805601881764300">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomstbehörighet till dina kontakter?"</string>
+    <string name="permgrouprequest_contacts" msgid="6032805601881764300">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till dina kontakter?"</string>
     <string name="permgrouplab_location" msgid="7275582855722310164">"Plats"</string>
     <string name="permgroupdesc_location" msgid="1346617465127855033">"komma åt enhetens platsuppgifter"</string>
-    <string name="permgrouprequest_location" msgid="3788275734953323491">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomstbehörighet till enhetens plats?"</string>
+    <string name="permgrouprequest_location" msgid="3788275734953323491">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till enhetens plats?"</string>
     <string name="permgrouplab_calendar" msgid="5863508437783683902">"Kalender"</string>
     <string name="permgroupdesc_calendar" msgid="3889615280211184106">"få tillgång till din kalender"</string>
-    <string name="permgrouprequest_calendar" msgid="289900767793189421">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomstbehörighet till din kalender?"</string>
+    <string name="permgrouprequest_calendar" msgid="289900767793189421">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till din kalender?"</string>
     <string name="permgrouplab_sms" msgid="228308803364967808">"Sms"</string>
     <string name="permgroupdesc_sms" msgid="4656988620100940350">"skicka och visa sms"</string>
     <string name="permgrouprequest_sms" msgid="7168124215838204719">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; behörighet att skicka och visa sms?"</string>
     <string name="permgrouplab_storage" msgid="1971118770546336966">"Lagring"</string>
     <string name="permgroupdesc_storage" msgid="637758554581589203">"få åtkomst till foton, media och filer på din enhet"</string>
-    <string name="permgrouprequest_storage" msgid="7885942926944299560">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomstbehörighet till foton, mediafiler och andra filer på enheten?"</string>
+    <string name="permgrouprequest_storage" msgid="7885942926944299560">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till foton, mediefiler och andra filer på enheten?"</string>
     <string name="permgrouplab_microphone" msgid="171539900250043464">"Mikrofon"</string>
     <string name="permgroupdesc_microphone" msgid="4988812113943554584">"spela in ljud"</string>
     <string name="permgrouprequest_microphone" msgid="9167492350681916038">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; behörighet att spela in ljud?"</string>
@@ -299,7 +299,7 @@
     <string name="permgrouprequest_phone" msgid="9166979577750581037">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; behörighet att ringa och hantera telefonsamtal?"</string>
     <string name="permgrouplab_sensors" msgid="416037179223226722">"Kroppssensorer"</string>
     <string name="permgroupdesc_sensors" msgid="7147968539346634043">"få åtkomst till sensordata om dina vitalparametrar"</string>
-    <string name="permgrouprequest_sensors" msgid="6349806962814556786">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomstbehörighet till sensordata om vitalparametrar?"</string>
+    <string name="permgrouprequest_sensors" msgid="6349806962814556786">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till sensordata om vitalparametrar?"</string>
     <string name="capability_title_canRetrieveWindowContent" msgid="3901717936930170320">"Hämta fönsterinnehåll"</string>
     <string name="capability_desc_canRetrieveWindowContent" msgid="3772225008605310672">"Granska innehållet i ett fönster som du interagerar med."</string>
     <string name="capability_title_canRequestTouchExploration" msgid="3108723364676667320">"Aktivera Explore by touch"</string>
@@ -1016,7 +1016,7 @@
     <string name="email_desc" msgid="3638665569546416795">"Skicka e-post till vald adress"</string>
     <string name="dial" msgid="1253998302767701559">"Ring"</string>
     <string name="dial_desc" msgid="6573723404985517250">"Ring valt telefonnummer"</string>
-    <string name="map" msgid="5441053548030107189">"Karta"</string>
+    <string name="map" msgid="5441053548030107189">"Öppna karta"</string>
     <string name="map_desc" msgid="1836995341943772348">"Hitta den valda adressen"</string>
     <string name="browse" msgid="1245903488306147205">"Öppna"</string>
     <string name="browse_desc" msgid="8220976549618935044">"Öppna vald webbadress"</string>
@@ -1026,9 +1026,9 @@
     <string name="add_contact_desc" msgid="4830217847004590345">"Lägg till i Kontakter"</string>
     <string name="view_calendar" msgid="979609872939597838">"Visa"</string>
     <string name="view_calendar_desc" msgid="5828320291870344584">"Visa vald tid i kalendern"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"Schema"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"Schemalägg"</string>
     <string name="add_calendar_event_desc" msgid="4326891793260687388">"Schemalägg händelse på den valda tiden"</string>
-    <string name="view_flight" msgid="7691640491425680214">"Spår"</string>
+    <string name="view_flight" msgid="7691640491425680214">"Spåra"</string>
     <string name="view_flight_desc" msgid="3876322502674253506">"Spåra valt flyg"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"Lagringsutrymmet börjar ta slut"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"Det kan hända att vissa systemfunktioner inte fungerar"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi-nätverket är inte anslutet till internet"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Tryck för alternativ"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Ändringar i inställningarna för surfzon"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Frekvensbandet för surfzonen har ändrats."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Den här enheten har inte stöd för inställningen för att endast använda 5 GHz. I stället används 5 GHz när det är möjligt."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Byte av nätverk till <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"<xliff:g id="NEW_NETWORK">%1$s</xliff:g> används på enheten när det inte finns internetåtkomst via <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g>. Avgifter kan tillkomma."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Byte av nätverk från <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> till <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
@@ -1254,7 +1257,7 @@
     <string name="usb_unsupported_audio_accessory_title" msgid="3529881374464628084">"Ett tillbehör med analog ljudutgång hittades"</string>
     <string name="usb_unsupported_audio_accessory_message" msgid="6309553946441565215">"Den anslutna enheten är inte kompatibel med mobilen. Tryck här om du vill veta mer."</string>
     <string name="adb_active_notification_title" msgid="6729044778949189918">"USB-felsökning ansluten"</string>
-    <string name="adb_active_notification_message" msgid="7463062450474107752">"Tryck om du vill inaktivera USB-felsökning"</string>
+    <string name="adb_active_notification_message" msgid="7463062450474107752">"Tryck för att inaktivera USB-felsökning"</string>
     <string name="adb_active_notification_message" product="tv" msgid="8470296818270110396">"Välj för att inaktivera USB-felsökning."</string>
     <string name="taking_remote_bugreport_notification_title" msgid="6742483073875060934">"Felrapporten överförs …"</string>
     <string name="share_remote_bugreport_notification_title" msgid="4987095013583691873">"Vill du dela felrapporten?"</string>

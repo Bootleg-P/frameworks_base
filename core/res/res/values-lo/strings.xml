@@ -1026,9 +1026,9 @@
     <string name="add_contact_desc" msgid="4830217847004590345">"ເພີ່ມໃສ່ລາຍຊື່ຜູ້ຕິດຕໍ່"</string>
     <string name="view_calendar" msgid="979609872939597838">"ເບິ່ງ"</string>
     <string name="view_calendar_desc" msgid="5828320291870344584">"ເບິ່ງເວລາທີ່ເລືອກໃນປະຕິທິນ"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"ຕັ້ງເວລາ"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"ກຳນົດເວລາ"</string>
     <string name="add_calendar_event_desc" msgid="4326891793260687388">"ກຳນົດເວລາສຳລັບເວລາທີ່ເລືອກ"</string>
-    <string name="view_flight" msgid="7691640491425680214">"ແທຣັກ"</string>
+    <string name="view_flight" msgid="7691640491425680214">"ຕິດຕາມ"</string>
     <string name="view_flight_desc" msgid="3876322502674253506">"ຕິດຕາມຖ້ຽວບິນທີ່ເລືອກ"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"ພື້ນທີ່ຈັດເກັບຂໍ້ມູນກຳລັງຈະເຕັມ"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"ການເຮັດວຽກບາງຢ່າງຂອງລະບົບບາງອາດຈະໃຊ້ບໍ່ໄດ້"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi ບໍ່ມີສັນຍານອິນເຕີເນັດ"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"ແຕະເພື່ອເບິ່ງຕົວເລືອກ"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"ການປ່ຽນແປງການຕັ້ງຄ່າຮັອດສະປອດຂອງທ່ານ"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"ຄື້ນຄວາມຖີ່ຮັອດສະປອດຂອງທ່ານປ່ຽນແປງແລ້ວ."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"ອຸປະກອນນີ້ບໍ່ຮອງຮັບການຕັ້ງຄ່າຂອງທ່ານສຳລັບ 5GHz ເທົ່ານັ້ນ. ແຕ່ວ່າອຸປະກອນນີ້ຈະໃຊ້ຄື້ນຄວາມຖີ່ 5GHz ເມື່ອສາມາດໃຊ້ໄດ້."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"ສະຫຼັບໄປໃຊ້ <xliff:g id="NETWORK_TYPE">%1$s</xliff:g> ແລ້ວ"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"ອຸປະກອນຈະໃຊ້ <xliff:g id="NEW_NETWORK">%1$s</xliff:g> ເມື່ອ <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ. ອາດມີການຮຽກເກັບຄ່າບໍລິການ."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"ສະຫຼັບຈາກ <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> ໄປໃຊ້ <xliff:g id="NEW_NETWORK">%2$s</xliff:g> ແລ້ວ"</string>

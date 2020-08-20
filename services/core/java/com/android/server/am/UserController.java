@@ -24,7 +24,6 @@ import static android.app.ActivityManager.USER_OP_IS_CURRENT;
 import static android.app.ActivityManager.USER_OP_SUCCESS;
 import static android.os.Process.SHELL_UID;
 import static android.os.Process.SYSTEM_UID;
-
 import static com.android.server.am.ActivityManagerDebugConfig.DEBUG_MU;
 import static com.android.server.am.ActivityManagerDebugConfig.TAG_AM;
 import static com.android.server.am.ActivityManagerDebugConfig.TAG_WITH_CLASS_NAME;
@@ -48,6 +47,7 @@ import android.app.IStopUserCallback;
 import android.app.IUserSwitchObserver;
 import android.app.KeyguardManager;
 import android.app.usage.UsageEvents;
+import android.appwidget.AppWidgetManagerInternal;
 import android.content.Context;
 import android.content.IIntentReceiver;
 import android.content.Intent;
@@ -87,8 +87,8 @@ import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.util.TimingsTraceLog;
 import android.util.proto.ProtoOutputStream;
-
 import android.view.Window;
+
 import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
@@ -533,6 +533,9 @@ class UserController implements Handler.Callback {
             }
         }
 
+        // Spin up app widgets prior to boot-complete, so they can be ready promptly
+        mInjector.startUserWidgets(userId);
+
         Slog.i(TAG, "Sending BOOT_COMPLETE user #" + userId);
         // Do not report secondary users, runtime restarts or first boot/upgrade
         if (userId == UserHandle.USER_SYSTEM
@@ -842,10 +845,16 @@ class UserController implements Handler.Callback {
     }
 
     void scheduleStartProfiles() {
-        if (!mHandler.hasMessages(START_PROFILES_MSG)) {
-            mHandler.sendMessageDelayed(mHandler.obtainMessage(START_PROFILES_MSG),
-                    DateUtils.SECOND_IN_MILLIS);
-        }
+        // Parent user transition to RUNNING_UNLOCKING happens on FgThread, so it is busy, there is
+        // a chance the profile will reach RUNNING_LOCKED while parent is still locked, so no
+        // attempt will be made to unlock the profile. If we go via FgThread, this will be executed
+        // after the parent had chance to unlock fully.
+        FgThread.getHandler().post(() -> {
+            if (!mHandler.hasMessages(START_PROFILES_MSG)) {
+                mHandler.sendMessageDelayed(mHandler.obtainMessage(START_PROFILES_MSG),
+                        DateUtils.SECOND_IN_MILLIS);
+            }
+        });
     }
 
     void startProfiles() {
@@ -2170,6 +2179,13 @@ class UserController implements Handler.Callback {
         protected void startHomeActivity(int userId, String reason) {
             synchronized (mService) {
                 mService.startHomeActivityLocked(userId, reason);
+            }
+        }
+
+        void startUserWidgets(int userId) {
+            AppWidgetManagerInternal awm = LocalServices.getService(AppWidgetManagerInternal.class);
+            if (awm != null) {
+                awm.unlockUser(userId);
             }
         }
 

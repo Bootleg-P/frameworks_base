@@ -293,7 +293,7 @@ public abstract class AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * @return The callback to be invoked with an item in this AdapterView has
-     *         been clicked, or null id no callback has been set.
+     *         been clicked, or null if no callback has been set.
      */
     @Nullable
     public final OnItemClickListener getOnItemClickListener() {
@@ -365,7 +365,7 @@ public abstract class AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * @return The callback to be invoked with an item in this AdapterView has
-     *         been clicked and held, or null id no callback as been set.
+     *         been clicked and held, or null if no callback has been set.
      */
     public final OnItemLongClickListener getOnItemLongClickListener() {
         return mOnItemLongClickListener;
@@ -671,7 +671,7 @@ public abstract class AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * Sets the currently selected item. To support accessibility subclasses that
-     * override this method must invoke the overriden super method first.
+     * override this method must invoke the overridden super method first.
      *
      * @param position Index (starting at 0) of the data item to be selected.
      */

@@ -1013,23 +1013,23 @@
     <string name="inputMethod" msgid="1653630062304567879">"Sisestusmeetod"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"Tekstitoimingud"</string>
     <string name="email" msgid="4560673117055050403">"E-post"</string>
-    <string name="email_desc" msgid="3638665569546416795">"Valitud aadressile meili saatmine"</string>
+    <string name="email_desc" msgid="3638665569546416795">"Saada valitud aadressile meil"</string>
     <string name="dial" msgid="1253998302767701559">"Helista"</string>
-    <string name="dial_desc" msgid="6573723404985517250">"Valitud telefoninumbrile helistamine"</string>
+    <string name="dial_desc" msgid="6573723404985517250">"Helista valitud telefoninumbrile"</string>
     <string name="map" msgid="5441053548030107189">"Kaart"</string>
-    <string name="map_desc" msgid="1836995341943772348">"Valitud aadressi leidmine"</string>
+    <string name="map_desc" msgid="1836995341943772348">"Leia valitud aadress"</string>
     <string name="browse" msgid="1245903488306147205">"Ava"</string>
-    <string name="browse_desc" msgid="8220976549618935044">"Valitud URL-i avamine"</string>
+    <string name="browse_desc" msgid="8220976549618935044">"Ava valitud URL"</string>
     <string name="sms" msgid="4560537514610063430">"Saada sõnum"</string>
-    <string name="sms_desc" msgid="7526588350969638809">"Valitud telefoninumbrile sõnumi saatmine"</string>
+    <string name="sms_desc" msgid="7526588350969638809">"Saada valitud telefoninumbrile sõnum"</string>
     <string name="add_contact" msgid="7867066569670597203">"Lisa"</string>
-    <string name="add_contact_desc" msgid="4830217847004590345">"Kontaktide hulka lisamine"</string>
+    <string name="add_contact_desc" msgid="4830217847004590345">"Lisa kontaktide hulka"</string>
     <string name="view_calendar" msgid="979609872939597838">"Kuva"</string>
-    <string name="view_calendar_desc" msgid="5828320291870344584">"Valitud aja vaatamine kalendris"</string>
+    <string name="view_calendar_desc" msgid="5828320291870344584">"Kuva valitud aeg kalendris"</string>
     <string name="add_calendar_event" msgid="1953664627192056206">"Lisa ajakavasse"</string>
-    <string name="add_calendar_event_desc" msgid="4326891793260687388">"Ürituse ajastamine valitud ajale"</string>
+    <string name="add_calendar_event_desc" msgid="4326891793260687388">"Ajasta üritus valitud ajale"</string>
     <string name="view_flight" msgid="7691640491425680214">"Jälgi"</string>
-    <string name="view_flight_desc" msgid="3876322502674253506">"Valitud lennu jälgimine"</string>
+    <string name="view_flight_desc" msgid="3876322502674253506">"Jälgi valitud lendu"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"Talletusruum saab täis"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"Mõned süsteemifunktsioonid ei pruugi töötada"</string>
     <string name="low_internal_storage_view_text_no_boot" msgid="6935190099204693424">"Süsteemis pole piisavalt talletusruumi. Veenduge, et seadmes oleks 250 MB vaba ruumi, ja käivitage seade uuesti."</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"WiFi-võrgul pole juurdepääsu Internetile"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Puudutage valikute nägemiseks"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Muudatused teie leviala seadetes"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Teie leviala riba on muutunud."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"See seade ei toeta teie eelistatud ainult 5 GHz riba. Seade kasutab 5 GHz riba ainult siis, kui see on saadaval."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Lülitati võrgule <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"Seade kasutab võrku <xliff:g id="NEW_NETWORK">%1$s</xliff:g>, kui võrgul <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> puudub juurdepääs Internetile. Rakenduda võivad tasud."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Lülitati võrgult <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> võrgule <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>

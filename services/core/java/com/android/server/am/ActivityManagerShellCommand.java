@@ -558,9 +558,6 @@ final class ActivityManagerShellCommand extends ShellCommand {
                 if (result.who != null) {
                     pw.println("Activity: " + result.who.flattenToShortString());
                 }
-                if (result.thisTime >= 0) {
-                    pw.println("ThisTime: " + result.thisTime);
-                }
                 if (result.totalTime >= 0) {
                     pw.println("TotalTime: " + result.totalTime);
                 }
@@ -2844,6 +2841,7 @@ final class ActivityManagerShellCommand extends ShellCommand {
             pw.println("  --checkin: output checkin format, resetting data.");
             pw.println("  --C: output checkin format, not resetting data.");
             pw.println("  --proto: output dump in protocol buffer format.");
+            pw.println("  --autofill: dump just the autofill-related state of an activity");
         } else {
             pw.println("Activity manager (activity) commands:");
             pw.println("  help");

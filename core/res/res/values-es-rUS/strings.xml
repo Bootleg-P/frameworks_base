@@ -295,7 +295,7 @@
     <string name="permgroupdesc_calllog" msgid="3006237336748283775">"leer y escribir el registro de llamadas telefónicas"</string>
     <string name="permgrouprequest_calllog" msgid="8487355309583773267">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda al registro de las llamadas telefónicas?"</string>
     <string name="permgrouplab_phone" msgid="5229115638567440675">"Teléfono"</string>
-    <string name="permgroupdesc_phone" msgid="6234224354060641055">"realizar y administrar llamadas telefónicas"</string>
+    <string name="permgroupdesc_phone" msgid="6234224354060641055">"hacer y administrar llamadas telefónicas"</string>
     <string name="permgrouprequest_phone" msgid="9166979577750581037">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; haga y administre las llamadas telefónicas?"</string>
     <string name="permgrouplab_sensors" msgid="416037179223226722">"Sensores corporales"</string>
     <string name="permgroupdesc_sensors" msgid="7147968539346634043">"acceder a los datos del sensor acerca de tus signos vitales"</string>
@@ -576,11 +576,11 @@
     <string name="permlab_access_notification_policy" msgid="4247510821662059671">"Acceso a la función No interrumpir"</string>
     <string name="permdesc_access_notification_policy" msgid="3296832375218749580">"Permite que la aplicación lea y modifique la configuración de la función No interrumpir."</string>
     <string name="policylab_limitPassword" msgid="4497420728857585791">"Establecer reglas de contraseña"</string>
-    <string name="policydesc_limitPassword" msgid="2502021457917874968">"Permite controlar la longitud y los caracteres permitidos en las contraseñas y los PIN para el bloqueo de pantalla."</string>
+    <string name="policydesc_limitPassword" msgid="2502021457917874968">"Controlar la longitud y los caracteres permitidos en las contraseñas y los PIN para el bloqueo de pantalla."</string>
     <string name="policylab_watchLogin" msgid="5091404125971980158">"Supervisa los intentos para desbloquear la pantalla"</string>
     <string name="policydesc_watchLogin" product="tablet" msgid="3215729294215070072">"Controla la cantidad de contraseñas incorrectas ingresadas al desbloquear la pantalla y bloquea la tablet o borra todos los datos de la tablet si se ingresaron demasiadas contraseñas incorrectas."</string>
     <string name="policydesc_watchLogin" product="TV" msgid="2707817988309890256">"Permite controlar la cantidad de contraseñas incorrectas que se escriben al desbloquear la pantalla y permite bloquear la TV o borrar todos los datos de la TV si se escriben demasiadas contraseñas incorrectas."</string>
-    <string name="policydesc_watchLogin" product="default" msgid="5712323091846761073">"Controla la cantidad de contraseñas ingresadas incorrectamente al desbloquear la pantalla y bloquea el dispositivo o borra todos sus datos si se ingresan demasiadas contraseñas incorrectas."</string>
+    <string name="policydesc_watchLogin" product="default" msgid="5712323091846761073">"Supervisar la cantidad de contraseñas ingresadas incorrectamente al desbloquear la pantalla, y bloquear el dispositivo o borrar todos sus datos si se ingresan demasiadas contraseñas incorrectas."</string>
     <string name="policydesc_watchLogin_secondaryUser" product="tablet" msgid="4280246270601044505">"Permite controlar la cantidad de contraseñas incorrectas que se escriben al desbloquear la pantalla y bloquear la tablet, o borrar todos los datos del usuario, si se ingresan demasiadas contraseñas incorrectas."</string>
     <string name="policydesc_watchLogin_secondaryUser" product="TV" msgid="3484832653564483250">"Permite controlar la cantidad de contraseñas incorrectas que se escriben al desbloquear la pantalla y bloquear la televisión, o borrar todos los datos del usuario, si se ingresan demasiadas contraseñas incorrectas."</string>
     <string name="policydesc_watchLogin_secondaryUser" product="default" msgid="2185480427217127147">"Permite controlar la cantidad de contraseñas incorrectas que se escriben al desbloquear la pantalla y bloquear el teléfono, o borrar todos los datos del usuario, si se ingresan demasiadas contraseñas incorrectas."</string>
@@ -1017,7 +1017,7 @@
     <string name="dial" msgid="1253998302767701559">"Llamar"</string>
     <string name="dial_desc" msgid="6573723404985517250">"Llamar al número de teléfono seleccionado"</string>
     <string name="map" msgid="5441053548030107189">"Mapa"</string>
-    <string name="map_desc" msgid="1836995341943772348">"Abrir la dirección seleccionada en el mapa"</string>
+    <string name="map_desc" msgid="1836995341943772348">"Buscar la dirección seleccionada"</string>
     <string name="browse" msgid="1245903488306147205">"Abrir"</string>
     <string name="browse_desc" msgid="8220976549618935044">"Abrir URL seleccionada"</string>
     <string name="sms" msgid="4560537514610063430">"Mensaje"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"La red Wi-Fi no tiene acceso a Internet"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Presiona para ver opciones"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Cambios en la configuración de tu hotspot"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Cambió la banda de tu hotspot."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Si bien este dispositivo no admite la opción para conectarse exclusivamente a bandas de 5 GHz, las usará cuando estén disponibles."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Se cambió a <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"El dispositivo usa <xliff:g id="NEW_NETWORK">%1$s</xliff:g> cuando <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> no tiene acceso a Internet. Es posible que se apliquen cargos."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Se cambió de <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> a <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>

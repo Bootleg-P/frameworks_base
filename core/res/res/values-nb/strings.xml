@@ -495,7 +495,7 @@
     <string name="fingerprint_acquired_partial" msgid="735082772341716043">"Deler av fingeravtrykket er registrert. Prøv på nytt."</string>
     <string name="fingerprint_acquired_insufficient" msgid="4596546021310923214">"Kunne ikke registrere fingeravtrykket. Prøv på nytt."</string>
     <string name="fingerprint_acquired_imager_dirty" msgid="1087209702421076105">"Fingeravtrykksensoren er skitten. Rengjør den og prøv på nytt."</string>
-    <string name="fingerprint_acquired_too_fast" msgid="6470642383109155969">"Du flyttet fingeren for kjapt. Prøv på nytt."</string>
+    <string name="fingerprint_acquired_too_fast" msgid="6470642383109155969">"Du flyttet fingeren for raskt. Prøv på nytt."</string>
     <string name="fingerprint_acquired_too_slow" msgid="59250885689661653">"Du flyttet fingeren for sakte. Prøv på nytt."</string>
   <string-array name="fingerprint_acquired_vendor">
   </string-array>
@@ -506,7 +506,7 @@
     <string name="fingerprint_error_timeout" msgid="3927186043737732875">"Tidsavbrudd for fingeravtrykk er nådd. Prøv på nytt."</string>
     <string name="fingerprint_error_canceled" msgid="4402024612660774395">"Fingeravtrykk-operasjonen ble avbrutt."</string>
     <string name="fingerprint_error_user_canceled" msgid="7999639584615291494">"Fingeravtrykk-operasjonen ble avbrutt av brukeren."</string>
-    <string name="fingerprint_error_lockout" msgid="5536934748136933450">"For mange forsøk. Prøve på nytt senere."</string>
+    <string name="fingerprint_error_lockout" msgid="5536934748136933450">"For mange forsøk. Prøv på nytt senere."</string>
     <string name="fingerprint_error_lockout_permanent" msgid="5033251797919508137">"For mange forsøk. Fingeravtrykkssensoren er slått av."</string>
     <string name="fingerprint_error_unable_to_process" msgid="6107816084103552441">"Prøv igjen."</string>
     <string name="fingerprint_error_no_fingerprints" msgid="7654382120628334248">"Ingen fingeravtrykk er registrert."</string>
@@ -584,14 +584,14 @@
     <string name="policydesc_watchLogin_secondaryUser" product="tablet" msgid="4280246270601044505">"Overvåker antallet feil passord som er skrevet inn når skjermen låses opp, og låser nettbrettet eller sletter denne brukerens data når for mange feil passord er skrevet inn."</string>
     <string name="policydesc_watchLogin_secondaryUser" product="TV" msgid="3484832653564483250">"Overvåker antallet feil passord som er skrevet inn når skjermen låses opp, og låser TV-en eller sletter denne brukerens data når for mange feil passord er skrevet inn."</string>
     <string name="policydesc_watchLogin_secondaryUser" product="default" msgid="2185480427217127147">"Overvåker antallet feil passord som er skrevet inn når skjermen låses opp, og låser telefonen eller sletter denne brukerens data når for mange feil passord er skrevet inn."</string>
-    <string name="policylab_resetPassword" msgid="4934707632423915395">"Endre skjermlåsen"</string>
-    <string name="policydesc_resetPassword" msgid="1278323891710619128">"Endre skjermlåsen."</string>
-    <string name="policylab_forceLock" msgid="2274085384704248431">"Lås skjermen"</string>
-    <string name="policydesc_forceLock" msgid="1141797588403827138">"Kontrollér hvordan og når skjermen låses."</string>
-    <string name="policylab_wipeData" msgid="3910545446758639713">"Slett alle data"</string>
+    <string name="policylab_resetPassword" msgid="4934707632423915395">"Endring av skjermlåsen"</string>
+    <string name="policydesc_resetPassword" msgid="1278323891710619128">"Kan endre skjermlåsen."</string>
+    <string name="policylab_forceLock" msgid="2274085384704248431">"Låsing av skjermen"</string>
+    <string name="policydesc_forceLock" msgid="1141797588403827138">"Kan kontrollere hvordan og når skjermen låses."</string>
+    <string name="policylab_wipeData" msgid="3910545446758639713">"Sletting av alle data"</string>
     <string name="policydesc_wipeData" product="tablet" msgid="4306184096067756876">"Tilbakestill nettbrettets data uten advarsel ved å tilbakestille til fabrikkstandard."</string>
     <string name="policydesc_wipeData" product="tv" msgid="5816221315214527028">"Slett TV-ens data uten advarsel ved å tilbakestille til fabrikkstandard."</string>
-    <string name="policydesc_wipeData" product="default" msgid="5096895604574188391">"Tilbakestill telefonens data uten advarsel, ved å tilbakestille til fabrikkstandard."</string>
+    <string name="policydesc_wipeData" product="default" msgid="5096895604574188391">"Telefonens data kan slettes uten advarsel ved å tilbakestille til fabrikkstandard."</string>
     <string name="policylab_wipeData_secondaryUser" msgid="8362863289455531813">"Slett brukerdataene"</string>
     <string name="policydesc_wipeData_secondaryUser" product="tablet" msgid="6336255514635308054">"Sletter denne brukerens data på dette nettbrettet uten advarsel."</string>
     <string name="policydesc_wipeData_secondaryUser" product="tv" msgid="2086473496848351810">"Sletter denne brukerens data på denne TV-en uten advarsel."</string>
@@ -604,7 +604,7 @@
     <string name="policydesc_encryptedStorage" msgid="2637732115325316992">"Krev at lagrede appdata krypteres."</string>
     <string name="policylab_disableCamera" msgid="6395301023152297826">"Deaktiver kameraer"</string>
     <string name="policydesc_disableCamera" msgid="2306349042834754597">"Hindre bruk av alle kameraer på enheten."</string>
-    <string name="policylab_disableKeyguardFeatures" msgid="8552277871075367771">"Deaktiver enkelte skjermlåsfunksjoner"</string>
+    <string name="policylab_disableKeyguardFeatures" msgid="8552277871075367771">"Deaktivering av skjermlåsfunksjoner"</string>
     <string name="policydesc_disableKeyguardFeatures" msgid="2044755691354158439">"Forhindrer bruk av enkelte skjermlåsfunksjoner."</string>
   <string-array name="phoneTypes">
     <item msgid="8901098336658710359">"Hjemmenummer"</item>
@@ -1012,21 +1012,21 @@
     <string name="deleteText" msgid="6979668428458199034">"Slett"</string>
     <string name="inputMethod" msgid="1653630062304567879">"Inndatametode"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"Teksthandlinger"</string>
-    <string name="email" msgid="4560673117055050403">"E-post"</string>
+    <string name="email" msgid="4560673117055050403">"Send e-post"</string>
     <string name="email_desc" msgid="3638665569546416795">"Send e-post til den valgte adressen"</string>
     <string name="dial" msgid="1253998302767701559">"Ring"</string>
     <string name="dial_desc" msgid="6573723404985517250">"Ring det valgte telefonnummeret"</string>
-    <string name="map" msgid="5441053548030107189">"Kart"</string>
+    <string name="map" msgid="5441053548030107189">"Se Kart"</string>
     <string name="map_desc" msgid="1836995341943772348">"Finn den valgte adressen"</string>
     <string name="browse" msgid="1245903488306147205">"Åpne"</string>
     <string name="browse_desc" msgid="8220976549618935044">"Åpne den valgte nettadressen"</string>
-    <string name="sms" msgid="4560537514610063430">"Melding"</string>
+    <string name="sms" msgid="4560537514610063430">"Send melding"</string>
     <string name="sms_desc" msgid="7526588350969638809">"Send melding til det valgte telefonnummeret"</string>
     <string name="add_contact" msgid="7867066569670597203">"Legg til"</string>
     <string name="add_contact_desc" msgid="4830217847004590345">"Legg til i kontakter"</string>
     <string name="view_calendar" msgid="979609872939597838">"Se"</string>
     <string name="view_calendar_desc" msgid="5828320291870344584">"Se det valgte klokkeslettet i kalenderen"</string>
-    <string name="add_calendar_event" msgid="1953664627192056206">"Oversikt"</string>
+    <string name="add_calendar_event" msgid="1953664627192056206">"Planlegg"</string>
     <string name="add_calendar_event_desc" msgid="4326891793260687388">"Planlegg aktivitet for valgt klokkeslett"</string>
     <string name="view_flight" msgid="7691640491425680214">"Spor"</string>
     <string name="view_flight_desc" msgid="3876322502674253506">"Spor den valgte flyvningen"</string>
@@ -1175,6 +1175,9 @@
     <skip />
     <string name="wifi_no_internet" msgid="8938267198124654938">"Wi-Fi har ikke Internett-tilgang"</string>
     <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"Trykk for å få alternativer"</string>
+    <string name="wifi_softap_config_change" msgid="8475911871165857607">"Endres til innstillingene dine for Wi-Fi-soner"</string>
+    <string name="wifi_softap_config_change_summary" msgid="7601233252456548891">"Båndet ditt for Wi-Fi-sone er endret."</string>
+    <string name="wifi_softap_config_change_detailed" msgid="8022936822860678033">"Denne enheten støtter ikke innstillingen din for bare 5 GHz. I stedet bruker enheten 5 GHz-båndet når det er tilgjengelig."</string>
     <string name="network_switch_metered" msgid="4671730921726992671">"Byttet til <xliff:g id="NETWORK_TYPE">%1$s</xliff:g>"</string>
     <string name="network_switch_metered_detail" msgid="775163331794506615">"Enheten bruker <xliff:g id="NEW_NETWORK">%1$s</xliff:g> når <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> ikke har Internett-tilgang. Avgifter kan påløpe."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Byttet fra <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> til <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
@@ -1187,7 +1190,7 @@
   </string-array>
     <string name="network_switch_type_name_unknown" msgid="4552612897806660656">"en ukjent nettverkstype"</string>
     <string name="wifi_watchdog_network_disabled" msgid="7904214231651546347">"Kan ikke koble til Wi-Fi"</string>
-    <string name="wifi_watchdog_network_disabled_detailed" msgid="4917472096696322767">" har en dårlig Internett-tilkobling."</string>
+    <string name="wifi_watchdog_network_disabled_detailed" msgid="4917472096696322767">" har en dårlig internettilkobling."</string>
     <string name="wifi_connect_alert_title" msgid="8455846016001810172">"Vil du tillat tilkoblingen?"</string>
     <string name="wifi_connect_alert_message" msgid="6451273376815958922">"Appen %1$s vil koble til Wi-Fi-nettverket %2$s"</string>
     <string name="wifi_connect_default_application" msgid="7143109390475484319">"En app"</string>
@@ -1737,7 +1740,7 @@
     <string name="zen_mode_rule_name_combination" msgid="191109939968076477">"<xliff:g id="FIRST">%1$s</xliff:g>/<xliff:g id="REST">%2$s</xliff:g>"</string>
     <string name="toolbar_collapse_description" msgid="2821479483960330739">"Skjul"</string>
     <string name="zen_mode_feature_name" msgid="5254089399895895004">"«Ikke forstyrr»"</string>
-    <string name="zen_mode_downtime_feature_name" msgid="2626974636779860146">"Nedetid"</string>
+    <string name="zen_mode_downtime_feature_name" msgid="2626974636779860146">"Pause"</string>
     <string name="zen_mode_default_weeknights_name" msgid="3081318299464998143">"Hverdagskveld"</string>
     <string name="zen_mode_default_weekends_name" msgid="2786495801019345244">"Helg"</string>
     <string name="zen_mode_default_events_name" msgid="8158334939013085363">"Aktivitet"</string>

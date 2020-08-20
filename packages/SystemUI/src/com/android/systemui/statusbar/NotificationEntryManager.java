@@ -164,16 +164,27 @@ public class NotificationEntryManager implements Dumpable, NotificationInflater.
             }
 
             // Check if the notification is displaying the menu, if so slide notification back
-            if (row.getProvider() != null && row.getProvider().isMenuVisible()) {
+            if (isMenuVisible(row)) {
                 row.animateTranslateNotification(0);
                 return;
-            }
+            } else if (row.isChildInGroup() && isMenuVisible(row.getNotificationParent())) {
+                row.getNotificationParent().animateTranslateNotification(0);
+                return;
+            } else if (row.isSummaryWithChildren() && row.areChildrenExpanded()) {
+                // We never want to open the app directly if the user clicks in between
+                // the notifications.
+                return;
+            } 
 
             // Mark notification for one frame.
             row.setJustClicked(true);
             DejankUtils.postAfterTraversal(() -> row.setJustClicked(false));
 
             mCallback.onNotificationClicked(sbn, row);
+        }
+
+        private boolean isMenuVisible(ExpandableNotificationRow row) {
+            return row.getProvider() != null && row.getProvider().isMenuVisible();
         }
 
         public void register(ExpandableNotificationRow row, StatusBarNotification sbn) {
@@ -727,9 +738,15 @@ public class NotificationEntryManager implements Dumpable, NotificationInflater.
                     entry.row.getNotificationChildren();
             for (int i = 0; i < notificationChildren.size(); i++) {
                 ExpandableNotificationRow row = notificationChildren.get(i);
-                if ((row.getStatusBarNotification().getNotification().flags
-                        & Notification.FLAG_FOREGROUND_SERVICE) != 0) {
-                    // the child is a foreground service notification which we can't remove!
+                NotificationData.Entry childEntry = row.getEntry();
+                boolean isForeground = (row.getStatusBarNotification().getNotification().flags
+                        & Notification.FLAG_FOREGROUND_SERVICE) != 0;
+                boolean keepForReply = FORCE_REMOTE_INPUT_HISTORY
+                        && (shouldKeepForRemoteInput(childEntry)
+                                || shouldKeepForSmartReply(childEntry));
+                if (isForeground || keepForReply) {
+                    // the child is a foreground service notification which we can't remove or it's
+                    // a child we're keeping around for reply!
                     continue;
                 }
                 row.setKeepInParent(true);
