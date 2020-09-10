@@ -33,7 +33,7 @@ import com.android.systemui.statusbar.CommandQueue;
 
 public class FingerprintDialogImpl extends SystemUI implements CommandQueue.Callbacks {
     private static final String TAG = "FingerprintDialogImpl";
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     protected static final int MSG_SHOW_DIALOG = 1;
     protected static final int MSG_FINGERPRINT_AUTHENTICATED = 2;

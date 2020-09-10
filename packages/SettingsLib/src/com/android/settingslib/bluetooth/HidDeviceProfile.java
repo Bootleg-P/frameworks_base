@@ -38,7 +38,7 @@ public class HidDeviceProfile implements LocalBluetoothProfile {
     private static final int ORDINAL = 18;
     // HID Device Profile is always preferred.
     private static final int PREFERRED_VALUE = -1;
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     private final LocalBluetoothAdapter mLocalAdapter;
     private final CachedBluetoothDeviceManager mDeviceManager;

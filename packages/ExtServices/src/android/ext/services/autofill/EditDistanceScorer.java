@@ -29,7 +29,7 @@ final class EditDistanceScorer {
     private static final String TAG = "EditDistanceScorer";
 
     // TODO(b/70291841): STOPSHIP - set to false before launching
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     static final String DEFAULT_ALGORITHM = "EDIT_DISTANCE";
 

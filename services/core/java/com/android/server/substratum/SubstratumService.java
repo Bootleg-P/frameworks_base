@@ -76,7 +76,7 @@ public final class SubstratumService extends SystemService {
 
     private static final String TAG = "SubstratumService";
     private static final String SUBSTRATUM_PACKAGE = "projekt.substratum";
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
 
     private static final Signature SUBSTRATUM_SIGNATURE = new Signature(""
             + "308202eb308201d3a003020102020411c02f2f300d06092a864886f70d01010b050030263124302206"
