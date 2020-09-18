@@ -598,7 +598,7 @@ public abstract class Connection extends Conferenceable {
             "android.telecom.event.HANDOVER_FAILED";
 
     // Flag controlling whether PII is emitted into the logs
-    private static final boolean PII_DEBUG = Log.isLoggable(android.util.Log.DEBUG);
+    private static final boolean PII_DEBUG = false;
 
     /**
      * Whether the given capabilities support the specified capability.

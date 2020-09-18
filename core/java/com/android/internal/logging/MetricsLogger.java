@@ -55,7 +55,7 @@ public class MetricsLogger {
     }
 
     public void visible(int category) throws IllegalArgumentException {
-        if (Build.IS_DEBUGGABLE && category == VIEW_UNKNOWN) {
+        if (Build.IS_ENG && category == VIEW_UNKNOWN) {
             throw new IllegalArgumentException("Must define metric category");
         }
         EventLogTags.writeSysuiViewVisibility(category, 100);
@@ -65,7 +65,7 @@ public class MetricsLogger {
     }
 
     public void hidden(int category) throws IllegalArgumentException {
-        if (Build.IS_DEBUGGABLE && category == VIEW_UNKNOWN) {
+        if (Build.IS_ENG && category == VIEW_UNKNOWN) {
             throw new IllegalArgumentException("Must define metric category");
         }
         EventLogTags.writeSysuiViewVisibility(category, 0);
@@ -112,7 +112,7 @@ public class MetricsLogger {
     }
 
     public void action(int category, String pkg) {
-        if (Build.IS_DEBUGGABLE && category == VIEW_UNKNOWN) {
+        if (Build.IS_ENG && category == VIEW_UNKNOWN) {
             throw new IllegalArgumentException("Must define metric category");
         }
         EventLogTags.writeSysuiAction(category, pkg);

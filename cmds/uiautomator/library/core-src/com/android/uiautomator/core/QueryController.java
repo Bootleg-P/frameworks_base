@@ -30,8 +30,8 @@ class QueryController {
 
     private static final String LOG_TAG = QueryController.class.getSimpleName();
 
-    private static final boolean DEBUG = Log.isLoggable(LOG_TAG, Log.DEBUG);
-    private static final boolean VERBOSE = Log.isLoggable(LOG_TAG, Log.VERBOSE);
+    private static final boolean DEBUG = false;
+    private static final boolean VERBOSE = false;
 
     private final UiAutomatorBridge mUiAutomatorBridge;
 

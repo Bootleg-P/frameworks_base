@@ -735,7 +735,7 @@ public class DexManager {
      * Generates package related log if the package has code stored in unexpected way.
      */
     public static void maybeLogUnexpectedPackageDetails(PackageParser.Package pkg) {
-        if (!Build.IS_DEBUGGABLE) {
+        if (!Build.IS_ENG) {
             return;
         }
 

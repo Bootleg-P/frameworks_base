@@ -48,7 +48,7 @@ class InteractionController {
 
     private static final String LOG_TAG = InteractionController.class.getSimpleName();
 
-    private static final boolean DEBUG = Log.isLoggable(LOG_TAG, Log.DEBUG);
+    private static final boolean DEBUG = false;
 
     private final KeyCharacterMap mKeyCharacterMap =
             KeyCharacterMap.load(KeyCharacterMap.VIRTUAL_KEYBOARD);

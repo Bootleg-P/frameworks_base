@@ -1209,7 +1209,7 @@ public final class ActivityThread extends ClientTransactionHandler {
             if (dumpUnreachable) {
                 boolean showContents = ((mBoundApplication != null)
                     && ((mBoundApplication.appInfo.flags&ApplicationInfo.FLAG_DEBUGGABLE) != 0))
-                    || android.os.Build.IS_DEBUGGABLE;
+                    || android.os.Build.IS_ENG;
                 pw.println(" ");
                 pw.println(" Unreachable memory");
                 pw.print(Debug.getUnreachableMemory(100, showContents));
@@ -1335,7 +1335,7 @@ public final class ActivityThread extends ClientTransactionHandler {
             if (dumpUnreachable) {
                 int flags = mBoundApplication == null ? 0 : mBoundApplication.appInfo.flags;
                 boolean showContents = (flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0
-                        || android.os.Build.IS_DEBUGGABLE;
+                        || android.os.Build.IS_ENG;
                 proto.write(MemInfoDumpProto.AppData.UNREACHABLE_MEMORY,
                         Debug.getUnreachableMemory(100, showContents));
             }
@@ -5738,7 +5738,7 @@ public final class ActivityThread extends ClientTransactionHandler {
         // Allow application-generated systrace messages if we're debuggable.
         boolean isAppDebuggable = (data.appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
         Trace.setAppTracingAllowed(isAppDebuggable);
-        ThreadedRenderer.setDebuggingEnabled(isAppDebuggable || Build.IS_DEBUGGABLE);
+        ThreadedRenderer.setDebuggingEnabled(isAppDebuggable || Build.IS_ENG);
         if (isAppDebuggable && data.enableBinderTracking) {
             Binder.enableTracing();
         }

@@ -165,7 +165,7 @@ public final class AutofillManagerService extends SystemService {
         mContext = context;
         mUi = new AutoFillUI(ActivityThread.currentActivityThread().getSystemUiContext());
 
-        final boolean debug = Build.IS_DEBUGGABLE;
+        final boolean debug = Build.IS_ENG;
         Slog.i(TAG, "Setting debug to " + debug);
         setDebugLocked(debug);
 
@@ -440,9 +440,9 @@ public final class AutofillManagerService extends SystemService {
         boolean debug = false;
         boolean verbose = false;
         if (level == AutofillManager.FLAG_ADD_CLIENT_VERBOSE) {
-            debug = verbose = true;
+            debug = verbose = false;
         } else if (level == AutofillManager.FLAG_ADD_CLIENT_DEBUG) {
-            debug = true;
+            debug = false;
         }
         synchronized (mLock) {
             setDebugLocked(debug);

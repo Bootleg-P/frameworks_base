@@ -325,7 +325,7 @@ public class CaptivePortalLoginActivity extends Activity {
 
     private static String sanitizeURL(URL url) {
         // In non-Debug build, only show host to avoid leaking private info.
-        return Build.IS_DEBUGGABLE ? Objects.toString(url) : host(url);
+        return Build.IS_ENG ? Objects.toString(url) : host(url);
     }
 
     private void testForCaptivePortal() {

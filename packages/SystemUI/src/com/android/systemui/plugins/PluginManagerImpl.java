@@ -80,7 +80,7 @@ public class PluginManagerImpl extends BroadcastReceiver implements PluginManage
 
     public PluginManagerImpl(Context context) {
         this(context, new PluginInstanceManagerFactory(),
-                Build.IS_DEBUGGABLE, Thread.getUncaughtExceptionPreHandler());
+                Build.IS_ENG, Thread.getUncaughtExceptionPreHandler());
     }
 
     @VisibleForTesting

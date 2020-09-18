@@ -81,7 +81,7 @@ public class TileQueryHelper {
         String possible = mContext.getString(R.string.quick_settings_tiles_stock);
         final ArrayList<String> possibleTiles = new ArrayList<>();
         possibleTiles.addAll(Arrays.asList(possible.split(",")));
-        if (Build.IS_DEBUGGABLE) {
+        if (Build.IS_ENG) {
             possibleTiles.add(GarbageMonitor.MemoryTile.TILE_SPEC);
         }
 

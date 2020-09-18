@@ -111,7 +111,7 @@ public abstract class ConnectionService extends Service {
     public static final String EXTRA_IS_HANDOVER = TelecomManager.EXTRA_IS_HANDOVER;
 
     // Flag controlling whether PII is emitted into the logs
-    private static final boolean PII_DEBUG = Log.isLoggable(android.util.Log.DEBUG);
+    private static final boolean PII_DEBUG = false;
 
     // Session Definitions
     private static final String SESSION_HANDLER = "H.";

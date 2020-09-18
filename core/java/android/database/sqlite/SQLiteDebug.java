@@ -61,7 +61,7 @@ public final class SQLiteDebug {
      * True to enable database performance testing instrumentation.
      * @hide
      */
-    public static final boolean DEBUG_LOG_SLOW_QUERIES = Build.IS_DEBUGGABLE;
+    public static final boolean DEBUG_LOG_SLOW_QUERIES = Build.IS_ENG;
 
     private SQLiteDebug() {
     }

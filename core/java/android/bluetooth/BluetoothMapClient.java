@@ -35,8 +35,8 @@ import java.util.List;
 public final class BluetoothMapClient implements BluetoothProfile {
 
     private static final String TAG = "BluetoothMapClient";
-    private static final boolean DBG = Log.isLoggable(TAG, Log.DEBUG);
-    private static final boolean VDBG = Log.isLoggable(TAG, Log.VERBOSE);
+    private static final boolean DBG = false;
+    private static final boolean VDBG = false;
 
     public static final String ACTION_CONNECTION_STATE_CHANGED =
             "android.bluetooth.mapmce.profile.action.CONNECTION_STATE_CHANGED";

@@ -49,11 +49,11 @@ public class Log {
     // Generic tag for all Telecom logging
     @VisibleForTesting
     public static String TAG = "TelecomFramework";
-    public static boolean DEBUG = isLoggable(android.util.Log.DEBUG);
-    public static boolean INFO = isLoggable(android.util.Log.INFO);
-    public static boolean VERBOSE = isLoggable(android.util.Log.VERBOSE);
-    public static boolean WARN = isLoggable(android.util.Log.WARN);
-    public static boolean ERROR = isLoggable(android.util.Log.ERROR);
+    public static boolean DEBUG = false;
+    public static boolean INFO = false;
+    public static boolean VERBOSE = false;
+    public static boolean WARN = false;
+    public static boolean ERROR = false;
 
     private static final boolean FORCE_LOGGING = false; /* STOP SHIP if true */
     private static final boolean USER_BUILD = Build.IS_USER;

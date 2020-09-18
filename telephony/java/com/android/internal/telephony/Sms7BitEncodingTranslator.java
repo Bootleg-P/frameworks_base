@@ -32,7 +32,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public class Sms7BitEncodingTranslator {
     private static final String TAG = "Sms7BitEncodingTranslator";
-    private static final boolean DBG = Build.IS_DEBUGGABLE ;
+    private static final boolean DBG = Build.IS_ENG ;
     private static boolean mIs7BitTranslationTableLoaded = false;
     private static SparseIntArray mTranslationTable = null;
     private static SparseIntArray mTranslationTableCommon = null;

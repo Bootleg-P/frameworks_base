@@ -53,11 +53,11 @@ import java.util.ArrayList;
 
 public class GarbageMonitor {
     private static final boolean LEAK_REPORTING_ENABLED =
-            Build.IS_DEBUGGABLE
+            Build.IS_ENG
                     && SystemProperties.getBoolean("debug.enable_leak_reporting", false);
     private static final String FORCE_ENABLE_LEAK_REPORTING = "sysui_force_enable_leak_reporting";
 
-    private static final boolean HEAP_TRACKING_ENABLED = Build.IS_DEBUGGABLE;
+    private static final boolean HEAP_TRACKING_ENABLED = Build.IS_ENG;
     private static final boolean ENABLE_AM_HEAP_LIMIT = true; // use ActivityManager.setHeapLimit
 
     private static final String TAG = "GarbageMonitor";

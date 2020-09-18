@@ -67,7 +67,7 @@ public class PluginInstanceManager<T extends Plugin> {
     PluginInstanceManager(Context context, String action, PluginListener<T> listener,
             boolean allowMultiple, Looper looper, VersionInfo version, PluginManagerImpl manager) {
         this(context, context.getPackageManager(), action, listener, allowMultiple, looper, version,
-                manager, Build.IS_DEBUGGABLE);
+                manager, Build.IS_ENG);
     }
 
     @VisibleForTesting

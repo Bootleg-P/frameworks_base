@@ -69,7 +69,7 @@ public class SyncLogger {
     public static synchronized SyncLogger getInstance() {
         if (sInstance == null) {
             final boolean enable =
-                    Build.IS_DEBUGGABLE
+                    Build.IS_ENG
                     || "1".equals(SystemProperties.get("debug.synclog"))
                     || Log.isLoggable(TAG, Log.VERBOSE);
             if (enable) {

@@ -468,7 +468,7 @@ public final class Log {
             // Note: using String here has a bit of overhead as a Java object is created,
             //       but using the char[] directly is not easier, as it needs to be translated
             //       to a C char[] for logging.
-            written += println_native(bufID, priority, tag, new String(cbuf, off, len));
+//            written += println_native(bufID, priority, tag, new String(cbuf, off, len));
         }
 
         @Override
